@@ -1,0 +1,20 @@
+.gradientContainer {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gradientText {
+  font-family: 'Source Code Pro', monospace;
+  display: inline-block;
+  font-size: 120px;
+  font-weight: 900;
+}
+
+@media screen and (min-width: 414px) {
+  .gradientText {
+    font-size: 60px;
+  }
+}

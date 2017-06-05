@@ -1,0 +1,55 @@
+.App {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /*display: flex;*/
+  /*justify-content: center;*/
+}
+
+.centre {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+  /*background-color: red;*/
+}
+
+.sideButton {
+  text-align: center;
+  position: absolute;
+  font-size: 24px;
+  border: 0px;
+}
+
+.sideButton:hover {
+  background-color: red;
+  color: white;
+}
+
+.contactButton {
+  left: 10%;
+  top: 85%;
+  width: 80%;
+  height: 10%;
+}
+
+.projectsButton {
+  /*top: 10%;
+  left: 10%;*/
+  left: 10%;
+  top: 5%;
+  width: 80%;
+  height: 10%;
+  /*top: 10%;
+  left: 85%;
+  width: 10%;
+  height: 80%;*/
+  /*transform: rotate(270deg);*/
+}

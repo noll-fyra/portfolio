@@ -13,7 +13,7 @@
   font-weight: 900;
 }
 
-@media screen and (min-width: 414px) {
+@media only screen and (max-device-width: 736px) {
   .gradientText {
     font-size: 60px;
   }

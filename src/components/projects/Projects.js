@@ -16,7 +16,7 @@ class Project extends React.Component {
   }
   render () {
     return (
-      <div className='projects' onClick={()=>this.props.handleShowing('none')}>
+      <div className='projects' onClick={() => this.props.handleShowing('none')}>
         <ul>
           <li className='project' onClick={() => this.handleCurrent(0)}>
             <div className='projectDiv project1' />

@@ -53,7 +53,7 @@
   background-color: hsl(23, 55%, 57%);
 }
 
-@media screen and (max-width:736px) {
+@media screen and (max-device-width: 414px) {
   .buttonContainer {
     flex-flow: column;
     left: 0px;

@@ -5,7 +5,8 @@
   width: 90%;
   top: 5%;
   left: 5%;
-  border: 16px solid black;
+  border: 16px solid hsl(23, 55%, 57%);
+  border-radius: 8px;
   position: fixed;
   z-index: 5;
 }

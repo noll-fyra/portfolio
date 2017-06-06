@@ -2,7 +2,7 @@ import React from 'react'
 import './footer.css'
 
 const Footer = (props) => (
-  <div className='footer'>
+  <div className={'footer'}>
     <div className='starter'>
       <span onClick={() => props.handleShowing('none')} className='fa fa-times-circle' />
     </div>

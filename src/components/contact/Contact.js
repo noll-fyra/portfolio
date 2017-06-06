@@ -1,11 +1,9 @@
 import React from 'react'
-import './footer.css'
+import './contact.css'
 
-const Footer = (props) => (
-  <div className={'footer'}>
-    <div className='starter'>
-      <span onClick={() => props.handleShowing('none')} className='fa fa-times-circle' />
-    </div>
+const Contact = (props) => (
+  <div className={'contact'}>
+    <div className='starter' />
     <div className='social'>
       <a href='tel:65-87427184'><span className='fa fa-mobile' /></a>
       <a href='mailto:jonathanlouisng@gmail.com'><span className='fa fa-envelope' /></a>
@@ -16,8 +14,10 @@ const Footer = (props) => (
     <div className='name'>
       <span className='jonathanlouisng'>Jonathan Louis Ng</span>
     </div>
-    <div className='ender' />
+    <div className='ender'>
+      <span onClick={() => props.handleShowing('none')} className='fa fa-times-circle' />
+    </div>
   </div>
 )
 
-export default Footer
+export default Contact

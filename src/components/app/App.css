@@ -34,7 +34,7 @@
   height: 100%;
   font-size: 24px;
   border: 0px;
-  transition: background-color 0.5s, color 0.5s;
+  transition: color 0.5s;
 }
 
 .sideButton:hover {
@@ -51,6 +51,44 @@
 
 .contactButton:hover {
   background-color: hsl(23, 55%, 57%);
+}
+
+.bottomContainer {
+  position: absolute;
+  left: 5%;
+  top: 94%;
+  width: 90%;
+  height: 10%;
+  border-radius: 8px;
+}
+
+.bottomAboutActive {
+  background-color: hsl(215, 50%, 65%);
+}
+
+.bottomProjectsActive {
+  background-color: hsl(139, 30%, 50%);
+}
+
+.bottomContactActive {
+  background-color: hsl(23, 55%, 57%);
+}
+
+.appFooter {
+  position: fixed;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  z-index: 5;
+  transition: top 0.5s;
+}
+
+.footerActive {
+  top: 5%;
+}
+
+.footerInactive {
+  top: 100%;
 }
 
 @media screen and (max-device-width: 414px) {

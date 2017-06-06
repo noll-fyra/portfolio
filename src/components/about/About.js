@@ -3,8 +3,10 @@ import './about.css'
 
 const About = (props) => (
   <div className='about'>
-    <span onClick={() => props.handleShowing('none')} className='fa fa-times-circle' />
-    About Me
+    <div className='aboutStarter'>About Me</div>
+    <div className='aboutEnder'>
+      <span onClick={() => props.handleShowing('none')} className='fa fa-times-circle' />
+    </div>
   </div>
 )
 

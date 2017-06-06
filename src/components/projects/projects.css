@@ -51,12 +51,15 @@ li {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid white;
+  cursor: pointer;
 }
 
-.modal:hover {
-  color: white;
+.modalActive {
+  background-color: hsl(139, 30%, 50%);
+}
+
+.modalInactive {
   background-color: rgba(0, 0, 0, 0.5);
 }
 

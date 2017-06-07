@@ -41,8 +41,13 @@ class Project extends React.Component {
           </li>
         </ul>
         <div className='projectMain'>
+          <div className='projectDetails'>
+            <span onClick={() => this.handlePagination('back')} className='fa fa-angle-left' />
+          </div>
           <div className={'projectImage project' + this.state.project} />
-          <div className='projectDetails' />
+          <div className='projectDetails'>
+            <span onClick={() => this.handlePagination('forward')} className='fa fa-angle-right' />
+          </div>
         </div>
       </div>
     )

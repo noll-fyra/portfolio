@@ -6,6 +6,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Josefin+Slab', serif;
-  background: hsl(70, 31%, 85%);
+  /*background: hsl(70, 31%, 85%);*/
   text-align: center;
 }

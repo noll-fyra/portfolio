@@ -3,27 +3,24 @@
   flex-flow: column;
   height: 100%;
   width: 100%;
-  border: 12px solid hsl(23, 55%, 57%);
+  border: 8px solid hsl(23, 55%, 57%);
   border-radius: 8px;
   position: relative;
   z-index: 5;
 }
 
-.starter {
+.contactDiv {
   width: 100%;
   height: 25%;
-  background-color: rgb(200, 200, 200);
+  background-color: white;
+  transition: 0.5s;
 }
 
 .starter:hover {
   background-color: hsl(59, 50%, 58%);
-  transition: background-color 0.5s;
 }
 
 .social {
-  width: 100%;
-  height: 25%;
-  background-color: rgb(125, 125, 125);
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -32,32 +29,25 @@
 
 .social:hover {
   background-color: hsl(139, 30%, 50%);
-  transition: background-color 0.5s;
 }
 
 .name {
-  width: 100%;
-  height: 25%;
-  background-color: rgb(50, 50, 50);
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 900;
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
 }
 
 .name:hover {
   background-color: hsl(245, 40%, 65%);
-  transition: background-color 0.5s;
+  color: white;
 }
 
 .ender {
-  width: 100%;
-  height: 25%;
-  background-color: rgb(0, 0, 0);
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -66,36 +56,34 @@
 
 .ender:hover {
   background-color: hsl(215, 30%, 50%);
-  transition: background-color 0.5s;
+}
+
+.fa {
+  font-size: 40px;
+  margin: 20px;
+  /*border: 0px solid black;*/
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+  background-color: black;
+  color: white;
 }
 
 .ender span {
   color: white;
   font-size: 64px;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
 }
 
 .ender span:hover {
   color: black;
   background-color: white;
-}
-
-.jonathanlouisng {
-  margin: 0px 12px;
-}
-
-.fa {
-  font-size: 32px;
-  margin: 12px;
-  border: 0px solid black;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 22px;
-  background-color: black;
-  color: white;
 }
 
 a {

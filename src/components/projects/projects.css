@@ -86,7 +86,7 @@ li {
 }
 
 .project3 {
-  background-image: url('http://i.imgur.com/KWhTEjy.png');
+  background-image: url('http://i.imgur.com/iCsmqur.png');
 }
 
 .project4 {
@@ -136,21 +136,33 @@ li {
 
 .projectCommentsContainer {
   width: 90%;
-  height: 50%;
+  height: 45%;
   left: 5%;
-  top: 50%;
+  top: 55%;
   position: absolute;
   display: flex;
   flex-flow: column;
+  transition: 0.25s;
 }
 
 .projectCommentsContainer:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
 .projectComments {
   width: 100%;
-  height: 50%;
+  height: 75%;
+  font-size: 32px;
+  font-weight: 400;
+  font-family: 'Scope One', serif;
+  color: white;
+  text-align: justify;
+  padding: 24px;
+}
+
+.projectLinks {
+  width: 100%;
+  height: 25%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -159,22 +171,53 @@ li {
 .projectCommentsSpan {
   width: 33.3333%;
   height: 100%;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.closeButton {
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  font-size: 48px;
+}
+
+.closeButton:hover {
+  background-color: hsl(215, 30%, 50%);
+}
+
+.projectCommentsSpan button {
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  font-size: 24px;
+  transition: 0.5s;
+}
+
+.viewTheCode:hover {
   color: white;
+  background-color: hsl(245, 40%, 65%);
+}
+
+.tryTheSite:hover {
+  color: white;
+  background-color: hsl(59, 30%, 52%);
 }
 
 .projectCommentsSpanEnder {
   color: white;
+  background-color: black;
   font-size: 64px;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-/*.projectCommentsSpanEnder:hover {
+.projectCommentsSpanEnder:hover {
   color: black;
   background-color: white;
-}*/
+}

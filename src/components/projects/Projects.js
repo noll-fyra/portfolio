@@ -1,13 +1,42 @@
 import React from 'react'
 import './projects.css'
 
+const text =
+  [
+    'Population: One is a top-down zombie survival game for two players using the keyboard. The objective is to be the last player standing after a relentless zombie horde attacks. Players have to dodge increasing numbers of zombies as well as fixed obstacles, aided only by a special ability that their chosen character can use.',
+    'Locavorus aims to manage the complete life cycle of hospitality customer service, from before they patronise the business to well after their meal. In its current form, it smooths the customer ordering process by sending their orders directly to the kitchen in real time.',
+    'Finished in one night for the UN Women Hackathon 2017, Love Confidently aims to help women in developing countries by educating them about contraception, making it easy to find and use contraceptives, tracking their daily condition and connecting them with medical professionals to address any concerns.',
+    'Locavorus Rex is an application for restaurants and other food businesses to manage their reservations, queue and orders. It aims to improve customer service by making various aspects of the service life cycle more efficient.',
+    'Via Postale is a travel-focused social media site that is best described as Instagram x Pinterest x TripAdvisor. Users post their travel experiences, describing what happened and providing their rating of the event. Other users can in turn search for activities and places, saving those that interest, or are helpful to, them, to plan future trips.'
+  ]
+
+const repos =
+  [
+    'https://github.com/noll-fyra/wdi-project-1-noll-fyra',
+    'https://github.com/noll-fyra/project2',
+    'https://github.com/noll-fyra/unwomen-hackathon',
+    'https://github.com/wdi-sg/wdi-project-3-there_is_no_i',
+    'https://github.com/noll-fyra/viapriori2'
+  ]
+
+const sites =
+  [
+    'https://noll-fyra.github.io/wdi-project-1-noll-fyra/',
+    'https://locavorus.herokuapp.com',
+    'https://love-confidently.herokuapp.com',
+    'https://locavorusrex.herokuapp.com',
+    'https://via-priori.firebaseapp.com'
+  ]
+
 class Project extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      project: props.project
+      project: props.project,
+      hovering: false
     }
     this.handlePagination = this.handlePagination.bind(this)
+    this.handleHovering = this.handleHovering.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -23,6 +52,12 @@ class Project extends React.Component {
       this.state.project === 0 ? this.props.handleProject(4) : this.props.handleProject(this.state.project - 1)
     }
     console.log(direction)
+  }
+
+  handleHovering () {
+    this.setState({
+      hovering: !this.state.hovering
+    })
   }
 
   render () {
@@ -58,12 +93,16 @@ class Project extends React.Component {
           <div className='projectDetails' onClick={() => this.handlePagination('forward')}>
             <span className='fa fa-angle-right' />
           </div>
-          <div className='projectCommentsContainer' >
-            <div className='projectComments'>about this project</div>
-            <div className='projectComments'>
-              <span className='projectCommentsSpan'>View the code</span>
-              <span onClick={() => this.props.handleShowing('none')} className='fa fa-times-circle projectCommentsSpan projectCommentsSpanEnder' />
-              <span className='projectCommentsSpan'>Try the site</span>
+          <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
+            <div className='projectComments' style={this.state.hovering ? {} : {display: 'none'}}>
+              {text[this.state.project]}
+            </div>
+            <div className='projectLinks' style={this.state.hovering ? {} : {display: 'none'}}>
+              <a href={repos[this.state.project]} target='_blank' className='projectCommentsSpan'><button className='viewTheCode'>View the code</button></a>
+              <div className='projectCommentsSpan closeButton'>
+                <span onClick={() => this.props.handleShowing('none')} className='fa fa-times-circle projectCommentsSpanEnder' />
+              </div>
+              <a href={sites[this.state.project]} target='_blank' className='projectCommentsSpan'><button className='tryTheSite'>Try the site</button></a>
             </div>
           </div>
         </div>

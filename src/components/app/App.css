@@ -63,15 +63,20 @@
 }
 
 .bottomAboutActive {
-  background-color: hsl(215, 50%, 65%);
+  /*border: 8px solid hsl(215, 50%, 65%);*/
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .bottomProjectsActive {
-  background-color: hsl(139, 30%, 50%);
+  /*border: 8px solid hsl(139, 30%, 50%);*/
+  /*background-color: hsl(139, 30%, 50%);*/
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .bottomContactActive {
-  background-color: hsl(23, 55%, 57%);
+  /*border: 8px solid hsl(23, 55%, 57%);*/
+  /*background-color: hsl(23, 55%, 57%);*/
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .appFooter {

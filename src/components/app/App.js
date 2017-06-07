@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       showing: 'none',
       hovering: 'none',
-      project: 0
+      project: 1
     }
     this.handleShowing = this.handleShowing.bind(this)
     this.handleHovering = this.handleHovering.bind(this)
@@ -62,7 +62,7 @@ class App extends Component {
             onMouseOut={() => this.handleHovering('none')}
           >Contact</button>
         </div>
-        <div className={'bottomContainer ' + (this.state.showing === 'about' ? 'bottomAboutActive' : this.state.showing === 'projects' ? 'bottomProjectsActive' : this.state.showing === 'contact' ? 'bottomContactActive' : '')} style={this.state.hovering === 'none' ? {} : this.state.hovering === 'about' ? {backgroundColor: 'hsl(215, 50%, 65%)'} : this.state.hovering === 'projects' ? {backgroundColor: 'hsl(139, 30%, 50%)'} : {backgroundColor: 'hsl(23, 55%, 57%)'}} />
+        <div className='bottomContainer' style={this.state.hovering === 'none' ? {} : this.state.hovering === 'about' ? {backgroundColor: 'hsl(215, 50%, 65%)'} : this.state.hovering === 'projects' ? {backgroundColor: 'hsl(139, 30%, 50%)'} : {backgroundColor: 'hsl(23, 55%, 57%)'}} />
 
         <div className={'appFooter ' + (this.state.showing === 'about' ? 'footerActive' : 'footerInactive')}>
           <About handleShowing={this.handleShowing} />

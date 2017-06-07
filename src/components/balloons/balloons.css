@@ -51,6 +51,9 @@
 
 .balloon:nth-child(1):hover {
   background-image: url('http://i.imgur.com/79eNOe5.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .balloon:nth-child(2) {
@@ -63,7 +66,7 @@
 }
 
 .balloon:nth-child(2):hover {
-  background-image: url('http://i.imgur.com/zBILyBo.png');
+  background-image: url('http://i.imgur.com/VMuQpkL.png');
 }
 
 .balloon:nth-child(3) {
@@ -77,6 +80,9 @@
 
 .balloon:nth-child(3):hover {
   background-image: url('http://i.imgur.com/YI1ajgW.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .balloon:nth-child(4) {
@@ -89,7 +95,7 @@
 }
 
 .balloon:nth-child(4):hover {
-  background-image: url('http://i.imgur.com/KWhTEjy.png');
+  background-image: url('http://i.imgur.com/VMuQpkL.png');
 }
 
 .balloon:nth-child(5) {
@@ -102,5 +108,8 @@
 }
 
 .balloon:nth-child(5):hover {
-  background-image: url('http://i.imgur.com/6OwwM9u.png');
+  background-image: url('http://i.imgur.com/Bbu9NpZ.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

@@ -3,11 +3,20 @@ import './projects.css'
 
 const text =
   [
-    'Population: One is a top-down zombie survival game for two players using the keyboard. The objective is to be the last player standing after a relentless zombie horde attacks. Players have to dodge increasing numbers of zombies as well as fixed obstacles, aided only by a special ability that their chosen character can use.',
+    'Population: One is a top-down zombie survival game for two players. The objective is to be the last player standing after a relentless zombie horde attacks. Players have to dodge increasing numbers of zombies as well as fixed obstacles, aided only by a special ability that their chosen character can use.',
     'Locavorus aims to manage the complete life cycle of hospitality customer service, from before they patronise the business to well after their meal. In its current form, it smooths the customer ordering process by sending their orders directly to the kitchen in real time.',
     'Finished in one night for the UN Women Hackathon 2017, Love Confidently aims to help women in developing countries by educating them about contraception, making it easy to find and use contraceptives, tracking their daily condition and connecting them with medical professionals to address any concerns.',
     'Locavorus Rex is an application for restaurants and other food businesses to manage their reservations, queue and orders. It aims to improve customer service by making various aspects of the service life cycle more efficient.',
-    'Via Postale is a travel-focused social media site that is best described as Instagram x Pinterest x TripAdvisor. Users post their travel experiences, describing what happened and providing their rating of the event. Other users can in turn search for activities and places, saving those that interest, or are helpful to, them, to plan future trips.'
+    'Via Postale is a travel-focused social media site that is best described as Instagram x Pinterest x TripAdvisor. Users post their travel experiences, complete with description and rating. Other users can in turn search for activities and places, saving those that interest, or are helpful to, them, to plan future trips.'
+  ]
+
+const builtWith =
+  [
+    'JavaScript | jQuery | HTML5 | CSS3',
+    'Node.js | Express | socket.io | MongoDB | JavaScript | HTML5 | CSS3',
+    'Node.js | Express | socket.io | Google Maps | Twilio | MongoDB | JavaScript | HTML5 | CSS3',
+    'Ruby on Rails | PostgreSQL | Twilio | JavaScript | HTML5 | Materialize',
+    'React | Firebase | CSS3'
   ]
 
 const repos =
@@ -96,6 +105,9 @@ class Project extends React.Component {
           <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
             <div className='projectComments' style={this.state.hovering ? {} : {display: 'none'}}>
               {text[this.state.project]}
+            </div>
+            <div className='projectBuiltWith' style={this.state.hovering ? {} : {display: 'none'}}>
+              {builtWith[this.state.project]}
             </div>
             <div className='projectLinks' style={this.state.hovering ? {} : {display: 'none'}}>
               <a href={repos[this.state.project]} target='_blank' className='projectCommentsSpan'><button className='viewTheCode'>View the code</button></a>

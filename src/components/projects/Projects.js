@@ -14,7 +14,7 @@ const builtWith =
   [
     'JavaScript | jQuery | HTML5 | CSS3',
     'Node.js | Express | socket.io | MongoDB | JavaScript | HTML5 | CSS3',
-    'Node.js | Express | socket.io | Google Maps | Twilio | MongoDB | JavaScript | HTML5 | CSS3',
+    'Node.js | Express | socket.io | Google Maps | Twilio | MongoDB | JavaScript | HTML5 | Bootstrap',
     'Ruby on Rails | PostgreSQL | Twilio | JavaScript | HTML5 | Materialize',
     'React | Firebase | CSS3'
   ]

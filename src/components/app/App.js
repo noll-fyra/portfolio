@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='centre' onClick={() => this.handleShowing('none')}>
-          <Gradient className='centreText' text='JONATHAN LOUIS NG' />
+          <Gradient text='JONATHAN LOUIS NG' />
         </div>
         <Balloons handleProject={this.handleProject} />
         <div className='buttonContainer'>

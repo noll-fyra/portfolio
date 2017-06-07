@@ -69,7 +69,7 @@ class App extends Component {
         </div>
 
         <div className={'appFooter ' + (this.state.showing === 'projects' ? 'footerActive' : 'footerInactive')}>
-          <Projects handleProject={this.handleProject} project={this.state.project} />
+          <Projects handleShowing={this.handleShowing} handleProject={this.handleProject} project={this.state.project} />
         </div>
 
         <div className={'appFooter ' + (this.state.showing === 'contact' ? 'footerActive' : 'footerInactive')}>

@@ -54,14 +54,23 @@ li {
   color: white;
   border: 1px solid white;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .modalActive {
   background-color: hsl(139, 30%, 50%);
 }
 
+.modalActive:hover {
+  background-color: hsl(139, 30%, 60%);
+}
+
 .modalInactive {
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modalInactive:hover {
+  background-color: hsla(0, 10%, 20%, 0.7);
 }
 
 .project0 {
@@ -112,6 +121,60 @@ li {
   background-color: white;
 }
 
-.fa-angle-left, .fa-angle-right {
-  background-color: red;
+.projectDetails:hover {
+  border: 4px solid hsl(215, 30%, 50%);
 }
+
+.fa-angle-left, .fa-angle-right {
+  cursor: pointer;
+  font-size: 64px;
+}
+
+.fa-angle-left:hover, .fa-angle-right:hover {
+  font-size: 88px;
+}
+
+.projectCommentsContainer {
+  width: 90%;
+  height: 50%;
+  left: 5%;
+  top: 50%;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+}
+
+.projectCommentsContainer:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.projectComments {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.projectCommentsSpan {
+  width: 33.3333%;
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  color: white;
+}
+
+.projectCommentsSpanEnder {
+  color: white;
+  font-size: 64px;
+  cursor: pointer;
+}
+
+
+/*.projectCommentsSpanEnder:hover {
+  color: black;
+  background-color: white;
+}*/

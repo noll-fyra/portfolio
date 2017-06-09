@@ -49,6 +49,10 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
+.balloon:hover {
+  cursor: pointer;
+}
+
 .balloon:nth-child(1):hover {
   background-image: url('http://i.imgur.com/79eNOe5.png');
   background-position: center;

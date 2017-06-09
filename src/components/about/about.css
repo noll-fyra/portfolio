@@ -7,18 +7,65 @@
   border-radius: 8px;
   position: relative;
   z-index: 5;
+  background-color: white;
 }
 
 .aboutStarter {
   width: 100%;
   height: 75%;
-  background-color: white;
+}
+
+.profileContainer {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImage {
+  margin: 12px;
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background-image: url('http://i.imgur.com/NOfd0FG.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.profileDetails {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tagline {
+  width: 100%;
+  height: 50%;
+  color: black;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.aboutWords {
+  margin: 12px;
+  font-size: 24px;
 }
 
 .aboutEnder {
   width: 100%;
   height: 25%;
-  background-color: white;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -46,9 +93,4 @@
 .aboutEnder span:hover {
   color: black;
   background-color: white;
-}
-
-.hireMe {
-  width: 100%;
-  background-color: gold;
 }

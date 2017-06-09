@@ -110,11 +110,11 @@ class Project extends React.Component {
               {builtWith[this.state.project]}
             </div>
             <div className='projectLinks' style={this.state.hovering ? {} : {display: 'none'}}>
-              <a href={repos[this.state.project]} target='_blank' className='projectCommentsSpan'><button className='viewTheCode'>View the code</button></a>
+              <a href={repos[this.state.project]} target='_blank' rel='noopener noreferrer' className='projectCommentsSpan'><button className='viewTheCode'>View the code</button></a>
               <div className='projectCommentsSpan closeButton'>
                 <span onClick={() => this.props.handleShowing('none')} className='fa fa-times-circle projectCommentsSpanEnder' />
               </div>
-              <a href={sites[this.state.project]} target='_blank' className='projectCommentsSpan'><button className='tryTheSite'>Try the site</button></a>
+              <a href={sites[this.state.project]} target='_blank' rel='noopener noreferrer' className='projectCommentsSpan'><button className='tryTheSite'>Try the site</button></a>
             </div>
           </div>
         </div>

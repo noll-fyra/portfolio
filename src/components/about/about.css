@@ -10,14 +10,13 @@
   background-color: white;
 }
 
-.aboutStarter {
+.aboutDiv {
   width: 100%;
-  height: 75%;
+  height: 25%;
+  transition: 0.5s;
 }
 
-.profileContainer {
-  width: 100%;
-  height: 160px;
+.aboutStarter {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -26,9 +25,10 @@
 
 .profileImage {
   margin: 12px;
-  width: 160px;
-  height: 160px;
-  border-radius: 80px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 8px solid hsl(215, 50%, 65%);
   background-image: url('http://i.imgur.com/NOfd0FG.jpg');
   background-position: center;
   background-size: cover;
@@ -46,26 +46,76 @@
 .tagline {
   width: 100%;
   height: 50%;
-  color: black;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
   margin: 0;
   padding: 0;
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
-  align-items: center;
+  color: black;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.taglineLarge {
+  font-size: 32px;
+  font-weight: 700;
+  align-items: flex-end;
+}
+
+.taglineSmall {
+  font-size: 32px;
+  font-weight: 700;
+  align-items: flex-start;
 }
 
 .aboutWords {
-  margin: 12px;
-  font-size: 24px;
+  font-size: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
+  padding: 0px 24px;
+  color: black;
+}
+
+.aboutWords:hover {
+  background-color: hsl(139, 30%, 50%);
+  color: white;
+}
+
+.hitMeUp {
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.hitMeUp:hover {
+  border-color: white;
+  background-color: white;
+  color: red;
+}
+
+.aboutSkills {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 64px;
+}
+
+.aboutSkills:hover {
+  background-color: hsl(245, 40%, 65%);
+  color: white;
+}
+
+.skillIcon {
+  margin: 0px 8px;
 }
 
 .aboutEnder {
-  width: 100%;
-  height: 25%;
   display: flex;
   flex-flow: row;
   justify-content: center;

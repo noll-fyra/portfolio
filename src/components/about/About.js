@@ -24,9 +24,9 @@ const About = (props) => (
       <i className='devicon-html5-plain-wordmark skillIcon' />
       <i className='devicon-css3-plain-wordmark skillIcon' />
       <i className='devicon-rails-plain-wordmark skillIcon' />
-      <i class='devicon-jquery-plain-wordmark skillIcon' />
       <i className='devicon-nodejs-plain-wordmark skillIcon' />
       <i className='devicon-express-original-wordmark skillIcon' />
+      <i className='devicon-jquery-plain-wordmark skillIcon' />
       <i className='devicon-mongodb-plain-wordmark skillIcon' />
       <i className='devicon-postgresql-plain-wordmark skillIcon' />
       <i className='devicon-github-plain-wordmark skillIcon' />

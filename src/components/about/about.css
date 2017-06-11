@@ -71,19 +71,19 @@
 }
 
 .taglineLarge {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   align-items: flex-end;
 }
 
 .taglineSmall {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   align-items: flex-start;
 }
 
 .aboutWords {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   flex-flow: column;
   justify-content: center;

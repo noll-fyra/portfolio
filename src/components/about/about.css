@@ -7,23 +7,38 @@
   border-radius: 8px;
   position: relative;
   z-index: 5;
-  background-color: white;
+  /*background-color: white;*/
+  background-image: url('http://i.imgur.com/Hr3S0sW.jpg');
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-flow: row;
+}
+
+.aboutLeft{
+  width:30%;
+  height:100%;
+}
+.aboutRight{
+  width:70%;
+  height:100%;
 }
 
 .aboutDiv {
   width: 100%;
-  height: 25%;
+  height: 20%;
   transition: 0.5s;
 }
 
 .aboutStarter {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.profileImage {
+/*.profileImage {
   margin: 12px;
   width: 160px;
   height: 160px;
@@ -33,7 +48,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-}
+}*/
 
 .profileDetails {
   height: 100%;
@@ -51,7 +66,7 @@
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
-  color: black;
+  color: white;
   font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -74,21 +89,27 @@
   justify-content: center;
   text-align: justify;
   align-items: center;
-  padding: 0px 24px;
-  color: black;
-}
-
-.aboutWords:hover {
-  background-color: hsl(139, 30%, 50%);
+  padding-right: 12px;
+  /*padding: 0px 24px;*/
   color: white;
 }
 
+/*.aboutWords:hover {
+  background-color: hsl(139, 30%, 50%);
+  color: white;
+}*/
+
+.aboutHitMeUp{
+  display:flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
 .hitMeUp {
   color: white;
   background-color: red;
   font-weight: 700;
   font-size: 16px;
-  /*font-family: 'Nunito Sans', sans-serif;*/
 }
 
 .hitMeUp:hover {
@@ -103,14 +124,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  color: black;
-  font-size: 64px;
+  color: white;
+  font-size: 48px;
 }
 
-.aboutSkills:hover {
+/*.aboutSkills:hover {
   background-color: hsl(245, 40%, 65%);
   color: white;
-}
+}*/
 
 .skillIcon {
   margin: 0px 8px;
@@ -123,10 +144,10 @@
   align-items: center;
 }
 
-.aboutEnder:hover {
+/*.aboutEnder:hover {
   background-color: hsl(215, 30%, 50%);
   transition: background-color 0.5s;
-}
+}*/
 
 .aboutEnder span {
   color: white;

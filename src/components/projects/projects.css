@@ -247,7 +247,7 @@ li {
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .modal {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
   .projectImage {
     width: 100%;
@@ -257,7 +257,7 @@ li {
     display: none;
   }
   .projectCommentsSpan button {
-    font-size: 0.8em;
+    font-size: 0.65em;
     text-align: center;
     display: flex;
     flex-flow: row;

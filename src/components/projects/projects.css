@@ -154,7 +154,7 @@ li {
 }
 
 .projectCommentsContainer:hover {
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: black;
 }
 
 .projectComments {
@@ -263,7 +263,7 @@ li {
     flex-flow: row;
     align-items: center;
     margin: 0px;
-    padding: 0px 12px;
+    padding: 0px 16px;
   }
   .viewTheCode {
     text-align: left;
@@ -279,10 +279,10 @@ li {
     background-color: black;
   }
   .projectComments {
-    font-size: 8px;
+    font-size: 14px;
   }
   .projectBuiltWith {
-    font-size: 8px;
+    font-size: 10px;
   }
   .projectInactive {
     display: block;

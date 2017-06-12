@@ -35,6 +35,13 @@
   font-size: 20px;
   border: 0px;
   transition: color 0.5s;
+  /*background-color: red;*/
+  /*display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;*/
+  align-content: center;
 }
 
 .sideButton:hover {
@@ -63,19 +70,14 @@
 }
 
 .bottomAboutActive {
-  /*border: 8px solid hsl(215, 50%, 65%);*/
   background-color: rgba(0, 0, 0, 0);
 }
 
 .bottomProjectsActive {
-  /*border: 8px solid hsl(139, 30%, 50%);*/
-  /*background-color: hsl(139, 30%, 50%);*/
   background-color: rgba(0, 0, 0, 0);
 }
 
 .bottomContactActive {
-  /*border: 8px solid hsl(23, 55%, 57%);*/
-  /*background-color: hsl(23, 55%, 57%);*/
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -96,7 +98,7 @@
   top: 100%;
 }
 
-@media screen and (max-device-width: 414px) {
+@media only screen and (min-device-width: 414px) and (orientation: portrait) {
   .buttonContainer {
     flex-flow: column;
     left: 0px;
@@ -105,8 +107,10 @@
     align-items: center;
     height: 24%;
     top: 70%;
+    /*background-color: red;*/
   }
   .sideButton {
-    width: 50%;
+    width: 90%;
+    /*font-size: 16px;*/
   }
 }

@@ -1,5 +1,5 @@
 .balloons {
-  margin: 60px;
+  margin-top: 60px;
 }
 
 .balloon {
@@ -116,4 +116,24 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media only screen and (min-device-width: 414px) {
+  .balloon {
+    width: 48px;
+    height: 58px;
+    margin: 40px 12px;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.07);
+  }
+
+  .balloon:before {
+    content: "▲";
+    font-size: 8px;
+    bottom: -8px;
+  }
+
+  .balloon:after {
+    top: 56px;
+    height: 100px;
+  }
 }

@@ -3,7 +3,6 @@ import './about.css'
 
 const About = (props) => (
   <div className='about'>
-    <div className='aboutLeft'/>
     <div className='aboutRight'>
       <div className='aboutStarter aboutDiv'>
         <div className='profileImage' />
@@ -18,10 +17,13 @@ const About = (props) => (
       </div>
       <div className='aboutWords aboutDiv'>
         <p>I work on projects that address real world issues, making peoples' lives better and happier, and try to do all this as efficiently and effectively as possible. I enjoy learning new ways to code, and I derive massive satisfaction from solving programming challenges.</p>
+      </div>
+      <div className='aboutHitMeUp aboutDiv'>
+        <div className='hitMeUpFirst'>
+          Want to make a difference?
         </div>
-        <div className='aboutHitMeUp aboutDiv'>
-          <button className='hitMeUp' onClick={() => props.handleShowing('contact')}>Get in touch if you want to make a difference</button>
-        </div>
+        <button className='hitMeUp' onClick={() => props.handleShowing('contact')}>Get in touch</button>
+      </div>
       <div className='aboutSkills aboutDiv'>
         <i className='devicon-javascript-plain skillIcon' />
         <i className='devicon-react-original-wordmark skillIcon' />

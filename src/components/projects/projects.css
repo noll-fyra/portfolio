@@ -266,6 +266,8 @@ li {
     justify-content: flex-end;
   }
   .projectCommentsContainer {
+    height: 45%;
+    top: 55%;
     width: 100%;
     left: 0%;
     background-color: black;

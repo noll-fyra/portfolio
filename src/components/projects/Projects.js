@@ -100,10 +100,10 @@ class Project extends React.Component {
           </div>
           <div className={'projectImage project' + this.state.project} />
           <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
-            <div className={'projectComments ' + (this.state.hovering ? '' : 'projectInactive')}>
+            <div className='projectComments'>
               {text[this.state.project]}
             </div>
-            <div className={'projectBuiltWith ' + (this.state.hovering ? '' : 'projectInactive')}>
+            <div className='projectBuiltWith'>
               {builtWith[this.state.project]}
             </div>
           </div>

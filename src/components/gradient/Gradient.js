@@ -39,7 +39,6 @@ class Gradient extends React.Component {
             onMouseOut={() => this.toggleHover(index)}
             onTouchStart={() => this.toggleHover(index)}
             onTouchEnd={() => this.toggleHover(index)}
-            onTouchMove={() => this.toggleHover(index)}
             >
             {char}
           </span>

@@ -149,14 +149,6 @@ li {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-.projectActive {
-  display: block;
-}
-
-.projectInactive {
-  display: none;
-}
-
 .projectComments {
   width: 100%;
   height: 50%;
@@ -185,6 +177,7 @@ li {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  /*background-color: red;*/
 }
 
 .projectCommentsSpan {
@@ -239,36 +232,4 @@ li {
 .projectCommentsSpanEnder:hover {
   color: black;
   background-color: white;
-}
-
-@media only screen and (max-device-width: 414px) and (orientation:portrait) {
-  .modal {
-    font-size: 12px;
-  }
-  .projectImage {
-    height: 50%;
-  }
-  .projectInactive {
-    display: block;
-  }
-  .projectComments {
-    background-color: red;
-    font-size: 10px;
-    color: white;
-  }
-  .projectBuiltWith {
-    display: none;
-  }
-  .projectDetails {
-    display: none;
-  }
-}
-
-@media only screen and (max-device-width: 414px) and (orientation:landscape) {
-  .modal {
-    font-size: 12px;
-  }
-  .projectInactive {
-    display: block;
-  }
 }

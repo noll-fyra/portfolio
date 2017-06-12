@@ -129,13 +129,3 @@ a:hover {
     border-radius: 22px;
   }
 }
-
-@media only screen and (max-device-width: 320px) and (orientation:portrait) {
-  .socialIcon {
-    font-size: 28px;
-    margin: 8px;
-    width: 44px;
-    height: 44px;
-    border-radius: 22px;
-  }
-}

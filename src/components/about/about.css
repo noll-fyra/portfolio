@@ -117,6 +117,10 @@
   font-family: 'Nunito Sans', sans-serif;
   font-size: 24px;
   margin-right: 12px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
   /*background-color: green;*/
 }
 .hitMeUp {
@@ -182,10 +186,33 @@
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
+  .aboutStarter{
+    padding-left: 0px;
+  }
+  .aboutWords{
+    padding-left: 0px;
+    font-size: 16px;
+  }
   .aboutHitMeUp{
     flex-flow: column;
   }
   .aboutSkills {
-    font-size: 24px;
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-device-width: 414px) and (orientation:landscape) {
+  .aboutStarter{
+    padding-left: 0px;
+  }
+  .aboutWords{
+    padding-left: 0px;
+    font-size: 16px;
+  }
+  .aboutHitMeUp{
+    flex-flow: column;
+  }
+  .aboutSkills {
+    font-size: 28px;
   }
 }

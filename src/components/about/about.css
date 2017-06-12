@@ -16,14 +16,15 @@
   flex-flow: row;
 }
 
+
 /*.aboutLeft{
   width:30%;
   height:100%;
 }*/
 
-.aboutRight{
-  width:100%;
-  height:100%;
+.aboutRight {
+  width: 100%;
+  height: 100%;
 }
 
 .aboutDiv {
@@ -37,8 +38,9 @@
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
-    padding-left:400px;
+  padding-left: 400px;
 }
+
 
 /*.profileImage {
   margin: 12px;
@@ -73,37 +75,38 @@
 }
 
 .taglineLarge {
-  font-size: 28px;
+  font-size: 1.8em;
   font-weight: 700;
   align-items: flex-end;
 }
 
 .taglineSmall {
-  font-size: 28px;
+  font-size: 1.6em;
   font-weight: 700;
   align-items: flex-start;
 }
 
 .aboutWords {
-  font-size: 20px;
+  font-size: 1.3em;
   display: flex;
   flex-flow: column;
   justify-content: center;
   text-align: justify;
   align-items: center;
   padding-right: 12px;
-    padding-left:400px;
+  padding-left: 400px;
   /*padding: 0px 24px;*/
   color: white;
 }
+
 
 /*.aboutWords:hover {
   background-color: hsl(139, 30%, 50%);
   color: white;
 }*/
 
-.aboutHitMeUp{
-  display:flex;
+.aboutHitMeUp {
+  display: flex;
   flex-flow: row;
   flex-wrap: wrap;
   white-space: normal;
@@ -112,10 +115,10 @@
   /*background-color: white;*/
 }
 
-.hitMeUpFirst{
-  color:white;
+.hitMeUpFirst {
+  color: white;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 24px;
+  font-size: 1.6em;
   margin-right: 12px;
   display: flex;
   flex-flow: row;
@@ -124,11 +127,12 @@
   margin: 0;
   padding: 0;
 }
+
 .hitMeUp {
   color: white;
   background-color: red;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 1em;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -148,8 +152,9 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 48px;
+  font-size: 3.5em;
 }
+
 
 /*.aboutSkills:hover {
   background-color: hsl(245, 40%, 65%);
@@ -167,6 +172,7 @@
   align-items: center;
 }
 
+
 /*.aboutEnder:hover {
   background-color: hsl(215, 30%, 50%);
   transition: background-color 0.5s;
@@ -175,7 +181,7 @@
 .aboutEnder span {
   color: white;
   background-color: black;
-  font-size: 56px;
+  font-size: 4em;
   cursor: pointer;
   width: 44px;
   height: 44px;
@@ -191,51 +197,50 @@
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
-  .tagline{
-    color: rgba(0,0,0,0);
+  .tagline {
+    color: rgba(0, 0, 0, 0);
   }
-  .aboutWords{
-    color: rgba(0,0,0,0);
+  .aboutWords {
+    color: rgba(0, 0, 0, 0);
   }
-  .aboutHitMeUpFirst{
-    width:100%;
+  .aboutHitMeUpFirst {
+    width: 100%;
     margin-right: 0px;
   }
-  .aboutHitMeUp{
+  .aboutHitMeUp {
     flex-flow: column;
     justify-content: center;
     align-items: center;
   }
   .aboutSkills {
-    font-size: 28px;
+    font-size: 1.4em;
   }
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
-  .aboutStarter{
+  .aboutStarter {
     padding-left: 150px;
   }
-  .tagline{
-    font-size: 16px;
+  .tagline {
+    font-size: 1em;
   }
-  .taglineLarge{
+  .taglineLarge {
     display: none;
   }
-  .aboutWords{
+  .aboutWords {
     padding-left: 150px;
-    font-size: 14px;
+    font-size: 1em;
   }
-  .aboutHitMeUp{
+  .aboutHitMeUp {
     padding-left: 150px;
   }
-  .hitMeUpFirst{
-    font-size: 16px;
+  .hitMeUpFirst {
+    font-size: 1em;
   }
-
-  .hitMeUp{
-    font-size: 12px;
+  .hitMeUp {
+    font-size: 1em;
   }
   .aboutSkills {
-    font-size: 28px;
+    font-size: 1.4em;
   }
 }

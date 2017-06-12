@@ -246,7 +246,7 @@ li {
     font-size: 12px;
   }
   .projectImage {
-    height: 45%;
+    height: 50%;
   }
   .projectInactive {
     display: block;
@@ -255,10 +255,11 @@ li {
     background-color: black;
   }
   .projectComments {
-    font-size: 12px;
+    font-size: 10px;
+    color: white;
   }
   .projectBuiltWith {
-    font-size: 12px;
+    display: none;
   }
 }
 

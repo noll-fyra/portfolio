@@ -233,3 +233,36 @@ li {
   color: black;
   background-color: white;
 }
+<<<<<<< HEAD
+=======
+
+@media only screen and (max-device-width: 414px) and (orientation:portrait) {
+  .modal {
+    font-size: 12px;
+  }
+  .projectImage {
+    height: 45%;
+  }
+  .projectInactive {
+    display: block;
+  }
+  .projectCommentsContainer {
+    background-color: black;
+  }
+  .projectComments {
+    font-size: 12px;
+  }
+  .projectBuiltWith {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-device-width: 414px) and (orientation:landscape) {
+  .modal {
+    font-size: 12px;
+  }
+  .projectInactive {
+    display: block;
+  }
+}
+>>>>>>> parent of 1aa4c79... responsive

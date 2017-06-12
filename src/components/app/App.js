@@ -21,7 +21,8 @@ class App extends Component {
 
   handleShowing (section) {
     this.setState({
-      showing: section
+      showing: section,
+      hovering: 'none'
     })
   }
 

@@ -246,10 +246,19 @@ li {
     font-size: 12px;
   }
   .projectImage {
-    height: 55%;
+    height: 45%;
   }
   .projectInactive {
     display: block;
+  }
+  .projectCommentsContainer {
+    background-color: black;
+  }
+  .projectComments {
+    font-size: 12px;
+  }
+  .projectBuiltWith {
+    font-size: 12px;
   }
 }
 

@@ -251,14 +251,15 @@ li {
   .projectInactive {
     display: block;
   }
-  .projectCommentsContainer {
-    background-color: black;
-  }
   .projectComments {
+    background-color: red;
     font-size: 10px;
     color: white;
   }
   .projectBuiltWith {
+    display: none;
+  }
+  .projectDetails {
     display: none;
   }
 }

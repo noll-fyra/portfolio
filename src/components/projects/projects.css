@@ -250,19 +250,20 @@ li {
   }
   .projectCommentsSpan button {
     font-size: 8px;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-flow: row;
-    justify-content: flex-start;
     align-items: center;
     margin: 0px;
     padding: 0px;
   }
   .viewTheCode {
     text-align: left;
+    justify-content: flex-start;
   }
   .tryTheSite {
     text-align: right;
+    justify-content: flex-end;
   }
 }
 

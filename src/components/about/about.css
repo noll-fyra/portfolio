@@ -128,6 +128,10 @@
   background-color: red;
   font-weight: 700;
   font-size: 16px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .hitMeUp:hover {
@@ -192,6 +196,10 @@
   .aboutWords{
     color: rgba(0,0,0,0);
   }
+  .aboutHitMeUpFirst{
+    width:100%;
+    margin-right: 0px;
+  }
   .aboutHitMeUp{
     flex-flow: column;
     justify-content: center;
@@ -216,15 +224,13 @@
     padding-left: 150px;
     font-size: 14px;
   }
+  .aboutHitMeUpFirst{
+    font-size: 16px;
+  }
   .aboutHitMeUp{
     flex-flow: column;
   }
 
-  .aboutHitMeUpFirst{
-    width:100%;
-    margin-right: 0px;
-    font-size: 16px;
-  }
   .hitMeUp{
     font-size: 12px;
   }

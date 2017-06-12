@@ -251,6 +251,10 @@ li {
   .projectCommentsSpan button {
     font-size: 8px;
     text-align: left;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 

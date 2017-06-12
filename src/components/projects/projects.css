@@ -248,6 +248,12 @@ li {
   .modal {
     font-size: 12px;
   }
+  .projectImage {
+    width: 100%;
+  }
+  .projectDetails {
+    display: none;
+  }
   .projectCommentsSpan button {
     font-size: 8px;
     text-align: center;
@@ -255,7 +261,7 @@ li {
     flex-flow: row;
     align-items: center;
     margin: 0px;
-    padding: 0px;
+    padding: 0px 12px;
   }
   .viewTheCode {
     text-align: left;

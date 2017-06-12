@@ -98,7 +98,7 @@
   top: 100%;
 }
 
-@media only screen and (min-device-width: 414px) and (orientation: portrait) {
+@media only screen and (max-device-width: 414px) {
   .buttonContainer {
     flex-flow: column;
     left: 0px;

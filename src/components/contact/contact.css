@@ -120,7 +120,7 @@ a:hover {
   background-color: #3b5998;
 }
 
-@media only screen and (min-device-width: 414px) and (orientation: portrait)  {
+@media only screen and (max-device-width: 414px) {
   .socialIcon {
     font-size: 36px;
     margin: 12px;
@@ -130,7 +130,7 @@ a:hover {
   }
 }
 
-@media only screen and (min-device-width: 320px) and (orientation: portrait)  {
+@media only screen and (max-device-width: 320px)  {
   .socialIcon {
     font-size: 32px;
     margin: 8px;

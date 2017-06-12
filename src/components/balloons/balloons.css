@@ -118,7 +118,7 @@
   background-repeat: no-repeat;
 }
 
-@media only screen and (min-device-width: 414px) {
+@media only screen and (max-device-width: 414px) {
   .balloon {
     width: 48px;
     height: 58px;

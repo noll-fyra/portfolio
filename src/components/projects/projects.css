@@ -255,6 +255,8 @@ li {
     flex-flow: row;
     justify-content: flex-start;
     align-items: center;
+    margin: 0px;
+    padding: 0px;
   }
   .viewTheCode {
     text-align: left;

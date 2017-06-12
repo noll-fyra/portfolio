@@ -272,11 +272,17 @@ li {
     text-align: right;
     justify-content: flex-end;
   }
+  .projectCommentsContainer {
+    width: 100%;
+  }
   .projectComments {
     font-size: 8px;
   }
   .projectBuiltWith {
     font-size: 8px;
+  }
+  .projectInactive {
+    display: block;
   }
 }
 

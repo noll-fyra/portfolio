@@ -181,10 +181,9 @@
   background-color: white;
 }
 
-@media only screen and (max-device-width: 320px) and (orientation:portrait) {
+@media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .aboutHitMeUp{
     flex-flow: column;
-    flex-wrap: wrap;
   }
   .aboutSkills {
     font-size: 24px;

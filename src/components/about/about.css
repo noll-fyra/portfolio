@@ -121,7 +121,8 @@
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  /*background-color: green;*/
+  margin: 0;
+  padding: 0;
 }
 .hitMeUp {
   color: white;
@@ -224,11 +225,8 @@
     padding-left: 150px;
     font-size: 14px;
   }
-  .aboutHitMeUpFirst{
+  .hitMeUpFirst{
     font-size: 16px;
-  }
-  .aboutHitMeUp{
-    flex-flow: column;
   }
 
   .hitMeUp{

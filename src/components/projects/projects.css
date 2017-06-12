@@ -248,10 +248,16 @@ li {
   .modal {
     font-size: 12px;
   }
+  .projectCommentsSpan {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .modal {
     font-size: 12px;
+  }
+  .projectCommentsSpan {
+    font-size: 16px;
   }
 }

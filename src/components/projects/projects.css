@@ -187,7 +187,6 @@ li {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  /*background-color: red;*/
 }
 
 .projectCommentsSpan {
@@ -214,6 +213,7 @@ li {
   border: 0px;
   font-size: 20px;
   transition: 0.5s;
+  text-align: center;
 }
 
 .viewTheCode:hover {
@@ -248,8 +248,9 @@ li {
   .modal {
     font-size: 12px;
   }
-  .projectCommentsSpan {
-    font-size: 16px;
+  .projectCommentsSpan button {
+    font-size: 12px;
+    background-color: green;
   }
 }
 
@@ -257,7 +258,7 @@ li {
   .modal {
     font-size: 12px;
   }
-  .projectCommentsSpan {
-    font-size: 16px;
+  .projectCommentsSpan button {
+    font-size: 12px;
   }
 }

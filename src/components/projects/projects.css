@@ -257,7 +257,7 @@ li {
     display: none;
   }
   .projectCommentsSpan button {
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
     display: flex;
     flex-flow: row;

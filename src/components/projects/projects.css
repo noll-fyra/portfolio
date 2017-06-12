@@ -101,7 +101,7 @@ li {
 }
 
 .projectImage {
-  width: 65%;
+  width: 60%;
   height: 100%;
   background-repeat: no-repeat;
   background-position: top;
@@ -109,7 +109,7 @@ li {
 }
 
 .projectCommentsContainer {
-  width: 25%;
+  width: 30%;
   height: 100%;
   left: 75%;
   top: 0%;

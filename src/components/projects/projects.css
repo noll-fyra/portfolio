@@ -149,6 +149,14 @@ li {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
+.projectActive {
+  display: block;
+}
+
+.projectInactive {
+  display: none;
+}
+
 .projectComments {
   width: 100%;
   height: 50%;
@@ -233,14 +241,23 @@ li {
   background-color: white;
 }
 
-@media only screen and (max-device-width: 414px) and (orientation:portrait){
+@media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .modal {
     font-size: 12px;
   }
+  .projectImage {
+    height: 55%;
+  }
+  .projectInactive {
+    display: block;
+  }
 }
 
-@media only screen and (max-device-width: 414px) and (orientation:landscape){
+@media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .modal {
     font-size: 12px;
+  }
+  .projectInactive {
+    display: block;
   }
 }

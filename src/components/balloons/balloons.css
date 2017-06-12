@@ -125,19 +125,15 @@
     margin: 40px 12px;
     box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.07);
   }
+
   .balloon:before {
     content: "▲";
     font-size: 8px;
     bottom: -8px;
   }
+
   .balloon:after {
     top: 56px;
     height: 100px;
-  }
-}
-
-@media only screen and (max-device-width: 414px) and (orientation:landscape) {
-  .balloons {
-    margin-top: 30px;
   }
 }

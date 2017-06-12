@@ -134,6 +134,14 @@ li {
   font-size: 88px;
 }
 
+.projectActive {
+  /*display: */
+}
+
+.projectInactive {
+  display: none;
+}
+
 .projectCommentsContainer {
   width: 90%;
   height: 45%;
@@ -174,6 +182,8 @@ li {
 .projectLinks {
   width: 100%;
   height: 25%;
+  position: absolute;
+  top: 75%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -238,28 +248,10 @@ li {
   .modal {
     font-size: 12px;
   }
-  .projectImage {
-    height: 45%;
-  }
-  .projectInactive {
-    display: block;
-  }
-  .projectCommentsContainer {
-    background-color: black;
-  }
-  .projectComments {
-    font-size: 12px;
-  }
-  .projectBuiltWith {
-    font-size: 12px;
-  }
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .modal {
     font-size: 12px;
-  }
-  .projectInactive {
-    display: block;
   }
 }

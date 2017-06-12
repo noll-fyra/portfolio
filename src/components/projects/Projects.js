@@ -103,13 +103,13 @@ class Project extends React.Component {
             <span className='fa fa-angle-right' />
           </div>
           <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
-            <div className={'projectComments ' + this.state.hovering ? 'projectActive' : 'projectInactive'}>
+            <div className={'projectComments ' + (this.state.hovering ? '' : 'projectInactive')}>
               {text[this.state.project]}
             </div>
-            <div className={'projectBuiltWith ' + this.state.hovering ? 'projectActive' : 'projectInactive'}>
+            <div className={'projectBuiltWith ' + (this.state.hovering ? '' : 'projectInactive')}>
               {builtWith[this.state.project]}
             </div>
-            <div className={'projectLinks ' + this.state.hovering ? 'projectActive' : 'projectInactive'}>
+            <div className={'projectLinks ' + (this.state.hovering ? '' : 'projectInactive')}>
               <a href={repos[this.state.project]} target='_blank' rel='noopener noreferrer' className='projectCommentsSpan'><button className='viewTheCode'>View the code</button></a>
               <div className='projectCommentsSpan closeButton'>
                 <span onClick={() => this.props.handleShowing('none')} className='fa fa-times-circle projectCommentsSpanEnder' />

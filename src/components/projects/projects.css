@@ -266,6 +266,7 @@ li {
     justify-content: flex-end;
   }
   .projectCommentsContainer {
+    position: absolute;
     height: 45%;
     top: 55%;
     width: 100%;
@@ -289,5 +290,12 @@ li {
   }
   .projectCommentsSpan button {
     font-size: 0.8em;
+  }
+  .projectComments {
+    font-size: 0.8em;
+    height: 100%;
+  }
+  .projectBuiltWith {
+    font-size: 0em;
   }
 }

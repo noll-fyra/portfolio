@@ -169,11 +169,12 @@
   .aboutWords {
     color: rgba(0, 0, 0, 0);
   }
-  .aboutHitMeUpFirst {
+  .hitMeUpFirst {
     width: 100%;
     margin-right: 0px;
   }
   .aboutHitMeUp {
+    padding-left: 0px;
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -198,7 +199,7 @@
     font-size: 1em;
   }
   .aboutHitMeUp {
-    padding-left: 0px;
+    padding-left: 150px;
   }
   .hitMeUpFirst {
     font-size: 1em;

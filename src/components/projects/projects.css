@@ -233,8 +233,6 @@ li {
   color: black;
   background-color: white;
 }
-<<<<<<< HEAD
-=======
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .modal {
@@ -265,4 +263,3 @@ li {
     display: block;
   }
 }
->>>>>>> parent of 1aa4c79... responsive

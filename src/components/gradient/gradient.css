@@ -9,12 +9,12 @@
 .gradientText {
   font-family: 'Source Code Pro', monospace;
   display: inline-block;
-  font-size: 72px;
+  font-size: 5em;
   font-weight: 900;
 }
 
-@media only screen and (max-device-width: 414px){
+@media only screen and (max-device-width: 414px) {
   .gradientText {
-    font-size: 28px;
+    font-size: 2em;
   }
 }

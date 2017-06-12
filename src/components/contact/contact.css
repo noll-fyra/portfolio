@@ -34,7 +34,7 @@
 
 .name {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 36px;
+  font-size: 2.5em;
   font-weight: 700;
   display: flex;
   flex-flow: row;
@@ -60,7 +60,7 @@
 }
 
 .socialIcon {
-  font-size: 36px;
+  font-size: 2.5em;
   margin: 20px;
   width: 56px;
   height: 56px;
@@ -75,7 +75,7 @@
 .ender span {
   color: white;
   background-color: black;
-  font-size: 56px;
+  font-size: 4em;
   cursor: pointer;
   width: 44px;
   height: 44px;
@@ -120,9 +120,9 @@ a:hover {
   background-color: #3b5998;
 }
 
-@media only screen and (max-device-width: 414px) and (orientation:portrait){
+@media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .socialIcon {
-    font-size: 32px;
+    font-size: 2em;
     margin: 8px;
     width: 44px;
     height: 44px;

@@ -247,7 +247,7 @@ li {
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .modal {
-    font-size: 1em;
+    font-size: 0.8em;
   }
   .projectImage {
     width: 100%;
@@ -257,7 +257,7 @@ li {
     display: none;
   }
   .projectCommentsSpan button {
-    font-size: 1em;
+    font-size: 0.8em;
     text-align: center;
     display: flex;
     flex-flow: row;
@@ -279,7 +279,7 @@ li {
     background-color: black;
   }
   .projectComments {
-    font-size: 1em;
+    font-size: 0.8em;
   }
   .projectBuiltWith {
     font-size: 0em;
@@ -291,9 +291,9 @@ li {
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .modal {
-    font-size: 1em;
+    font-size: 0.8em;
   }
   .projectCommentsSpan button {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 }

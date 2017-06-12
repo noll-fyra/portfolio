@@ -205,11 +205,14 @@
     padding-left: 200px;
   }
   .tagline{
-    font-size: 16px;
+    font-size: 14px;
+  }
+  .taglineLarge{
+    display: none;
   }
   .aboutWords{
     padding-left: 200px;
-    font-size: 16px;
+    font-size: 14px;
   }
   .aboutHitMeUp{
     flex-flow: column;
@@ -217,6 +220,7 @@
 
   .aboutHitMeUpFirst{
     width:100%;
+    margin-right: 0px;
   }
   .aboutSkills {
     font-size: 28px;

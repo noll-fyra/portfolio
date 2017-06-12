@@ -187,11 +187,10 @@
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .aboutStarter{
-    padding-left: 0px;
+    display:none;
   }
   .aboutWords{
-    padding-left: 0px;
-    font-size: 16px;
+    display: none;
   }
   .aboutHitMeUp{
     flex-flow: column;
@@ -203,14 +202,18 @@
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .aboutStarter{
-    padding-left: 0px;
+    padding-left: 100px;
   }
   .aboutWords{
-    padding-left: 0px;
+    padding-left: 100px;
     font-size: 16px;
   }
   .aboutHitMeUp{
     flex-flow: column;
+  }
+
+  .aboutHitMeUpFirst{
+    width:100%;
   }
   .aboutSkills {
     font-size: 28px;

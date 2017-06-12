@@ -256,6 +256,12 @@ li {
     justify-content: flex-start;
     align-items: center;
   }
+  .viewTheCode {
+    text-align: left;
+  }
+  .tryTheSite {
+    text-align: right;
+  }
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {

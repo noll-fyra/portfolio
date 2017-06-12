@@ -194,6 +194,8 @@
   }
   .aboutHitMeUp{
     flex-flow: column;
+    justify-content: center;
+    align-items: center;
   }
   .aboutSkills {
     font-size: 28px;
@@ -202,17 +204,17 @@
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .aboutStarter{
-    padding-left: 200px;
+    padding-left: 150px;
   }
   .tagline{
-    font-size: 14px;
+    font-size: 20px;
   }
   .taglineLarge{
     display: none;
   }
   .aboutWords{
-    padding-left: 200px;
-    font-size: 14px;
+    padding-left: 150px;
+    font-size: 16px;
   }
   .aboutHitMeUp{
     flex-flow: column;
@@ -221,6 +223,10 @@
   .aboutHitMeUpFirst{
     width:100%;
     margin-right: 0px;
+    font-size: 20;
+  }
+  .hitMeUp{
+    font-size: 12px;
   }
   .aboutSkills {
     font-size: 28px;

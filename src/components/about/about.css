@@ -186,11 +186,11 @@
 }
 
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
-  .aboutStarter{
-    display:none;
+  .tagline{
+    color: rgba(0,0,0,0);
   }
   .aboutWords{
-    display: none;
+    color: rgba(0,0,0,0);
   }
   .aboutHitMeUp{
     flex-flow: column;
@@ -202,10 +202,13 @@
 
 @media only screen and (max-device-width: 414px) and (orientation:landscape) {
   .aboutStarter{
-    padding-left: 100px;
+    padding-left: 200px;
+  }
+  .tagline{
+    font-size: 16px;
   }
   .aboutWords{
-    padding-left: 100px;
+    padding-left: 200px;
     font-size: 16px;
   }
   .aboutHitMeUp{

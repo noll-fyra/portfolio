@@ -16,12 +16,6 @@
   flex-flow: row;
 }
 
-
-/*.aboutLeft{
-  width:30%;
-  height:100%;
-}*/
-
 .aboutRight {
   width: 100%;
   height: 100%;
@@ -40,19 +34,6 @@
   align-items: center;
   padding-left: 400px;
 }
-
-
-/*.profileImage {
-  margin: 12px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 8px solid hsl(215, 50%, 65%);
-  background-image: url('http://i.imgur.com/NOfd0FG.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}*/
 
 .profileDetails {
   height: 100%;
@@ -99,23 +80,19 @@
   color: white;
 }
 
-
-/*.aboutWords:hover {
-  background-color: hsl(139, 30%, 50%);
-  color: white;
-}*/
-
 .aboutHitMeUp {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
   white-space: normal;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 400px;
   /*background-color: white;*/
 }
 
 .hitMeUpFirst {
+  width: 50%;
   color: white;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 1.6em;
@@ -129,6 +106,7 @@
 }
 
 .hitMeUp {
+  /*width: 50%;*/
   color: white;
   background-color: red;
   font-weight: 700;
@@ -155,12 +133,6 @@
   font-size: 3.5em;
 }
 
-
-/*.aboutSkills:hover {
-  background-color: hsl(245, 40%, 65%);
-  color: white;
-}*/
-
 .skillIcon {
   margin: 0px 8px;
 }
@@ -171,12 +143,6 @@
   justify-content: center;
   align-items: center;
 }
-
-
-/*.aboutEnder:hover {
-  background-color: hsl(215, 30%, 50%);
-  transition: background-color 0.5s;
-}*/
 
 .aboutEnder span {
   color: white;

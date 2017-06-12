@@ -14,7 +14,7 @@ const builtWith =
   [
     'JavaScript | jQuery | HTML5 | CSS3',
     'Node.js | Express | socket.io | MongoDB | JavaScript | HTML5 | CSS3',
-    'Node.js | Express | socket.io | Google Maps | Twilio | MongoDB | JavaScript | HTML5 | Bootstrap',
+    'Node.js | Express | socket.io | Google Maps | Twilio | MongoDB | JavaScript | HTML | Bootstrap',
     'Ruby on Rails | PostgreSQL | Twilio | JavaScript | HTML5 | Materialize',
     'React | Firebase | CSS3'
   ]
@@ -99,9 +99,6 @@ class Project extends React.Component {
             <span className='fa fa-angle-left' />
           </div>
           <div className={'projectImage project' + this.state.project} />
-          <div className='projectDetails' onClick={() => this.handlePagination('forward')}>
-            <span className='fa fa-angle-right' />
-          </div>
           <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
             <div className={'projectComments ' + (this.state.hovering ? '' : 'projectInactive')}>
               {text[this.state.project]}
@@ -109,6 +106,9 @@ class Project extends React.Component {
             <div className={'projectBuiltWith ' + (this.state.hovering ? '' : 'projectInactive')}>
               {builtWith[this.state.project]}
             </div>
+          </div>
+          <div className='projectDetails' onClick={() => this.handlePagination('forward')}>
+            <span className='fa fa-angle-right' />
           </div>
           <div className='projectLinks'>
             <a href={repos[this.state.project]} target='_blank' rel='noopener noreferrer' className='projectCommentsSpan'>

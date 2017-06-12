@@ -17,8 +17,20 @@
   transition: 0.5s;
 }
 
+.starter {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 .starter:hover {
   background-color: hsl(59, 50%, 58%);
+  /*color: black;*/
 }
 
 .social {

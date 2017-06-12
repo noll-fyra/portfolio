@@ -3,7 +3,9 @@ import './contact.css'
 
 const Contact = (props) => (
   <div className={'contact'}>
-    <div className='contactDiv starter' />
+    <div className='contactDiv starter'>
+      Contact Me
+    </div>
     <div className='contactDiv social'>
       <a href='tel:65-87427184'><span className='fa fa-mobile socialIcon' /></a>
       <a href='mailto:jonathanlouisng@gmail.com'><span className='fa fa-envelope socialIcon' /></a>

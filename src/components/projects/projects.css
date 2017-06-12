@@ -101,11 +101,22 @@ li {
 }
 
 .projectImage {
-  width: 90%;
+  width: 70%;
   height: 100%;
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
+}
+
+.projectCommentsContainer {
+  width: 20%;
+  height: 100%;
+  left: 75%;
+  top: 0%;
+  display: flex;
+  flex-flow: column;
+  background-color: black;
+  transition: 0.25s;
 }
 
 .projectDetails {
@@ -134,47 +145,28 @@ li {
   font-size: 6em;
 }
 
-.projectActive {
-  /*display: */
-}
-
-.projectInactive {
-  display: none;
-}
-
-.projectCommentsContainer {
-  width: 90%;
-  height: 45%;
-  left: 5%;
-  top: 55%;
-  position: absolute;
-  display: flex;
-  flex-flow: column;
-  transition: 0.25s;
-}
-
-.projectCommentsContainer:hover {
-  background-color: black;
-}
-
 .projectComments {
   width: 100%;
-  height: 50%;
-  font-size: 1.7em;
+  height: 70%;
+  font-size: 1.3em;
   font-weight: 400;
   font-family: 'Scope One', serif;
   color: white;
-  text-align: justify;
+  text-align: left;
   padding: 24px;
 }
 
 .projectBuiltWith {
   width: 100%;
-  height: 25%;
-  font-size: 1.4em;
+  height: 20%;
+  font-size: 1em;
   font-weight: 400;
   font-family: 'Scope One', serif;
   color: white;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-end;
   text-align: justify;
   padding: 24px;
 }

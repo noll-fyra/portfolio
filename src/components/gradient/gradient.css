@@ -13,13 +13,13 @@
   font-weight: 900;
 }
 
-@media only screen and (max-device-width: 414px){
+@media only screen and (max-device-width: 414px) and (orientation:portrait){
   .gradientText {
     font-size: 36px;
   }
 }
 
-@media only screen and (max-device-width: 320px){
+@media only screen and (max-device-width: 320px) and (orientation:portrait){
   .gradientText {
     font-size: 32px;
   }

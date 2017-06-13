@@ -248,15 +248,15 @@ li {
 }
 
 .expandedImage{
-  width:90%;
-  height:90%;
+  width:95%;
+  height:95%;
   z-index: 10;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
   position: fixed;
-  top: 5%;
-  left: 5%;
+  top: 2.5%;
+  left: 2.5%;
 }
 
 .notExpanded{

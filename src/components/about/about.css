@@ -238,22 +238,22 @@
     padding-left: 300px;
   }
   .tagline {
-    font-size: 0.8em;
+    font-size: 2em;
   }
   .aboutWords {
     padding-left: 300px;
-    font-size: 1em;
+    font-size: 2em;
   }
   .aboutHitMeUp {
     padding-left: 300px;
   }
   .hitMeUpFirst {
-    font-size: 0.8em;
+    font-size: 2em;
   }
   .hitMeUp {
-    font-size: 0.8em;
+    font-size: 2em;
   }
   .aboutSkills {
-    font-size: 1.6em;
+    font-size: 2.2em;
   }
 }

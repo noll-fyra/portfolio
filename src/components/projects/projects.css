@@ -243,12 +243,19 @@ li {
     font-size: 0.7em;
   }
   .projectImage {
-    width: 90%;
+    width: 80%;
     height: 50%;
   }
-  /*.projectDetails {
-    display: none;
-  }*/
+  .projectDetails {
+    width: 10%;
+    height: 50%;
+  }
+  .fa-angle-left, .fa-angle-right {
+    font-size: 1em;
+  }
+  .fa-angle-left:hover, .fa-angle-right:hover {
+    font-size: 1em;
+  }
   .projectCommentsSpan button {
     font-size: 0.65em;
     text-align: center;

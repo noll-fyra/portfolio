@@ -360,10 +360,12 @@ li {
   .viewTheCode {
     text-align: left;
     justify-content: flex-start;
+    font-size: 2em;
   }
   .tryTheSite {
     text-align: right;
     justify-content: flex-end;
+    font-size: 2em;
   }
   .projectCommentsContainer {
     position: absolute;
@@ -395,9 +397,6 @@ li {
   }
   .fa-angle-left:hover, .fa-angle-right:hover {
     font-size: 3em;
-  }
-  .projectCommentsSpan{
-    font-size:
   }
   .projectCommentsSpan button {
     font-size: 0.8em;

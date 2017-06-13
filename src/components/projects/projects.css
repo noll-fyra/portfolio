@@ -243,12 +243,12 @@ li {
     font-size: 0.7em;
   }
   .projectImage {
-    width: 100%;
+    width: 90%;
     height: 50%;
   }
-  .projectDetails {
+  /*.projectDetails {
     display: none;
-  }
+  }*/
   .projectCommentsSpan button {
     font-size: 0.65em;
     text-align: center;
@@ -289,6 +289,10 @@ li {
   .modal {
     font-size: 0.8em;
   }
+  .projectCommentsContainer{
+    justify-content: center;
+    align-items: center;
+  }
   .projectCommentsSpan button {
     font-size: 0.8em;
   }
@@ -301,7 +305,6 @@ li {
   }
   .projectImage {
     width: 60%;
-    height: 100%;
   }
 
   .projectCommentsContainer {

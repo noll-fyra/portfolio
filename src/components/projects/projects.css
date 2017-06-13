@@ -238,6 +238,31 @@ li {
   background-color: white;
 }
 
+.expandedBG{
+  width:100%;
+  height:100%;
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left:0;
+}
+
+.expandedImage{
+  width:90%;
+  height:90%;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+}
+
+.notExpanded{
+  display:none;
+}
+
 @media only screen and (max-device-width: 414px) and (orientation:portrait) {
   .modal {
     font-size: 0.7em;

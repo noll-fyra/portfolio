@@ -52,10 +52,12 @@ class Project extends React.Component {
     this.state = {
       project: props.project,
       page: [0, 0, 0, 0, 0],
-      hovering: false
+      hovering: false,
+      expanded: false
     }
     this.handlePagination = this.handlePagination.bind(this)
     this.handleHovering = this.handleHovering.bind(this)
+    this.handleExpanded = this.handleExpanded.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -80,6 +82,12 @@ class Project extends React.Component {
   handleHovering () {
     this.setState({
       hovering: !this.state.hovering
+    })
+  }
+
+  handleExpanded () {
+    this.setState({
+      expanded: !this.state.expanded
     })
   }
 
@@ -112,7 +120,9 @@ class Project extends React.Component {
           <div className='projectDetails' onClick={() => this.handlePagination('back')}>
             <span className='fa fa-angle-left' />
           </div>
-          <div className='projectImage' style={{backgroundImage: `url(${images[this.state.project][this.state.page[this.state.project]]})`}} />
+          <div className={this.state.expanded ? 'expandedBG' : 'notExpanded'} onClick={this.handleExpanded} style={{backgroundColor: 'rgba(0,0,0,0.8)'}} />
+          <div className={this.state.expanded ? 'expandedImage' : 'notExpanded'} onClick={this.handleExpanded} style={{backgroundImage: `url(${images[this.state.project][this.state.page[this.state.project]]})`}} />
+          <div className='projectImage' onClick={this.handleExpanded} style={{backgroundImage: `url(${images[this.state.project][this.state.page[this.state.project]]})`}} />
           <div className='projectCommentsContainer' onMouseOver={this.handleHovering} onMouseOut={this.handleHovering}>
             <div className='projectComments'>
               {text[this.state.project][this.state.page[this.state.project]]}

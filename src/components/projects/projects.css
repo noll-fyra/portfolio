@@ -101,21 +101,22 @@ li {
 }
 
 .projectImage {
-  width: 60%;
-  height: 100%;
+  width: 65%;
+  height: 90%;
+  background-color: rgb(25,25,25);
   background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
+  background-position: center center;
+  background-size: contain;
 }
 
 .projectCommentsContainer {
-  width: 30%;
+  width: 25%;
   height: 100%;
   left: 75%;
   top: 0%;
   display: flex;
   flex-flow: column;
-  background-color: black;
+  background-color: rgb(25,25,25);
   transition: 0.25s;
 }
 
@@ -159,7 +160,7 @@ li {
 .projectBuiltWith {
   width: 100%;
   height: 20%;
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: 400;
   font-family: 'Scope One', serif;
   color: white;
@@ -297,5 +298,13 @@ li {
   }
   .projectBuiltWith {
     font-size: 0em;
+  }
+  .projectImage {
+    width: 60%;
+    height: 100%;
+  }
+
+  .projectCommentsContainer {
+    width: 30%;
   }
 }

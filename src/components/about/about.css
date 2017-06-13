@@ -210,3 +210,50 @@
     font-size: 1.6em;
   }
 }
+
+@media only screen and (max-device-width: 768px) and (orientation:portrait) {
+  .tagline {
+    color: rgba(0, 0, 0, 0);
+  }
+  .aboutWords {
+    color: rgba(0, 0, 0, 0);
+  }
+  .hitMeUpFirst {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .aboutHitMeUp {
+    padding-left: 0px;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutSkills {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-device-width: 768px) and (orientation:landscape) {
+  .aboutStarter {
+    padding-left: 300px;
+  }
+  .tagline {
+    font-size: 0.8em;
+  }
+  .aboutWords {
+    padding-left: 300px;
+    font-size: 1em;
+  }
+  .aboutHitMeUp {
+    padding-left: 300px;
+  }
+  .hitMeUpFirst {
+    font-size: 0.8em;
+  }
+  .hitMeUp {
+    font-size: 0.8em;
+  }
+  .aboutSkills {
+    font-size: 1.6em;
+  }
+}

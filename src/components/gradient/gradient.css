@@ -18,3 +18,9 @@
     font-size: 2em;
   }
 }
+
+@media only screen and (max-device-width: 414px) and (orientation:portrait) {
+  .gradientText {
+    font-size: 4em;
+  }
+}

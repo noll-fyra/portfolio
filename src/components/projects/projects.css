@@ -251,10 +251,10 @@ li {
     height: 50%;
   }
   .fa-angle-left, .fa-angle-right {
-    font-size: 1em;
+    font-size: 3em;
   }
   .fa-angle-left:hover, .fa-angle-right:hover {
-    font-size: 1em;
+    font-size: 3em;
   }
   .projectCommentsSpan button {
     font-size: 0.65em;
@@ -299,6 +299,12 @@ li {
   .projectCommentsContainer{
     justify-content: center;
     align-items: center;
+  }
+  .fa-angle-left, .fa-angle-right {
+    font-size: 3em;
+  }
+  .fa-angle-left:hover, .fa-angle-right:hover {
+    font-size: 3em;
   }
   .projectCommentsSpan button {
     font-size: 0.8em;

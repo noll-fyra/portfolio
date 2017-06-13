@@ -149,8 +149,8 @@ li {
 .projectComments {
   width: 100%;
   height: 70%;
-  font-size: 1.3em;
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 200;
   font-family: 'Scope One', serif;
   color: white;
   text-align: left;
@@ -160,7 +160,7 @@ li {
 .projectBuiltWith {
   width: 100%;
   height: 20%;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 400;
   font-family: 'Scope One', serif;
   color: white;
@@ -168,7 +168,7 @@ li {
   flex-flow: row;
   justify-content: flex-start;
   align-items: flex-end;
-  text-align: justify;
+  text-align: left;
   padding: 24px;
 }
 
@@ -283,6 +283,8 @@ li {
   }
   .projectComments {
     font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
   }
   .projectBuiltWith {
     font-size: 0em;
@@ -296,10 +298,6 @@ li {
   .modal {
     font-size: 0.8em;
   }
-  .projectCommentsContainer{
-    justify-content: center;
-    align-items: center;
-  }
   .fa-angle-left, .fa-angle-right {
     font-size: 3em;
   }
@@ -312,6 +310,8 @@ li {
   .projectComments {
     font-size: 0.7em;
     height: 100%;
+    justify-content: center;
+    align-items: center;
   }
   .projectBuiltWith {
     font-size: 0em;

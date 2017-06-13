@@ -19,7 +19,7 @@
   }
 }
 
-@media only screen and (max-device-width: 768px) and (orientation:portrait) {
+@media only screen and (min-device-width: 768px) and (orientation:portrait) {
   .gradientText {
     font-size: 4em;
   }

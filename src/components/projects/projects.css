@@ -379,7 +379,7 @@ li {
     align-items: center;
   }
   .projectBuiltWith {
-    font-size: 1em;
+    font-size: 0em;
   }
   .projectInactive {
     display: block;
@@ -388,7 +388,7 @@ li {
 
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
   .modal {
-    font-size: 2em;
+    font-size: 1.4em;
   }
   .fa-angle-left, .fa-angle-right {
     font-size: 3em;
@@ -396,12 +396,15 @@ li {
   .fa-angle-left:hover, .fa-angle-right:hover {
     font-size: 3em;
   }
+  .projectCommentsSpan{
+    font-size:
+  }
   .projectCommentsSpan button {
     font-size: 0.8em;
   }
   .projectComments {
-    font-size: 0.7em;
-    height: 100%;
+    font-size: 1.4em;
+    height: 90%;
     justify-content: center;
     align-items: center;
   }

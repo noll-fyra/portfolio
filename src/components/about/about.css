@@ -211,7 +211,7 @@
   }
 }
 
-@media only screen and (max-device-width: 768px) and (orientation:portrait) {
+@media only screen and (min-device-width: 768px) and (orientation:portrait) {
   .tagline {
     color: rgba(0, 0, 0, 0);
   }
@@ -233,25 +233,25 @@
   }
 }
 
-@media only screen and (max-device-width: 768px) and (orientation:landscape) {
+@media only screen and (min-device-width: 768px) and (orientation:landscape) {
   .aboutStarter {
     padding-left: 300px;
   }
   .tagline {
-    font-size: 2em;
+    font-size: 1.6em;
   }
   .aboutWords {
     padding-left: 300px;
-    font-size: 2em;
+    font-size: 1em;
   }
   .aboutHitMeUp {
     padding-left: 300px;
   }
   .hitMeUpFirst {
-    font-size: 2em;
+    font-size: 1.6em;
   }
   .hitMeUp {
-    font-size: 2em;
+    font-size: 1.6em;
   }
   .aboutSkills {
     font-size: 2.2em;

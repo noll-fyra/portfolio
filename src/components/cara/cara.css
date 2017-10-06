@@ -1,0 +1,41 @@
+.cara {
+  font-family: 'Raleway', sans-serif;
+  padding: 8px;
+}
+
+.line {
+  height: calc(50vh - 8px);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  border: 1px solid lightGrey;
+}
+
+.heading {
+  text-align: center;
+  font-size: 1.25em;
+  background-color: #f03278;
+  color: #ffffff;
+  padding: 8px 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wholeDiv {
+ width: 100%;
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding-top: 16px;
+}
+
+.final {
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+}

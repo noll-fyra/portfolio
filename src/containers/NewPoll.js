@@ -19,7 +19,7 @@ createPoll(){
     title: this.state.title,
     date: this.state.date,
     options: this.state.options.map((opt, index) => ({index: index, option: opt.name})),
-    index: Object.keys(this.props.polls).length,
+    index: Object.keys(this.props.polls).length + 1,
     pointValue: this.state.pointValue,
     type: 'multiple_choice',
     users: Object.values(this.props.users).reduce((obj, user) => {
@@ -29,7 +29,7 @@ createPoll(){
   }
 
   this.props.database.ref().child('polls').push(poll)
-  
+
   this.setState({
     title: '',
     date: null,
@@ -46,7 +46,7 @@ createPoll(){
         <br />
         <input type='date' onChange={(e) => this.setState({date: e.target.value})} placeholder={'date'} />
         <br />
-        <input type='number' onChange={(e) => this.setState({pointValue: e.target.value})} placeholder={'point value'} />
+        <input type='number' onChange={(e) => this.setState({pointValue: e.target.value})} placeholder={'point value'} value={this.state.pointValue} />
         <br />
         <span>Options</span>
         <input type='text' onChange={(e) => this.setState({filter: e.target.value})} placeholder={'filter teams'} value={this.state.filter} />
@@ -55,7 +55,7 @@ createPoll(){
         <div style={{display: 'flex'}}>
           {this.state.options.map((team, index) =>
         <div key={team.index} onClick={() => this.setState({options: this.state.options.filter((team, ind) => index !== ind)})} style={{display: 'flex', alignItems: 'center', marginRight: '12px'}}>
-          <img src={team.flag} style={{width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} />
+          <img src={team.flag} style={{width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} alt={team.name} />
           <b>{team.name}</b>
         </div>)}
         </div>
@@ -63,7 +63,7 @@ createPoll(){
         <div style={{display: 'flex'}}>
         {!!this.props.teams && this.props.teams.filter(team => this.state.filter.length > 0 && team.name.toLowerCase().includes(this.state.filter.toLowerCase()) && !this.state.options.map(opt => opt.name).includes(team.name)).map(team =>
         <div key={team.index} onClick={() => this.setState({options: this.state.options.concat(team), filter: ''})} style={{display: 'flex', alignItems: 'center', marginRight: '12px'}}>
-          <img src={team.flag} style={{width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} />
+          <img src={team.flag} style={{width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} alt={team.name} />
           <b>{team.name}</b>
         </div>)}
       </div>

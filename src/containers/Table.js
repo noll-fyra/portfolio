@@ -24,7 +24,18 @@ class Table extends Component {
         }
       }
     })
-    return Object.values(users).sort((a,b) => b.points - a.points)
+    return Object.values(users).sort((a,b) => this.sortAlphabetically(a.name, b.name)).sort((a,b) => b.points - a.points)
+  }
+
+  sortAlphabetically(first, second) {
+    switch(true) {
+      case first > second:
+        return 1
+      case first < second:
+        return -1
+      default:
+        return -1
+    }
   }
 
   render() {

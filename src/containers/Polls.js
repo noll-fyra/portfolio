@@ -1,32 +1,37 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Poll from './Poll'
+// import { Link } from 'react-router-dom'
 
 class Polls extends Component {
 
   render() {
-    const { polls } = this.props
+    const { polls, users, number, database } = this.props
+    const teams = this.props.teams ? this.props.teams.reduce((obj, team) => {
+      obj[team.name] = team
+      return obj
+    },{}) : {}
+
     return (
-      <div>
-        {!!this.props.polls &&
+      <div style={{width: '100%', maxWidth: '480px', margin: '0 auto'}}>
+        {!!polls && number &&
           Object.keys(polls)
           .map(key => Object.assign({}, polls[key], {id: key}))
           .map(poll =>
-          <Link key={poll.id} to={`/polls/${poll.id}`} style={{marginBottom: '12px'}}>
-            <h1>{poll.title}</h1>
-            {/* {poll.options.map(opt =>
-            <div key={poll.id.concat(opt.option)}>{opt.option}</div>)} */}
-            {/* {JSON.stringify(poll)} */}
-          </Link>)
+            <Poll key={poll.id} poll={poll} users={users} teams={teams} number={number} database={database} />
+        )
       }
-      <Link to='/polls/new'>New Poll</Link>
     </div>
     )
   }
 }
 
 Polls.propTypes = {
-  polls: PropTypes.object
+  polls: PropTypes.object,
+  users: PropTypes.object,
+  teams: PropTypes.arrayOf(PropTypes.object),
+  number: PropTypes.string,
+  database: PropTypes.object.isRequired
 }
 
 export default Polls

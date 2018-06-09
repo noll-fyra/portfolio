@@ -61,7 +61,7 @@ class Poll extends Component {
                 .map(user =>
               <div key={user.number} style={{display: 'flex', backgroundColor: user.number === number ? 'gold' : ''}}>
                 <div style={{width: '50%', padding: '4px 0px', paddingLeft: '12px', display: 'flex', alignItems: 'center'}}><b>{user.name[0].toUpperCase().concat(user.name.slice(1))}</b></div>
-                {!!poll.users[user.number].answer
+                {poll.users[user.number].answered
                    // && <div>{JSON.stringify(teams[user.answer])}</div>
                   ? <div style={{width: '50%', padding: '4px 0px', display: 'flex', alignItems: 'center'}}><img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} alt={teams[poll.options[poll.users[user.number].answer].option].name}/>
                 <b>{teams[poll.options[poll.users[user.number].answer].option].name}</b>

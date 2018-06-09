@@ -9,7 +9,6 @@ import Polls from './Polls'
 // import Poll from './Poll'
 import NewPoll from './NewPoll'
 import Matches from './Matches'
-import Teams from './Teams'
 
 const config = {
   apiKey: 'AIzaSyDKr_16PAkbfQQWTp-xIo1-1_2YSdIxnOo',
@@ -62,22 +61,7 @@ class Root extends Component {
   componentDidMount(){
     database.ref('/').on('value', snap => {
       this.setState({data: snap.val()})
-    // let update = {}
-    // let polls = Object.assign({}, snap.val().polls)
-    // for(var key in polls) {
-    //   let poll = polls[key]
-    //   let users = Object.assign({}, poll.users)
-    //   let temp = {}
-    //   for(var userKey in users) {
-    //     temp[userKey.split('-').join('')] = users[userKey]
-    //   }
-    //   poll.users = temp
-    //   polls[key] = poll
-    // }
-    // database.ref('/polls').set(polls)
     })
-
-    // window.localStorage.removeItem('number')
 
 let number = window.localStorage.getItem('number')
     this.setState({
@@ -98,7 +82,7 @@ let number = window.localStorage.getItem('number')
     <h1 style={{textAlign: 'center'}}>2018 FIFA WORLD CUP PREDICTION GAME</h1>
   <Route path='/' render={() => <div style={{backgroundColor: '#19364C'}}>
           <div style={{display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '480px', margin: '12px auto'}}>
-          {['table', 'polls', 'newpoll', 'matches', 'teams'].map(sect =>
+          {['polls', 'table', 'matches'].map(sect =>
             <NavLink key={sect} to={`/${sect}`} activeStyle={{backgroundColor: 'white', color: '#19364C'}} style={{width: '25%', textAlign: 'center', color: 'white', textDecoration: 'none', padding: '8px'}}>
               {sect[0].toUpperCase().concat(sect.slice(1))}
             </NavLink>)}
@@ -109,14 +93,13 @@ let number = window.localStorage.getItem('number')
 
 {/* <div onClick={this.trySignIn}>click me to sign in</div> */}
 {/* <div id={'sign-in-button'}/> */}
-          <Switch>
+          <Switch style={{padding: 12}}>
             <Route exact path='/' render={() => <Redirect to='/table' />} />
             <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} />} />
             <Route path='/polls' render={() => <Polls polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             {/* <Route path='/polls/:id' render={(props) => <Poll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} number={this.state.number} {...props} />} /> */}
             <Route path='/newpoll' render={() => this.state.number === '+65-87427184' ? <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} /> : <Redirect to='/polls' />} />
             <Route path='/matches' render={() => <Matches matches={this.state.data.matches}/>} />
-            <Route path='/teams' render={() => <Teams teams={this.state.data.teams} />} />
           </Switch>
           </div>
         </Router>

@@ -26,8 +26,8 @@ class Matches extends Component {
           <div style={{width: '40%'}}>
             <div style={{textAlign: 'center'}}>{index <= 47 ? `Group ${match.group.toUpperCase()}` : index <= 55 ? 'Round of 16' : index <= 59 ? 'Quarterfinals' : index <= 61 ? 'Semifinals' : index === 62 ? 'Third Place Playoff' : 'Finals'}</div>
             <div style={{display: 'flex', justifyContent: 'space-around', margin: '8px 0'}}>
-              <div style={{fontSize: '2.5em'}}>{match.home_result}</div>
-              <div style={{fontSize: '2.5em'}}>{match.away_result}</div>
+              <div style={{fontSize: '2.5em'}}>{match.finished ? match.home_result : ''}</div>
+              <div style={{fontSize: '2.5em'}}>{match.finished ? match.away_result : ''}</div>
             </div>
             <div style={{textAlign: 'center', color: 'grey'}}>{new Date(match.date).getDate()} {new Date(match.date).getMonth() === 5 ? 'June' : 'July'} {new Date(match.date).getHours() > 12 ? new Date(match.date).getHours() - 12 : new Date(match.date).getHours()} {new Date(match.date).getHours() < 12 ? 'am' : 'pm'}</div>
           </div>

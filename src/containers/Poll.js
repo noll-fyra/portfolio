@@ -38,19 +38,23 @@ class Poll extends Component {
     return (
       <div>
         {number &&
-            <div style={{border: '1px solid grey', borderRadius: '12px', overflow: 'hidden', marginBottom: '12px'}}>
-              <div style={{textAlign: 'center', backgroundColor: '#ccdae5'}}>Poll {poll.index}</div>
-              <h2 style={{textAlign: 'center'}}>{poll.title}</h2>
+            <div style={{border: '1px solid #ccdae5', borderRadius: '12px', overflow: 'hidden', marginBottom: '12px'}}>
+              <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#ccdae5', padding: '4px 12px'}}>
+                <span>Poll {poll.index}</span>
+              <div>{new Date(poll.date).getDate()} {new Date(poll.date).getMonth() === 5 ? 'June' : 'July'} {new Date(poll.date).getHours() > 12 ? new Date(poll.date).getHours() - 12 : new Date(poll.date).getHours()} {new Date(poll.date).getHours() < 12 ? 'am' : 'pm'}</div>
+            </div>
+              <h2 style={{textAlign: 'center', marginTop: '12px'}}>{poll.title}</h2>
               <div style={{display: 'flex', padding: '12px', alignItems: 'flex-start', cursor: 'pointer'}}>
               {poll.options.map(opt =>
                 <div
                   key={opt.option}
                   onClick={() => this.chooseOption(opt.index)}
                   style={{width: `calc(100%/${poll.options.length})`, display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: poll.users[number].answer === opt.index ? 'gold' : '', borderRadius: '12px', padding: '12px'}}>
-                  <img src={teams[opt.option].flag} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey'}} alt={teams[opt.option].name}/>
+                  <img src={teams[opt.option].flag} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5'}} alt={teams[opt.option].name}/>
                   <b style={{textAlign: 'center', marginTop: '4px'}}>{teams[opt.option].name}</b>
                 </div>)}
             </div>
+
 
             <h4 onClick={() => this.setState({expanded: !this.state.expanded})} style={{textAlign: 'center', backgroundColor: 'purple', color: 'white', padding: '8px', cursor: 'pointer'}}>{this.state.expanded ? 'Close' : 'Open'}</h4>
 
@@ -63,7 +67,7 @@ class Poll extends Component {
                 <div style={{width: '50%', padding: '4px 0px', paddingLeft: '12px', display: 'flex', alignItems: 'center'}}><b>{user.name[0].toUpperCase().concat(user.name.slice(1))}</b></div>
                 {poll.users[user.number].answered
                    // && <div>{JSON.stringify(teams[user.answer])}</div>
-                  ? <div style={{width: '50%', padding: '4px 0px', display: 'flex', alignItems: 'center'}}><img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid grey', marginRight: '8px'}} alt={teams[poll.options[poll.users[user.number].answer].option].name}/>
+                  ? <div style={{width: '50%', padding: '4px 0px', display: 'flex', alignItems: 'center'}}><img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '8px'}} alt={teams[poll.options[poll.users[user.number].answer].option].name}/>
                 <b>{teams[poll.options[poll.users[user.number].answer].option].name}</b>
               </div>
                 : <span />

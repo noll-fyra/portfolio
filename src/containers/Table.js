@@ -42,9 +42,9 @@ class Table extends Component {
     const table = this.calculateTable()
 
     return (
-      <div>
+      <div style={{paddingBottom: '12px'}}>
       {table.map((user, index) =>
-        <div key={user.number} style={{display: 'flex', width: '100%', maxWidth: '480px', margin: '0 auto', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', paddingTop: '12px', paddingBottom: '12px'}}>
+        <div key={user.number} style={{display: 'flex', width: '100%', maxWidth: '480px', margin: '0 auto', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', padding: '4px 0'}}>
           <h2 style={{width: '15%', textAlign: 'center'}}>{index + 1}</h2>
           <h2 style={{width: '70%'}}>{user.name[0].toUpperCase().concat(user.name.slice(1))}</h2>
           <h2 style={{width: '15%', textAlign: 'center'}}>{user.points}</h2>

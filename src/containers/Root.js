@@ -3,12 +3,14 @@ import { Switch, BrowserRouter as Router, Route, Redirect, NavLink } from 'react
 import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
-import * as firebaseui from 'firebaseui'
+// import * as firebaseui from 'firebaseui'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import Table from './Table'
 import Polls from './Polls'
 // import Poll from './Poll'
 import NewPoll from './NewPoll'
 import Matches from './Matches'
+import LogOut from './LogOut'
 
 const config = {
   apiKey: 'AIzaSyDKr_16PAkbfQQWTp-xIo1-1_2YSdIxnOo',
@@ -20,16 +22,20 @@ const config = {
 
 firebase.initializeApp(config)
 const database = firebase.database()
-const ui = new firebaseui.auth.AuthUI(firebase.auth())
+// const ui = new firebaseui.auth.AuthUI(firebase.auth())
+
+const sections = ['polls', 'table', 'matches']
 
 class Root extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: {},
-      number: null
+      number: null,
+      hidden: true
     }
-
+    this.removeNumber = this.removeNumber.bind(this)
+    this.unregisterAuthObserver = null
     this.uiConfig = {
       callbacks: {
           signInSuccessWithAuthResult: function(authResult, redirectUrl) {
@@ -53,7 +59,10 @@ class Root extends Component {
           // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
           // firebase.auth.GithubAuthProvider.PROVIDER_ID,
           // firebase.auth.EmailAuthProvider.PROVIDER_ID,
-          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+          {
+            provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+            defaultCountry: 'SG'
+          }
         ],
     }
   }
@@ -64,13 +73,25 @@ class Root extends Component {
     })
 
 let number = window.localStorage.getItem('number')
-    this.setState({
-      number: window.localStorage.getItem('number')
-    })
+this.setState({hidden: !!number})
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+        (user) => {
+          // console.log(user)
+          if(!!user){
+          this.setState({number: user.phoneNumber})
+          window.localStorage.setItem('number', user.phoneNumber)
+        }
+        }
+    )
 
-    if(!number) {
-      ui.start('#firebaseui-auth-container', this.uiConfig)
-    }
+  }
+
+  componentWillUnmount() {
+    this.unregisterAuthObserver()
+  }
+
+  removeNumber(){
+    this.setState({number: null, hidden: false})
   }
 
   render() {
@@ -79,31 +100,32 @@ let number = window.localStorage.getItem('number')
       {this.state.number ?
 <Router>
   <div>
-    <h1 style={{textAlign: 'center'}}>2018 FIFA WORLD CUP PREDICTION GAME</h1>
+    <h1 style={{textAlign: 'center', marginTop: '12px'}}>2018 FIFA WORLD CUP PREDICTION GAME</h1>
   <Route path='/' render={() => <div style={{backgroundColor: '#19364C'}}>
           <div style={{display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '480px', margin: '12px auto'}}>
-          {['polls', 'table', 'matches'].map(sect =>
-            <NavLink key={sect} to={`/${sect}`} activeStyle={{backgroundColor: 'white', color: '#19364C'}} style={{width: '25%', textAlign: 'center', color: 'white', textDecoration: 'none', padding: '8px'}}>
+          {sections.map(sect =>
+            <NavLink key={sect} to={`/${sect}`} activeStyle={{backgroundColor: 'gold', color: '#19364C'}} style={{width: `calc(100%/${sections.length})`, maxWidth: `calc(480px/${sections.length})`, fontWeight: 'bold', textAlign: 'center', color: 'white', textDecoration: 'none', padding: '8px'}}>
               {sect[0].toUpperCase().concat(sect.slice(1))}
             </NavLink>)}
             </div>
             </div>}/>
 
-            {/* <h1 style={{maxWidth: '480px', margin: '0 auto'}}>{this.state.name ? `Hello, ${this.state.name[0].toUpperCase().concat(this.state.name.slice(1))}` : <Link to='/login'>Log in to continue</Link>}</h1> */}
-
-{/* <div onClick={this.trySignIn}>click me to sign in</div> */}
-{/* <div id={'sign-in-button'}/> */}
-          <Switch style={{padding: 12}}>
+<div style={{padding: 12}}>
+          <Switch>
             <Route exact path='/' render={() => <Redirect to='/table' />} />
             <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} />} />
             <Route path='/polls' render={() => <Polls polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
-            {/* <Route path='/polls/:id' render={(props) => <Poll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} number={this.state.number} {...props} />} /> */}
             <Route path='/newpoll' render={() => this.state.number === '+65-87427184' ? <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} /> : <Redirect to='/polls' />} />
             <Route path='/matches' render={() => <Matches matches={this.state.data.matches}/>} />
+            <Route path='/logout' render={() => <LogOut auth={firebase.auth()} removeNumber={this.logOut} />} />
           </Switch>
           </div>
+          </div>
         </Router>
-        : <div id={'firebaseui-auth-container'}/>}
+        : <div style={{width: this.state.hidden ? '0' : '100%'}}>
+          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+          </div>
+      }
         </div>
     )
   }

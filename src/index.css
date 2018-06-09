@@ -1,10 +1,12 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  /* text-align: center; */
+  color: #19364C;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Josefin+Slab', serif;
-  text-align: center;
+
 }

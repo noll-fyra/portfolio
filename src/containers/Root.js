@@ -113,9 +113,9 @@ this.setState({hidden: !!number})
 <div style={{padding: 12}}>
           <Switch>
             <Route exact path='/' render={() => <Redirect to='/polls' />} />
-            <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} />} />
             <Route path='/polls' render={() => <Polls polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             <Route path='/newpoll' render={() => this.state.number === '+65-87427184' ? <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} /> : <Redirect to='/polls' />} />
+            <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} />} />
             <Route path='/matches' render={() => <Matches matches={this.state.data.matches}/>} />
             <Route path='/logout' render={() => <LogOut auth={firebase.auth()} removeNumber={this.logOut} />} />
           </Switch>

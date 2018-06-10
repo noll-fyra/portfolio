@@ -59,35 +59,37 @@ class Matches extends Component {
         }
 
         {this.state.stages === 'group' && this.state.group !== 'all' && !!this.props.matches &&
-        <table style={{width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', marginBottom: '12px', borderRadius: '8px', padding: '12px'}}>
+        <table style={{width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', marginBottom: '12px', borderRadius: '8px', paddingTop: '8px'}}>
           <thead>
             <tr>
+              <th>Pos</th>
               <th />
               <th>P</th>
-              <th>W</th>
+              {/* <th>W</th>
               <th>D</th>
               <th>L</th>
               <th>GF</th>
-              <th>GA</th>
+              <th>GA</th> */}
               <th>GD</th>
               <th>PTS</th>
             </tr>
           </thead>
           <tbody>
             {groupTable.map((team, index) =>
-        <tr key={team.name} style={{padding: '8px 12px'}}>
+        <tr key={team.name}>
+          <td style={{textAlign: 'center', width: '12%'}}>{index + 1}</td>
           <td style={{display: 'flex', alignItems: 'center', padding: '4px 0'}}>
             <img src={team.flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={team.name} />
             <b>{team.name}</b>
           </td>
-          <td style={{textAlign: 'center', width: '8%'}}>{team.played}</td>
-          <td style={{textAlign: 'center', width: '8%'}}>{team.won}</td>
+          <td style={{textAlign: 'center', width: '12%'}}>{team.played}</td>
+          {/* <td style={{textAlign: 'center', width: '8%'}}>{team.won}</td>
           <td style={{textAlign: 'center', width: '8%'}}>{team.drawn}</td>
           <td style={{textAlign: 'center', width: '8%'}}>{team.lost}</td>
           <td style={{textAlign: 'center', width: '8%'}}>{team.goalsFor}</td>
-          <td style={{textAlign: 'center', width: '8%'}}>{team.goalsAgainst}</td>
-          <td style={{textAlign: 'center', width: '8%'}}>{team.goalsFor - team.goalsAgainst}</td>
-          <td style={{textAlign: 'center', width: '8%'}}>{team.won * 3 + team.drawn}</td>
+          <td style={{textAlign: 'center', width: '8%'}}>{team.goalsAgainst}</td> */}
+          <td style={{textAlign: 'center', width: '12%'}}>{team.goalsFor - team.goalsAgainst}</td>
+          <td style={{textAlign: 'center', width: '12%'}}>{team.won * 3 + team.drawn}</td>
         </tr>)}
         </tbody>
       </table>

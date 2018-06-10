@@ -69,7 +69,7 @@ class Poll extends Component {
                 <div
                   key={opt.option}
                   onClick={() => this.chooseOption(opt.index)}
-                  style={{width: `calc(100%/${poll.options.length})`, display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: poll.users[number].answer === opt.index ? 'gold' : '', borderRadius: '8px', padding: '12px'}}>
+                  style={{width: `calc(100%/${poll.options.length})`, display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: poll.users[number].answer === opt.index ? 'gold' : '', borderRadius: '8px', padding: '12px', border: poll.finalResult === opt.index ? '4px solid #19364C' : ''}}>
                   <img src={teams[opt.option].flag} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5'}} alt={teams[opt.option].name}/>
                   <b style={{textAlign: 'center', marginTop: '4px'}}>{teams[opt.option].name}</b>
                 </div>)}

@@ -4,6 +4,12 @@ import Poll from './Poll'
 // import { Link } from 'react-router-dom'
 
 class Polls extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'active'
+    }
+  }
 
   render() {
     const { polls, users, number, database } = this.props
@@ -12,15 +18,30 @@ class Polls extends Component {
       return obj
     },{}) : {}
 
+    const filteredPolls = !!polls
+    ? Object.keys(polls)
+    .filter(poll => (this.state.view === 'active' && !poll.finalResult) || (this.state.view === 'completed' && !!poll.finalResult))
+    : []
+
     return (
-      <div style={{width: '100%', maxWidth: '480px', margin: '0 auto'}}>
+      <div>
+        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px'}}>
+          {['active', 'completed'].map(view =>
+            <div key={view} onClick={() => this.setState({view: view})} style={{cursor: 'pointer', width: '50%', backgroundColor: this.state.view === view ? '#ccdae5' : '', textAlign: 'center', padding: '8px 0'}}>
+              <b>{view[0].toUpperCase().concat(view.slice(1))}</b>
+            </div>)}
+        </div>
+
         {!!polls && number &&
-          Object.keys(polls)
+          filteredPolls
           .map(key => Object.assign({}, polls[key], {id: key}))
           .map(poll =>
             <Poll key={poll.id} poll={poll} users={users} teams={teams} number={number} database={database} />
         )
       }
+
+      {this.state.view === 'completed' && filteredPolls.length === 0 &&
+        <div style={{width: '100%', maxWidth: '480px', margin: '0 auto', textAlign: 'center'}}>Completed polls will appear here</div>}
     </div>
     )
   }

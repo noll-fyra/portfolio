@@ -6,14 +6,15 @@ class Matches extends Component {
     super(props);
     this.state = {
       stages: 'group',
-      group: 'all'
+      group: 'all',
+      knockout: 'all'
     }
   }
   render() {
     const filteredMatches = !!this.props.matches
     ? this.props.matches
     .filter(match => (this.state.stages === 'group' && match.name <= 48) || (this.state.stages === 'knockout' && match.name > 48))
-    .filter(match => (this.state.stages === 'knockout') || (this.state.stages === 'group' && this.state.group === 'all') || (this.state.stages === 'group' && match.group === this.state.group))
+    .filter(match => (this.state.stages === 'knockout' && this.state.knockout === 'all') || (this.state.stages === 'knockout' && this.state.knockout === 'r16' && match.name > 48 && match.name < 57) || (this.state.stages === 'knockout' && this.state.knockout === 'qf' && match.name > 56 && match.name < 61) || (this.state.stages === 'knockout' && this.state.knockout === 'sf' && match.name > 60 && match.name < 63) || (this.state.stages === 'knockout' && this.state.knockout === '3rd' && match.name === 63) || (this.state.stages === 'knockout' && this.state.knockout === 'f' && match.name === 64) || (this.state.stages === 'group' && this.state.group === 'all') || (this.state.stages === 'group' && match.group === this.state.group))
     : []
 
     const groupTable = Object.values(filteredMatches.reduce((obj, match) => {
@@ -49,11 +50,17 @@ class Matches extends Component {
             </div>)}
         </div>
 
-        {this.state.stages === 'group' &&
-        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px'}}>
+        {this.state.stages === 'group'
+        ? <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px'}}>
           {['all', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(group =>
             <div key={group} onClick={() => this.setState({group: group})} style={{cursor: 'pointer', width: 'calc(100%/9)', backgroundColor: this.state.group === group ? '#ccdae5' : '', textAlign: 'center', padding: '8px 0'}}>
               <b>{group.toUpperCase()}</b>
+            </div>)}
+        </div>
+        : <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '480px', margin: '0 auto', border: '1px solid #ccdae5', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px'}}>
+          {['all', 'r16', 'qf', 'sf', '3rd', 'f'].map(knockout =>
+            <div key={knockout} onClick={() => this.setState({knockout: knockout})} style={{cursor: 'pointer', width: 'calc(100%/6)', backgroundColor: this.state.knockout === knockout ? '#ccdae5' : '', textAlign: 'center', padding: '8px 0'}}>
+              <b>{knockout.toUpperCase()}</b>
             </div>)}
         </div>
         }

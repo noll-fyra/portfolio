@@ -3,12 +3,14 @@ import { Switch, BrowserRouter as Router, Route, Redirect, NavLink } from 'react
 import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
+import 'firebase/storage'
 // import * as firebaseui from 'firebaseui'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import Table from './Table'
 import Polls from './Polls'
 // import Poll from './Poll'
 import NewPoll from './NewPoll'
+import EditPoll from './EditPoll'
 import Matches from './Matches'
 import LogOut from './LogOut'
 
@@ -25,6 +27,7 @@ const database = firebase.database()
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const sections = ['polls', 'table', 'matches']
+const hidden = ['newpoll', 'editpoll']
 
 class Root extends Component {
   constructor(props) {
@@ -98,7 +101,8 @@ this.setState({hidden: !!number})
     return (
       <div>
       {this.state.number ?
-<Router>
+      !!this.state.data.users && Object.keys(this.state.data.users).includes(this.state.number)
+ ? <Router>
   <div>
     <h1 style={{textAlign: 'center', marginTop: '12px'}}>2018 FIFA WORLD CUP PREDICTION GAME</h1>
   <Route path='/' render={() => <div style={{backgroundColor: '#19364C'}}>
@@ -108,20 +112,33 @@ this.setState({hidden: !!number})
               {sect[0].toUpperCase().concat(sect.slice(1))}
             </NavLink>)}
             </div>
+
+            {this.state.number === '+6587427184' &&
+            <div style={{display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '480px', margin: '12px auto'}}>
+            {hidden.map(sect =>
+              <NavLink key={sect} to={`/${sect}`} activeStyle={{backgroundColor: 'gold', color: '#19364C'}} style={{width: `calc(100%/${hidden.length})`, maxWidth: `calc(480px/${hidden.length})`, fontWeight: 'bold', textAlign: 'center', color: 'white', textDecoration: 'none', padding: '8px'}}>
+                {sect[0].toUpperCase().concat(sect.slice(1))}
+              </NavLink>)}
+              </div>}
             </div>}/>
 
 <div style={{padding: 12}}>
           <Switch>
             <Route exact path='/' render={() => <Redirect to='/polls' />} />
             <Route path='/polls' render={() => <Polls polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
-            <Route path='/newpoll' render={() => this.state.number === '+65-87427184' ? <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} /> : <Redirect to='/polls' />} />
-            <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} />} />
+            <Route path='/newpoll' render={() => <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} />} />
+            <Route path='/editpoll' render={() => <EditPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
+            <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} storage={firebase.storage()} number={this.state.number} />} />
             <Route path='/matches' render={() => <Matches matches={this.state.data.matches}/>} />
             <Route path='/logout' render={() => <LogOut auth={firebase.auth()} removeNumber={this.logOut} />} />
           </Switch>
           </div>
           </div>
         </Router>
+        : <div style={{width: '100vw', height: '100vh', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center'}}>
+          <i className='fa fa-futbol-o fa-spin' style={{fontSize: '2em'}}/>
+          <h1>Loading</h1>
+        </div>
         : <div style={{width: this.state.hidden ? '0' : '100%'}}>
           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
           </div>

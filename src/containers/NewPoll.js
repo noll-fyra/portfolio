@@ -41,15 +41,16 @@ createPoll(){
 
   render() {
     return (
-      <div>
-        <input type='text' onChange={(e) => this.setState({title: e.target.value})} placeholder={'title'} />
-        <br />
-        <input type='date' onChange={(e) => this.setState({date: e.target.value})} placeholder={'date'} />
-        <br />
-        <input type='number' onChange={(e) => this.setState({pointValue: e.target.value})} placeholder={'point value'} value={this.state.pointValue} />
+      <div style={{width: '100%', maxWidth: '480px', margin: '0 auto', padding: '12px'}}>
+        <b>Title</b>
+        <input type='text' onChange={(e) => this.setState({title: e.target.value})} placeholder={'title'} style={{width: '100%', fontSize: '1em'}} />
+        <h4>Date</h4>
+        <input type='date' onChange={(e) => this.setState({date: e.target.value})} placeholder={'date'} style={{width: '100%', fontSize: '1em'}} />
+        <h4>Point Value</h4>
+        <input type='number' onChange={(e) => this.setState({pointValue: e.target.value})} placeholder={'point value'} value={this.state.pointValue} style={{width: '100%', fontSize: '1em'}} />
         <br />
         <span>Options</span>
-        <input type='text' onChange={(e) => this.setState({filter: e.target.value})} placeholder={'filter teams'} value={this.state.filter} />
+        <input type='text' onChange={(e) => this.setState({filter: e.target.value})} placeholder={'filter teams'} value={this.state.filter} style={{width: '100%', fontSize: '1em'}} />
 
         <span>Chosen</span>
         <div style={{display: 'flex'}}>
@@ -77,8 +78,8 @@ createPoll(){
 NewPoll.propTypes = {
   polls: PropTypes.object,
   users: PropTypes.object,
-  teams: PropTypes.object,
-  fbdb: PropTypes.object.isRequired
+  teams: PropTypes.arrayOf(PropTypes.object),
+  database: PropTypes.object.isRequired
 }
 
 export default NewPoll

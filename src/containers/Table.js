@@ -5,9 +5,11 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: null
+      expanded: null,
+      file: null
     }
     this.calculateTable = this.calculateTable.bind(this)
+    this.upload = this.upload.bind(this)
   }
 
   calculateTable(){
@@ -40,6 +42,14 @@ class Table extends Component {
     }
   }
 
+  upload(){
+    this.props.storage.ref().child('images/' + this.props.number).put(this.state.file)
+    .then(snap => {
+      console.log(snap);
+    })
+    this.props.database.ref().child('users/' + this.props.number).update({image: true})
+  }
+
   render() {
     const table = this.calculateTable()
     const { polls } = this.props
@@ -50,6 +60,8 @@ class Table extends Component {
 
     return (
       <div style={{paddingBottom: '12px'}}>
+        {/* <input type='file' onChange={(e) => this.setState({file: e.target.files[0]})} />
+        <button onClick={this.upload}>upload</button> */}
       {table.map((user, index) =>
         <div key={user.number} style={{width: '100%', maxWidth: '480px', margin: '0 auto', backgroundColor: this.state.expanded === user.number ? '#ccdae5' : '', cursor: 'pointer'}} onClick={() => this.setState({expanded: this.state.expanded === user.number ? null : user.number})}>
         <div style={{display: 'flex', width: '100%', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', padding: '4px 0'}}>
@@ -84,7 +96,7 @@ class Table extends Component {
 Table.propTypes = {
   polls: PropTypes.object,
   users: PropTypes.object,
-  teams: PropTypes.object
+  teams: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Table

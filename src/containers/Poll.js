@@ -64,6 +64,7 @@ class Poll extends Component {
                 : <div><i className='fa fa-clock-o' />&nbsp;Completed</div>
               }</div>
               <h3 style={{textAlign: 'center', marginTop: '12px'}}>{poll.title}</h3>
+              <p style={{textAlign: 'center', fontSize: '0.8em'}}>Points: {poll.pointValue}</p>
               <div style={{display: 'flex', padding: '12px', alignItems: 'flex-start', cursor: 'pointer'}}>
               {poll.options.map(opt =>
                 <div

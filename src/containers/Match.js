@@ -67,6 +67,8 @@ class Match extends Component {
       away_team: 'tbd'
     })
     this.setState({choosingTeam: false})
+  } else {
+    this.setState({choosingTeam: false})
   }
   }
 

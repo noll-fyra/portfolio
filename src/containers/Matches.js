@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Match from './Match'
 
 class Matches extends Component {
   constructor(props) {
@@ -16,6 +17,11 @@ class Matches extends Component {
     .filter(match => (this.state.stages === 'group' && match.name <= 48) || (this.state.stages === 'knockout' && match.name > 48))
     .filter(match => (this.state.stages === 'knockout' && this.state.knockout === 'all') || (this.state.stages === 'knockout' && this.state.knockout === 'r16' && match.name > 48 && match.name < 57) || (this.state.stages === 'knockout' && this.state.knockout === 'qf' && match.name > 56 && match.name < 61) || (this.state.stages === 'knockout' && this.state.knockout === 'sf' && match.name > 60 && match.name < 63) || (this.state.stages === 'knockout' && this.state.knockout === '3rd' && match.name === 63) || (this.state.stages === 'knockout' && this.state.knockout === 'f' && match.name === 64) || (this.state.stages === 'group' && this.state.group === 'all') || (this.state.stages === 'group' && match.group === this.state.group))
     : []
+
+    // const teams = this.props.teams ? this.props.teams.reduce((obj, team) => {
+    //   obj[team.name] = team
+    //   return obj
+    // },{}) : {}
 
     const groupTable = Object.values(filteredMatches.reduce((obj, match) => {
       obj[match.home_team.name] = {
@@ -108,48 +114,22 @@ class Matches extends Component {
           filteredMatches
           .sort((a,b) => a.name - b.name)
       .map(match =>
-        <div key={match.name} style={{width: '100%', maxWidth: '480px', margin: '0 auto', marginBottom: '12px', border: '1px solid #ccdae5', borderRadius: '8px', overflow: 'hidden'}}>
-          <div style={{backgroundColor: '#ccdae5', textAlign: 'center', padding: '4px 12px'}}>Match {match.name}</div>
-        <div style={{with: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px'}}>
-          {match.home_team.name
-            ? <div style={{display: 'flex', flexFlow: 'column', width: '30%', justifyContent: 'center', alignItems: 'center'}}>
-            <img src={match.home_team.flag} style={{width: '64px', height: '64px', borderRadius: '50%', border: '1px solid #ccdae5', objectFit: 'cover', marginBottom: '4px'}} alt={match.home_team.name} />
-            <b style={{textAlign: 'center'}}>{match.home_team.name}</b>
-          </div>
-          : <div style={{display: 'flex', flexFlow: 'column', width: '30%', justifyContent: 'center', alignItems: 'center'}}>
-          <div style={{width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccdae5', fontSize: '2em', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>?</div>
-          <b>TBD</b>
-        </div>
-        }
-
-          <div style={{width: '40%'}}>
-            <div style={{textAlign: 'center'}}><b>{match.name <= 48 ? `Group ${match.group.toUpperCase()}` : match.name <= 56 ? 'Round of 16' : match.name <= 60 ? 'Quarterfinals' : match.name <= 62 ? 'Semifinals' : match.name === 63 ? 'Third Place Playoff' : 'Finals'}</b></div>
-            <div style={{display: 'flex', justifyContent: 'space-around', margin: '8px 0'}}>
-              <div style={{fontSize: '2.5em'}}>{match.finished ? match.home_result : ''}</div>
-              <div style={{fontSize: '2.5em'}}>{match.finished ? match.away_result : ''}</div>
-            </div>
-            <div style={{textAlign: 'center', color: 'darkGrey'}}>{new Date(match.date).getDate()} {new Date(match.date).getMonth() === 5 ? 'June' : 'July'} {new Date(match.date).getHours() > 12 ? new Date(match.date).getHours() - 12 : new Date(match.date).getHours()} {new Date(match.date).getHours() < 12 ? 'am' : 'pm'}</div>
-          </div>
-
-          {match.away_team.name
-            ? <div style={{display: 'flex', flexFlow: 'column', width: '30%', justifyContent: 'center', alignItems: 'center'}}>
-            <img src={match.away_team.flag} style={{width: '64px', height: '64px', borderRadius: '50%', border: '1px solid #ccdae5', objectFit: 'cover', marginBottom: '4px'}} alt={match.away_team.name} />
-            <b style={{textAlign: 'center'}}>{match.away_team.name}</b>
-          </div>
-          : <div style={{display: 'flex', flexFlow: 'column', width: '30%', justifyContent: 'center', alignItems: 'center'}}>
-          <div style={{width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccdae5', fontSize: '2em', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '4px'}}>?</div>
-          <b>TBD</b>
-        </div>
-        }
-        </div>
-        </div>
+        <Match
+          key={match.name}
+          match={match}
+          teams={this.props.teams}
+          isAdmin={this.props.number === '+6587427184' || this.props.number === '+6594517971'}
+          database={this.props.database} />
       )}</div>
     );
   }
 }
 
 Matches.propTypes = {
-  matches: PropTypes.arrayOf(PropTypes.object)
+  matches: PropTypes.arrayOf(PropTypes.object),
+  teams: PropTypes.arrayOf(PropTypes.object),
+  number: PropTypes.string,
+  database: PropTypes.object.isRequired
 }
 
 export default Matches

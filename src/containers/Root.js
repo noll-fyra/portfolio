@@ -129,7 +129,7 @@ this.setState({hidden: !!number})
             <Route path='/newpoll' render={() => <NewPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} />} />
             <Route path='/editpoll' render={() => <EditPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} storage={firebase.storage()} number={this.state.number} />} />
-            <Route path='/matches' render={() => <Matches matches={this.state.data.matches}/>} />
+            <Route path='/matches' render={() => <Matches matches={this.state.data.matches} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             <Route path='/logout' render={() => <LogOut auth={firebase.auth()} removeNumber={this.logOut} />} />
           </Switch>
           </div>

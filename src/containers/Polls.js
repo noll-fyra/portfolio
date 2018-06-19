@@ -20,7 +20,8 @@ class Polls extends Component {
 
     const filteredPolls = !!polls
     ? Object.keys(polls)
-    .filter(poll => (this.state.view === 'active' && !poll.finalResult) || (this.state.view === 'completed' && !!poll.finalResult))
+    .map(key => Object.assign({}, polls[key], {id: key}))
+    .filter(poll => (this.state.view === 'active' && typeof poll.finalResult === 'undefined') || (this.state.view === 'completed' && typeof poll.finalResult !== 'undefined'))
     : []
 
     return (
@@ -34,7 +35,6 @@ class Polls extends Component {
 
         {!!polls && number &&
           filteredPolls
-          .map(key => Object.assign({}, polls[key], {id: key}))
           .map(poll =>
             <Poll key={poll.id} poll={poll} users={users} teams={teams} number={number} database={database} />
         )

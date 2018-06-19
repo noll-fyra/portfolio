@@ -27,7 +27,7 @@ const database = firebase.database()
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const sections = ['polls', 'table', 'matches']
-const hidden = ['newpoll', 'editpoll']
+const hidden = ['newpoll']
 
 class Root extends Component {
   constructor(props) {
@@ -73,6 +73,13 @@ class Root extends Component {
   componentDidMount(){
     database.ref('/').on('value', snap => {
       this.setState({data: snap.val()})
+    // let polls = Object.assign({}, snap.val().polls)
+    // for (var key in polls) {
+    // let poll = polls[key]
+    // poll.users['+61430985344'] = {answer: 0, answered: true}
+    // polls[key] = poll
+  // }
+    // database.ref().child('polls').set(polls)
     })
 
 let number = window.localStorage.getItem('number')

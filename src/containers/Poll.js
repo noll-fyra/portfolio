@@ -6,11 +6,14 @@ class Poll extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      editing: false,
       expanded: false,
       countdown: null
     }
     this.pollInterval = null
     this.chooseOption = this.chooseOption.bind(this)
+    this.selectFinalResult = this.selectFinalResult.bind(this)
+    this.resetFinalResult = this.resetFinalResult.bind(this)
   }
 
   componentDidMount(){
@@ -29,6 +32,9 @@ class Poll extends Component {
   }
 
   chooseOption(index){
+    if(this.state.editing){
+      this.selectFinalResult(index)
+    } else {
     if(new Date(this.props.poll.date) < Date.now()) { return }
     let update = {}
     update[this.props.number] = {
@@ -36,6 +42,7 @@ class Poll extends Component {
       answered: true
     }
     this.props.database.ref('/polls/' + this.props.poll.id + '/users').update(update)
+    }
   }
 
   sortAlphabetically(first, second) {
@@ -47,6 +54,26 @@ class Poll extends Component {
       default:
         return -1
     }
+  }
+
+  selectFinalResult(index){
+    this.setState({editing: false})
+    this.props.database.ref().child('polls/' + this.props.poll.id).update({
+      finalResult: index
+    })
+  }
+
+  resetFinalResult(){
+    let isEditing = this.state.editing
+    this.setState({editing: !isEditing})
+    if(isEditing) {
+    let sure = window.confirm('Are you sure you want to reset the final result?')
+    if (sure) {
+        this.props.database.ref().child('polls/' + this.props.poll.id).update({
+        finalResult: null
+      })
+    }
+  }
   }
 
   render() {
@@ -61,7 +88,9 @@ class Poll extends Component {
                 {new Date(poll.date) > Date.now()
                   ? this.state.countdown && <div><i className='fa fa-clock-o' />&nbsp;{this.state.countdown[0]}:{this.state.countdown[1]}:{this.state.countdown[2]}</div>
                 // ? <div>{new Date(poll.date).getDate()} {new Date(poll.date).getMonth() === 5 ? 'June' : 'July'} {new Date(poll.date).getHours() > 12 ? new Date(poll.date).getHours() - 12 : new Date(poll.date).getHours()} {new Date(poll.date).getHours() < 12 ? 'am' : 'pm'}</div>
-                : <div><i className='fa fa-clock-o' />&nbsp;Completed</div>
+                : number === '+6587427184' || number === '+659417971'
+                ? <i className={this.state.editing ? 'fa fa-times' : 'fa fa-pencil'} onClick={this.resetFinalResult} style={{cursor: 'pointer'}}/>
+                : <div><i className='fa fa-clock-o' />&nbsp;Closed</div>
               }</div>
               <h3 style={{textAlign: 'center', marginTop: '12px'}}>{poll.title}</h3>
               <p style={{textAlign: 'center', fontSize: '0.8em'}}>Points: {poll.pointValue}</p>
@@ -75,7 +104,6 @@ class Poll extends Component {
                   <b style={{textAlign: 'center', marginTop: '4px'}}>{teams[opt.option].name}</b>
                 </div>)}
             </div>
-
 
             <div onClick={() => this.setState({expanded: !this.state.expanded})} style={{textAlign: 'center', borderTop: '1px solid #ccdae5', backgroundColor: this.state.expanded ? '#ccdae5' : '', padding: '4px', cursor: 'pointer'}}><i className={this.state.expanded ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} /></div>
 

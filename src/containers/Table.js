@@ -6,7 +6,8 @@ class Table extends Component {
     super(props);
     this.state = {
       expanded: null,
-      file: null
+      file: null,
+      showingRules: false
     }
     this.calculateTable = this.calculateTable.bind(this)
     this.upload = this.upload.bind(this)
@@ -66,7 +67,10 @@ class Table extends Component {
         <div key={user.number} style={{width: '100%', maxWidth: '480px', margin: '0 auto', backgroundColor: this.state.expanded === user.number ? '#ccdae5' : '', cursor: 'pointer'}} onClick={() => this.setState({expanded: this.state.expanded === user.number ? null : user.number})}>
         <div style={{display: 'flex', width: '100%', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', padding: '4px 0'}}>
           <h2 style={{width: '15%', textAlign: 'center'}}>{index + 1}</h2>
-          <h2 style={{width: '70%'}}>{user.name[0].toUpperCase().concat(user.name.slice(1))}</h2>
+          <h2 style={{width: '70%', display: 'flex', alignItems: 'center'}}>
+            <img src={teams[user.finalWinner].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px', filter: teams[user.finalWinner].eliminated ? 'grayscale(100%)' : ''}} alt={user.finalWinner} />
+            &nbsp;{user.name[0].toUpperCase().concat(user.name.slice(1))}
+          </h2>
           <h2 style={{width: '15%', textAlign: 'center'}}>{user.points}</h2>
         </div>
         {this.state.expanded === user.number &&
@@ -88,7 +92,79 @@ class Table extends Component {
           }
         </div>
       )}
-    </div>
+
+      <div style={{width: '100%', maxWidth: '480px', margin: '0 auto'}}>
+      <h3 style={{textAlign: 'center', marginTop: '48px', cursor: 'pointer', backgroundColor: '#ccdae5', padding: '8px'}}>Rules</h3>
+        <br />
+      <b>Welcome to the 2018 FIFA World Cup Prediction Game!</b>
+      <br /><br />
+
+<b>What you can win</b>
+<p>All participants put in $10 at the beginning, and the winner gets everything at the end (the prize money is split equally if there is a tie)</p>
+<br />
+
+<b>How to win</b>
+<p>Finish with the most points</p>
+<br />
+
+<b>Getting points</b>
+<p>Before each stage begins, predict who advances as the group leader (Group Stage only) or wins their knockout match. For each correct answer, you get points depending on which stage it is:</p>
+<br />
+
+<table style={{width: '100%'}}>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Stage</th>
+      <th style={{textAlign: 'left'}}>Pt/game</th>
+      <th style={{textAlign: 'left'}}>No. games</th>
+      <th style={{textAlign: 'left'}}>Total pts</th>
+    </tr>
+  </thead>
+<tbody>
+<tr>
+  <td>Group Stage</td>
+  <td>1</td>
+  <td>8 groups</td>
+  <td>8</td>
+</tr>
+<tr>
+  <td>Round of 16</td>
+  <td>2</td>
+  <td>8 games</td>
+  <td>16</td>
+</tr>
+<tr>
+  <td>Quarterfinals</td>
+  <td>3</td>
+  <td>4 games</td>
+  <td>12</td>
+</tr>
+<tr>
+  <td>Semifinals</td>
+  <td>4</td>
+  <td>2 games</td>
+  <td>8</td>
+</tr>
+<tr>
+  <td>Final</td>
+  <td>5</td>
+  <td>1 game</td>
+  <td>5</td>
+</tr>
+</tbody>
+</table>
+<br />
+
+<p>The best possible score is 49 pts</p>
+<br />
+
+<b>Predictions</b>
+<p>Before the first match begins, you must submit your predictions for the group stage. For subsequent stages, you must predict the winner of each match before the match begins. You are allowed to change your prediction as many times as you like before the match begins.</p>
+<br />
+
+<p>That’s it! Let’s have a great tournament!</p>
+  </div>
+  </div>
     )
   }
 }

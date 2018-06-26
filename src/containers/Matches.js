@@ -45,7 +45,7 @@ class Matches extends Component {
         goalsAgainst: match.finished ? (obj[match.away_team.name] ? obj[match.away_team.name].goalsAgainst : 0) + match.home_result : (obj[match.away_team.name] ? obj[match.away_team.name].goalsAgainst : 0),
       }
       return obj
-    },{})).sort((a,b) => ((b.won * 3 + b.drawn) - (a.won * 3 + a.drawn)) || ((b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst)))
+    },{})).sort((a,b) => ((b.won * 3 + b.drawn) - (a.won * 3 + a.drawn)) || (((b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst)) || b.goalsFor - a.goalsFor))
 
     return (
       <div>

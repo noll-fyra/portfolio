@@ -22,6 +22,7 @@ class Polls extends Component {
     ? Object.keys(polls)
     .map(key => Object.assign({}, polls[key], {id: key}))
     .filter(poll => (this.state.view === 'active' && typeof poll.finalResult === 'undefined') || (this.state.view === 'completed' && typeof poll.finalResult !== 'undefined'))
+    .filter(poll => !poll.isHidden)
     : []
 
     return (

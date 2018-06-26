@@ -20,7 +20,10 @@ class Table extends Component {
       users[u].points = 0
     }
 
-    Object.values(polls).filter(poll => poll.finishedResult !== null).forEach(poll => {
+    Object.values(polls)
+    .filter(poll => poll.finishedResult !== null)
+    .filter(poll => !poll.isHidden)
+    .forEach(poll => {
       for(var p in poll.users) {
         // console.log(p);
         if(poll.users[p].answered && poll.users[p].answer === poll.finalResult) {
@@ -65,7 +68,7 @@ class Table extends Component {
         <button onClick={this.upload}>upload</button> */}
       {table.map((user, index) =>
         <div key={user.number} style={{width: '100%', maxWidth: '480px', margin: '0 auto', backgroundColor: this.state.expanded === user.number ? '#ccdae5' : '', cursor: 'pointer'}} onClick={() => this.setState({expanded: this.state.expanded === user.number ? null : user.number})}>
-        <div style={{display: 'flex', width: '100%', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', padding: '4px 0'}}>
+        <div style={{display: 'flex', width: '100%', backgroundColor: user.points === table[0].points && user.points> 0 ? 'gold' : '', justifyContent: 'center', alignItems: 'center', padding: '4px 8px'}}>
           <h2 style={{width: '15%', textAlign: 'center'}}>{index + 1}</h2>
           <h2 style={{width: '70%', display: 'flex', alignItems: 'center'}}>
             <img src={teams[user.finalWinner].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px', filter: teams[user.finalWinner].eliminated ? 'grayscale(100%)' : ''}} alt={user.finalWinner} />
@@ -74,11 +77,14 @@ class Table extends Component {
           <h2 style={{width: '15%', textAlign: 'center'}}>{user.points}</h2>
         </div>
         {this.state.expanded === user.number &&
-          <div style={{backgroundColor: 'white', padding: '8px', border: '1px solid #ccdae5'}}>
+          <div style={{backgroundColor: 'white', border: '1px solid #ccdae5', paddingBottom: '12px'}}>
+            <div style={{marginTop: '12px', padding: '0 8px'}}><b>Group Stage</b></div>
             {Object.values(polls)
+              .filter(poll => !poll.isHidden)
+              .slice(0,8)
               .sort((a,b) => a.index - b.index)
               .map(poll =>
-              <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 0'}}>
+              <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px'}}>
                 <span style={{width: '50%'}}>{poll.title}</span>
                 {poll.users[user.number].answered &&
                   <div style={{width: '30%', display: 'flex', alignItems: 'center'}}>
@@ -88,6 +94,74 @@ class Table extends Component {
                 }
                 <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
               </div>)}
+
+              <div style={{marginTop: '12px', padding: '0 8px'}}><b>Round of 16</b></div>
+              {Object.values(polls)
+                .filter(poll => !poll.isHidden)
+                .slice(8,16)
+                .sort((a,b) => a.index - b.index)
+                .map(poll =>
+                <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px'}}>
+                  <span style={{width: '50%'}}>{poll.title}</span>
+                  {poll.users[user.number].answered &&
+                    <div style={{width: '30%', display: 'flex', alignItems: 'center'}}>
+                    <img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={poll.options[poll.users[user.number].answer].option} />
+                    <b>{poll.options[poll.users[user.number].answer].option}</b>
+                  </div>
+                  }
+                  <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
+                </div>)}
+
+                {/* <div style={{marginTop: '12px', padding: '0 8px'}}><b>Quarterfinals</b></div>
+                {Object.values(polls)
+                .filter(poll => !poll.isHidden)
+                  .slice(16,20)
+                  .sort((a,b) => a.index - b.index)
+                  .map(poll =>
+                  <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px'}}>
+                    <span style={{width: '50%'}}>{poll.title}</span>
+                    {poll.users[user.number].answered &&
+                      <div style={{width: '30%', display: 'flex', alignItems: 'center'}}>
+                      <img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={poll.options[poll.users[user.number].answer].option} />
+                      <b>{poll.options[poll.users[user.number].answer].option}</b>
+                    </div>
+                    }
+                    <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
+                  </div>)}
+
+                  <div style={{marginTop: '12px', padding: '0 8px'}}><b>Semifinals</b></div>
+                  {Object.values(polls)
+                  .filter(poll => !poll.isHidden)
+                    .slice(20,22)
+                    .sort((a,b) => a.index - b.index)
+                    .map(poll =>
+                    <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px'}}>
+                      <span style={{width: '50%'}}>{poll.title}</span>
+                      {poll.users[user.number].answered &&
+                        <div style={{width: '30%', display: 'flex', alignItems: 'center'}}>
+                        <img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={poll.options[poll.users[user.number].answer].option} />
+                        <b>{poll.options[poll.users[user.number].answer].option}</b>
+                      </div>
+                      }
+                      <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
+                    </div>)}
+
+                    <div style={{marginTop: '12px', padding: '0 8px'}}><b>Final</b></div>
+                    {Object.values(polls)
+                    .filter(poll => !poll.isHidden)
+                      .slice(22)
+                      .sort((a,b) => a.index - b.index)
+                      .map(poll =>
+                      <div key={poll.index} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px'}}>
+                        <span style={{width: '50%'}}>{poll.title}</span>
+                        {poll.users[user.number].answered &&
+                          <div style={{width: '30%', display: 'flex', alignItems: 'center'}}>
+                          <img src={teams[poll.options[poll.users[user.number].answer].option].flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={poll.options[poll.users[user.number].answer].option} />
+                          <b>{poll.options[poll.users[user.number].answer].option}</b>
+                        </div>
+                        }
+                        <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
+                      </div>)} */}
           </div>
           }
         </div>

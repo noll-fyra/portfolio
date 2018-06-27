@@ -28,7 +28,7 @@ class Table extends Component {
         // console.log(p);
         if(poll.users[p].answered && poll.users[p].answer === poll.finalResult) {
           // console.log(users[p], poll.pointValue);
-          users[p].points += poll.pointValue
+          users[p].points += parseInt(poll.pointValue, 10)
         }
       }
     })

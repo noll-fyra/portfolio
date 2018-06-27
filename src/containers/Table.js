@@ -22,7 +22,6 @@ class Table extends Component {
 
     Object.values(polls)
     .filter(poll => poll.finishedResult !== null)
-    .filter(poll => !poll.isHidden)
     .forEach(poll => {
       for(var p in poll.users) {
         // console.log(p);

@@ -17,10 +17,10 @@ constructor(props) {
 createPoll(){
   let poll = {
     title: this.state.title,
-    date: this.state.date,
+    date: new Date(this.state.date).toUTCString(),
     options: this.state.options.map((opt, index) => ({index: index, option: opt.name})),
     index: Object.keys(this.props.polls).length + 1,
-    pointValue: this.state.pointValue,
+    pointValue: parseInt(this.state.pointValue, 10),
     type: 'multiple_choice',
     users: Object.values(this.props.users).reduce((obj, user) => {
       obj[user.number] = {answered: false}

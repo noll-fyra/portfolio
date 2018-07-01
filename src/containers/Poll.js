@@ -21,8 +21,8 @@ class Poll extends Component {
       let difference = new Date(this.props.poll.date) - Date.now()
       if (difference < 0) { return }
       let hours = Math.floor(difference / 1000 / 60 / 60)
-      let minutes = Math.floor(difference / 1000 / 60 % (hours * 60))
-      let seconds = Math.floor(difference / 1000 % (hours * 60 * 60 + minutes * 60))
+      let minutes = hours === 0 ? Math.floor(difference / 1000 / 60) : Math.floor(difference / 1000 / 60 % (hours * 60))
+      let seconds = (hours * 60 * 60 + minutes * 60) === 0 ? Math.floor(difference / 1000) : Math.floor(difference / 1000 % (hours * 60 * 60 + minutes * 60))
       this.setState({countdown: [hours, minutes < 10 ? `0${minutes}` : minutes, seconds < 10 ? `0${seconds}` : seconds]})
     }, 1000)
   }

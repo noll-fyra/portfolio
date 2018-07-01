@@ -7,8 +7,8 @@ class Match extends Component {
     this.state = {
       editing: false,
       choosingTeam: false,
-      home: props.match.home_result || 0,
-      away: props.match.away_result || 0
+      home: props.match.home_result > -1 ? props.match.home_result : 0,
+      away: props.match.away_result > -1 ? props.match.away_result : 0
     }
     this.editScore = this.editScore.bind(this)
     this.reset = this.reset.bind(this)

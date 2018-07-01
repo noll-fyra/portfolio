@@ -18,11 +18,19 @@ class Polls extends Component {
       return obj
     },{}) : {}
 
-    const filteredPolls = !!polls
+    const activePolls = !!polls
     ? Object.keys(polls)
     .map(key => Object.assign({}, polls[key], {id: key}))
-    .filter(poll => (this.state.view === 'active' && typeof poll.finalResult === 'undefined') || (this.state.view === 'completed' && typeof poll.finalResult !== 'undefined'))
+    .filter(poll => this.state.view === 'active' && typeof poll.finalResult === 'undefined')
     .filter(poll => !poll.isHidden)
+    : []
+
+    const completedPolls = !!polls
+    ? Object.keys(polls)
+    .map(key => Object.assign({}, polls[key], {id: key}))
+    .filter(poll => this.state.view === 'completed' && typeof poll.finalResult !== 'undefined')
+    .slice()
+    .reverse()
     : []
 
     return (
@@ -35,13 +43,13 @@ class Polls extends Component {
         </div>
 
         {!!polls && number &&
-          filteredPolls
+          (this.state.view === 'active' ? activePolls : completedPolls)
           .map(poll =>
             <Poll key={poll.id} poll={poll} users={users} teams={teams} number={number} database={database} />
         )
       }
 
-      {this.state.view === 'completed' && filteredPolls.length === 0 &&
+      {this.state.view === 'completed' && completedPolls.length === 0 &&
         <div style={{width: '100%', maxWidth: '480px', margin: '0 auto', textAlign: 'center'}}>Completed polls will appear here</div>}
     </div>
     )

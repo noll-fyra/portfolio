@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Match from './Match'
 
 class Teams extends Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class Teams extends Component {
           <img src={t.flag} alt={t.name} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5'}} />
           <h3 style={{marginLeft: '8px'}}>{t.name}</h3>
         </div>
-          <h1 className={t.eliminated ? 'fa fa-times' : 'fa fa-check'} onClick={() => this.eliminate(t.name)} style={{color: t.eliminated ? '#ccdae5' : 'gold', backgroundColor: 'white', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}} />
+          <i className={t.eliminated ? 'fa fa-times' : 'fa fa-check'} onClick={() => this.eliminate(t.name)} style={{color: t.eliminated ? '#ccdae5' : 'gold', backgroundColor: 'white', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5em'}} />
         </div>
 
         {t.name === this.state.team &&

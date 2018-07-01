@@ -7,8 +7,8 @@ class Match extends Component {
     this.state = {
       editing: false,
       choosingTeam: false,
-      home: 0,
-      away: 0
+      home: props.match.home_result || 0,
+      away: props.match.away_result || 0
     }
     this.editScore = this.editScore.bind(this)
     this.reset = this.reset.bind(this)
@@ -135,8 +135,9 @@ class Match extends Component {
         </h4>
       <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', alignItems: 'flex-start', padding: '12px'}}>
         {Object.values(teams || {}).sort((a,b) => this.sortAlphabetically(a.name, b.name)).map(team =>
-        <div key={team.name} style={{width: '50%', cursor: 'pointer'}} onClick={() => this.chooseTeam(team)}>
-          <img src={team.flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={team.name}/> {team.name}
+        <div key={team.name} style={{width: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center'}} onClick={() => this.chooseTeam(team)}>
+          <img src={team.flag} style={{width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccdae5', marginRight: '4px'}} alt={team.name}/>
+          {team.name}
         </div>)}
       </div>
       </div>

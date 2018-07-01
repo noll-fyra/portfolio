@@ -77,6 +77,8 @@ class Table extends Component {
         </div>
         {this.state.expanded === user.number &&
           <div style={{backgroundColor: 'white', border: '1px solid #ccdae5', paddingBottom: '12px'}}>
+            {Object.values(polls).length > 0 &&
+              <div>
             <div style={{marginTop: '12px', padding: '0 8px'}}><b>Group Stage</b></div>
             {Object.values(polls)
               .filter(poll => !poll.isHidden)
@@ -93,8 +95,12 @@ class Table extends Component {
                 }
                 <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
               </div>)}
+            </div>
+          }
 
-              <div style={{marginTop: '12px', padding: '0 8px'}}><b>Round of 16</b></div>
+              {Object.values(polls).length > 8 &&
+                <div>
+                <div style={{marginTop: '12px', padding: '0 8px'}}><b>Round of 16</b></div>
               {Object.values(polls)
                 .filter(poll => !poll.isHidden)
                 .slice(8,16)
@@ -110,8 +116,12 @@ class Table extends Component {
                   }
                   <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
                 </div>)}
+                </div>
+                }
 
-                {/* <div style={{marginTop: '12px', padding: '0 8px'}}><b>Quarterfinals</b></div>
+                {Object.values(polls).length > 16 &&
+                  <div>
+                <div style={{marginTop: '12px', padding: '0 8px'}}><b>Quarterfinals</b></div>
                 {Object.values(polls)
                 .filter(poll => !poll.isHidden)
                   .slice(16,20)
@@ -127,7 +137,11 @@ class Table extends Component {
                     }
                     <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
                   </div>)}
+                </div>
+              }
 
+              {Object.values(polls).length > 20 &&
+                <div>
                   <div style={{marginTop: '12px', padding: '0 8px'}}><b>Semifinals</b></div>
                   {Object.values(polls)
                   .filter(poll => !poll.isHidden)
@@ -144,8 +158,12 @@ class Table extends Component {
                       }
                       <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
                     </div>)}
+                  </div>
+                }
 
-                    <div style={{marginTop: '12px', padding: '0 8px'}}><b>Final</b></div>
+                {Object.values(polls).length > 22 &&
+                  <div>
+                    <div style={{marginTop: '12px', padding: '0 8px'}}><b>Finals</b></div>
                     {Object.values(polls)
                     .filter(poll => !poll.isHidden)
                       .slice(22)
@@ -160,7 +178,9 @@ class Table extends Component {
                         </div>
                         }
                         <div style={{width: '15%', textAlign: 'center'}}>{typeof(poll.finalResult) !== 'undefined' ? (poll.finalResult === poll.users[user.number].answer ? poll.pointValue : 0) : ''}</div>
-                      </div>)} */}
+                      </div>)}
+                    </div>
+                  }
           </div>
           }
         </div>

@@ -105,11 +105,11 @@ class Match extends Component {
           <div style={{display: 'flex', justifyContent: 'space-around', margin: '8px 0'}}>
             {this.state.editing
             ? <input type={'number'} style={{fontSize: '2.5em', width: '50%', textAlign: 'center'}} onChange={(e) => this.setState({home: e.target.value})} value={this.state.home}/>
-            : <div style={{fontSize: '2.5em'}}>{match.finished ? match.home_result : ''}</div>
+            : <div style={{fontSize: '2.5em'}}>{match.finished ? match.home_result : ''}{match.penalties === 'home' && '*'}</div>
             }
             {this.state.editing
             ? <input type={'number'} style={{fontSize: '2.5em', width: '50%', textAlign: 'center'}} onChange={(e) => this.setState({away: e.target.value})} value={this.state.away}/>
-            : <div style={{fontSize: '2.5em'}}>{match.finished ? match.away_result : ''}</div>
+            : <div style={{fontSize: '2.5em'}}>{match.finished ? match.away_result : ''}{match.penalties === 'away' && '*'}</div>
           }
           </div>
           <div style={{textAlign: 'center', color: 'darkGrey'}}>{new Date(match.date).getDate()} {new Date(match.date).getMonth() === 5 ? 'June' : 'July'} {new Date(match.date).getHours() > 12 ? new Date(match.date).getHours() - 12 : new Date(match.date).getHours()} {new Date(match.date).getHours() < 12 ? 'am' : 'pm'}</div>

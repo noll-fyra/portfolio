@@ -6,11 +6,23 @@ class Matches extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stages: 'group',
+      stages: 'knockout',
       group: 'all',
       knockout: 'all'
     }
   }
+
+  sortAlphabetically(first, second) {
+    switch(true) {
+      case first > second:
+        return 1
+      case first < second:
+        return -1
+      default:
+        return -1
+    }
+  }
+
   render() {
     const filteredMatches = !!this.props.matches
     ? this.props.matches
@@ -45,7 +57,9 @@ class Matches extends Component {
         goalsAgainst: match.finished ? (obj[match.away_team.name] ? obj[match.away_team.name].goalsAgainst : 0) + match.home_result : (obj[match.away_team.name] ? obj[match.away_team.name].goalsAgainst : 0),
       }
       return obj
-    },{})).sort((a,b) => ((b.won * 3 + b.drawn) - (a.won * 3 + a.drawn)) || (((b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst)) || b.goalsFor - a.goalsFor))
+    },{}))
+    .sort(this.sortAlphabetically)
+    .sort((a,b) => ((b.won * 3 + b.drawn) - (a.won * 3 + a.drawn)) || (((b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst)) || b.goalsFor - a.goalsFor))
 
     return (
       <div>

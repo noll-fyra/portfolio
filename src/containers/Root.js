@@ -6,12 +6,13 @@ import 'firebase/auth'
 import 'firebase/storage'
 // import * as firebaseui from 'firebaseui'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import Table from './Table'
 import Polls from './Polls'
+import Table from './Table'
+import Matches from './Matches'
+import Teams from './Teams'
 // import Poll from './Poll'
 import NewPoll from './NewPoll'
 import EditPoll from './EditPoll'
-import Matches from './Matches'
 import LogOut from './LogOut'
 
 const config = {
@@ -26,7 +27,7 @@ firebase.initializeApp(config)
 const database = firebase.database()
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-const sections = ['polls', 'table', 'matches']
+const sections = ['polls', 'table', 'matches', 'teams']
 const hidden = ['newpoll']
 
 class Root extends Component {
@@ -137,6 +138,7 @@ this.setState({hidden: !!number})
             <Route path='/editpoll' render={() => <EditPoll polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             <Route path='/table' render={() => <Table polls={this.state.data.polls} users={this.state.data.users} teams={this.state.data.teams} database={database} storage={firebase.storage()} number={this.state.number} />} />
             <Route path='/matches' render={() => <Matches matches={this.state.data.matches} teams={this.state.data.teams} database={database} number={this.state.number} />} />
+            <Route path='/teams' render={() => <Teams matches={this.state.data.matches} teams={this.state.data.teams} database={database} number={this.state.number} />} />
             <Route path='/logout' render={() => <LogOut auth={firebase.auth()} removeNumber={this.logOut} />} />
           </Switch>
           </div>

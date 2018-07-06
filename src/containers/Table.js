@@ -36,9 +36,21 @@ class Table extends Component {
           }
         }
       })
+
+    let position = 0
+    // let actualPosition = 0
+    let points = -1
+
     return Object.values(users)
       .sort((a, b) => this.sortAlphabetically(a.name, b.name))
       .sort((a, b) => b.points - a.points)
+      .map((u, index) => {
+        if (points !== u.points) {
+          position = index + 1
+        }
+        points = u.points
+        return { ...u, position: position }
+      })
   }
 
   sortAlphabetically(first, second) {
@@ -109,7 +121,9 @@ class Table extends Component {
                 alignItems: 'center',
                 padding: '4px 8px'
               }}>
-              <h2 style={{ width: '15%', textAlign: 'center' }}>{index + 1}</h2>
+              <h2 style={{ width: '15%', textAlign: 'center' }}>
+                {user.position}
+              </h2>
               <h2
                 style={{ width: '70%', display: 'flex', alignItems: 'center' }}>
                 <img

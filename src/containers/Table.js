@@ -31,14 +31,12 @@ class Table extends Component {
             poll.users[p].answered &&
             poll.users[p].answer === poll.finalResult
           ) {
-            // console.log(users[p], poll.pointValue);
             users[p].points += parseInt(poll.pointValue, 10)
           }
         }
       })
 
     let position = 0
-    // let actualPosition = 0
     let points = -1
 
     return Object.values(users)
@@ -87,11 +85,12 @@ class Table extends Component {
           return obj
         }, {})
       : {}
+    const pointsLeft = Object.values(polls)
+      .filter(p => typeof p.finalResult === 'undefined')
+      .reduce((a, b) => a + b.pointValue, 0)
 
     return (
       <div style={{ paddingBottom: '12px' }}>
-        {/* <input type='file' onChange={(e) => this.setState({file: e.target.files[0]})} />
-        <button onClick={this.upload}>upload</button> */}
         {table.map((user, index) => (
           <div
             key={user.number}
@@ -101,7 +100,12 @@ class Table extends Component {
               margin: '0 auto',
               backgroundColor:
                 this.state.expanded === user.number ? '#ccdae5' : '',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              borderBottom:
+                user.points + pointsLeft >= table[0].points &&
+                table[index + 1].points + pointsLeft < table[0].points
+                  ? '4px solid red'
+                  : ''
             }}
             onClick={() =>
               this.setState({
@@ -562,6 +566,17 @@ class Table extends Component {
             )}
           </div>
         ))}
+
+        <br />
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '480px',
+            margin: '0 auto',
+            textAlign: 'center'
+          }}>
+          <b>Points to play for: {pointsLeft}</b>
+        </div>
 
         <div style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
           <h3

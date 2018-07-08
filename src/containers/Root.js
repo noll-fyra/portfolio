@@ -34,7 +34,7 @@ const database = firebase.database()
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const sections = ['polls', 'table', 'matches', 'teams']
-const hidden = ['newpoll']
+// const hidden = ['newpoll']
 
 class Root extends Component {
   constructor(props) {
@@ -162,7 +162,7 @@ class Root extends Component {
                         ))}
                       </div>
 
-                      {this.state.number === '+6587427184' && (
+                      {/* {this.state.number === '+6587427184' && (
                         <div
                           style={{
                             display: 'flex',
@@ -192,7 +192,7 @@ class Root extends Component {
                             </NavLink>
                           ))}
                         </div>
-                      )}
+                      )} */}
                     </div>
                   )}
                 />

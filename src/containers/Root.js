@@ -3,7 +3,7 @@ import {
   Switch,
   BrowserRouter as Router,
   Route,
-  Redirect,
+  // Redirect,
   NavLink
 } from 'react-router-dom'
 import firebase from 'firebase/app'
@@ -12,13 +12,14 @@ import 'firebase/auth'
 import 'firebase/storage'
 // import * as firebaseui from 'firebaseui'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import Polls from './Polls'
-import Table from './Table'
-import Matches from './Matches'
-import Teams from './Teams'
+import Polls from './worldCup/Polls'
+import Table from './worldCup/Table'
+import Matches from './worldCup/Matches'
+import Teams from './worldCup/Teams'
 // import Poll from './Poll'
-import NewPoll from './NewPoll'
-import EditPoll from './EditPoll'
+import NewPoll from './worldCup/NewPoll'
+import EditPoll from './worldCup/EditPoll'
+import FPL from './fpl/Index'
 import LogOut from './LogOut'
 
 const config = {
@@ -125,43 +126,44 @@ class Root extends Component {
           Object.keys(this.state.data.users).includes(this.state.number) ? (
             <Router>
               <div>
-                <h1 style={{ textAlign: 'center', marginTop: '12px' }}>
-                  2018 FIFA WORLD CUP PREDICTION GAME
-                </h1>
                 <Route
-                  path="/"
+                  path="/worldcup"
                   render={() => (
-                    <div style={{ backgroundColor: '#19364C' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          width: '100%',
-                          maxWidth: '480px',
-                          margin: '12px auto'
-                        }}>
-                        {sections.map(sect => (
-                          <NavLink
-                            key={sect}
-                            to={`/${sect}`}
-                            activeStyle={{
-                              backgroundColor: 'gold',
-                              color: '#19364C'
-                            }}
-                            style={{
-                              width: `calc(100%/${sections.length})`,
-                              maxWidth: `calc(480px/${sections.length})`,
-                              fontWeight: 'bold',
-                              textAlign: 'center',
-                              color: 'white',
-                              textDecoration: 'none',
-                              padding: '8px'
-                            }}>
-                            {sect[0].toUpperCase().concat(sect.slice(1))}
-                          </NavLink>
-                        ))}
+                    <div>
+                      <h1 style={{ textAlign: 'center', marginTop: '12px' }}>
+                        2018 FIFA WORLD CUP PREDICTION GAME
+                      </h1>
+                      <div style={{ backgroundColor: '#19364C' }}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: '100%',
+                            maxWidth: '480px',
+                            margin: '12px auto'
+                          }}>
+                          {sections.map(sect => (
+                            <NavLink
+                              key={sect}
+                              to={`/worldcup/${sect}`}
+                              activeStyle={{
+                                backgroundColor: 'gold',
+                                color: '#19364C'
+                              }}
+                              style={{
+                                width: `calc(100%/${sections.length})`,
+                                maxWidth: `calc(480px/${sections.length})`,
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                                color: 'white',
+                                textDecoration: 'none',
+                                padding: '8px'
+                              }}>
+                              {sect[0].toUpperCase().concat(sect.slice(1))}
+                            </NavLink>
+                          ))}
+                        </div>
                       </div>
-
                       {/* {this.state.number === '+6587427184' && (
                         <div
                           style={{
@@ -199,13 +201,23 @@ class Root extends Component {
 
                 <div style={{ padding: 12 }}>
                   <Switch>
-                    <Route
+                    {/* <Route
                       exact
                       path="/"
                       render={() => <Redirect to="/polls" />}
+                    /> */}
+                    <Route
+                      path="/fpl"
+                      render={() => (
+                        <FPL
+                          data={this.state.data.fpl['1819']}
+                          database={database}
+                          number={this.state.number}
+                        />
+                      )}
                     />
                     <Route
-                      path="/polls"
+                      path="/worldcup/polls"
                       render={() => (
                         <Polls
                           polls={this.state.data.polls}
@@ -217,7 +229,7 @@ class Root extends Component {
                       )}
                     />
                     <Route
-                      path="/newpoll"
+                      path="/worldcup/newpoll"
                       render={() => (
                         <NewPoll
                           polls={this.state.data.polls}
@@ -228,7 +240,7 @@ class Root extends Component {
                       )}
                     />
                     <Route
-                      path="/editpoll"
+                      path="/worldcup/editpoll"
                       render={() => (
                         <EditPoll
                           polls={this.state.data.polls}
@@ -240,7 +252,7 @@ class Root extends Component {
                       )}
                     />
                     <Route
-                      path="/table"
+                      path="/worldcup/table"
                       render={() => (
                         <Table
                           polls={this.state.data.polls}
@@ -253,7 +265,7 @@ class Root extends Component {
                       )}
                     />
                     <Route
-                      path="/matches"
+                      path="/worldcup/matches"
                       render={() => (
                         <Matches
                           matches={this.state.data.matches}
@@ -264,7 +276,7 @@ class Root extends Component {
                       )}
                     />
                     <Route
-                      path="/teams"
+                      path="/worldcup/teams"
                       render={() => (
                         <Teams
                           matches={this.state.data.matches}

@@ -1,24 +1,25 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "firebase": "^5.0.4",
-    "firebaseui": "^3.0.0",
-    "prop-types": "^15.6.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-firebaseui": "^3.0.4",
-    "react-router-dom": "^4.3.1"
-  },
-  "devDependencies": {
-    "react-scripts": "1.0.7"
-  },
-  "homepage": "https://portfolio-5919e.firebaseapp.com",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+	"name": "portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"firebase": "^5.0.4",
+		"firebaseui": "^3.0.0",
+		"prop-types": "^15.6.1",
+		"react": "^15.5.4",
+		"react-dom": "^15.5.4",
+		"react-firebaseui": "^3.0.4",
+		"react-router-dom": "^4.3.1",
+		"styled-components": "^3.4.2"
+	},
+	"devDependencies": {
+		"react-scripts": "1.0.7"
+	},
+	"homepage": "https://portfolio-5919e.firebaseapp.com",
+	"scripts": {
+		"start": "PORT=3003 react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	}
 }

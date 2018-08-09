@@ -31,7 +31,7 @@ class MotW extends Component {
     // })
   }
 
-  updateScore({ match, type, number }) {
+  updateScore({ match, type, number, teams }) {
     let parsed = parseInt(number, 10)
     if (isNaN(parsed) || !Number.isInteger(parsed)) return
     if (!Object.keys(this.props.users).includes(this.props.number)) return
@@ -43,7 +43,7 @@ class MotW extends Component {
   }
 
   render() {
-    const { number } = this.props
+    const { teams, number } = this.props
     const motw = Object.keys(this.props.motw).map(m => ({
       ...this.props.motw[m],
       key: m
@@ -52,8 +52,10 @@ class MotW extends Component {
       sortAlphabetically(a.name, b.name)
     )
     return (
-      <Container>
-        <h2>Match of the Week</h2>
+      <div>
+        <h2 style={{ textAlign: 'center', padding: '12px' }}>
+          Match of the Week
+        </h2>
         <br />
         {motw
           .filter(m => !m.homeResult || !m.awayResult)
@@ -62,11 +64,12 @@ class MotW extends Component {
               key={m.key}
               match={m}
               users={users}
+              teams={teams}
               number={number}
               updateScore={this.updateScore}
             />
           ))}
-      </Container>
+      </div>
     )
   }
 }
@@ -74,13 +77,8 @@ class MotW extends Component {
 MotW.propTypes = {
   motw: PropTypes.object.isRequired,
   users: PropTypes.object.isRequired,
+  teams: PropTypes.object.isRequired,
   database: PropTypes.object.isRequired
 }
 
 export default MotW
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-`

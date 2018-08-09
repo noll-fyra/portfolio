@@ -199,7 +199,7 @@ class Root extends Component {
                   )}
                 />
 
-                <div style={{ padding: 12 }}>
+                <div>
                   <Switch>
                     {/* <Route
                       exact

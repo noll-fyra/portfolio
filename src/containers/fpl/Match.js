@@ -17,13 +17,17 @@ class Match extends Component {
   }
 
   render() {
-    const { match, users } = this.props
+    const { match, users, teams } = this.props
     return (
       <div key={match.key}>
         <h3>GW {match.gameWeek}</h3>
         <br />
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <b>{match.homeTeam}</b>
+          <b>{teams[match.homeTeam].name}</b>
+          <img
+            src={teams[match.homeTeam].logo}
+            style={{ width: '48px', height: '48px', objectFit: 'contain' }}
+          />
           <input
             type="number"
             value={this.state.home}
@@ -48,7 +52,11 @@ class Match extends Component {
               fontSize: '1.5em'
             }}
           />
-          <b>{match.awayTeam}</b>
+          <b>{teams[match.awayTeam].name}</b>
+          <img
+            src={teams[match.awayTeam].logo}
+            style={{ width: '48px', height: '48px', objectFit: 'contain' }}
+          />
         </div>
 
         <div>
@@ -66,11 +74,12 @@ class Match extends Component {
   }
 }
 
-export default Match
-
 Match.propTypes = {
   match: PropTypes.object.isRequired,
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  teams: PropTypes.object.isRequired,
   number: PropTypes.string.isRequired,
   updateScore: PropTypes.func.isRequired
 }
+
+export default Match

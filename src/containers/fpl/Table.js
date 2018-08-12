@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { sortAlphabetically } from '../../utilities/format'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 class Table extends Component {
   constructor(props) {
@@ -25,7 +25,10 @@ class Table extends Component {
     }
   }
   render() {
-    const { motw, teams } = this.props
+    const {
+      motw
+      // teams
+    } = this.props
     const users = Object.values(this.props.users).reduce((obj, u) => {
       obj[u.number] = { ...u, points: 0 }
       return obj
@@ -48,17 +51,77 @@ class Table extends Component {
     }, users)
     return (
       <div>
-        <h2>Table</h2>
-        <div>
+        <h2 style={{ textAlign: 'center', padding: '12px' }}>Table</h2>
+
+        <br />
+
+        <div
+          style={{
+            margin: '12px',
+            border: `1px solid lightGrey`,
+            borderRadius: '8px',
+            padding: `12px 0`
+          }}>
           {Object.values(table)
             .sort(
               (a, b) =>
                 b.points - a.points || sortAlphabetically(a.name, b.name)
             )
-            .map(u => (
-              <div key={u.number}>
-                <b>{u.name}</b>
-                <span>{u.points}</span>
+            .map((u, index) => (
+              <div
+                key={u.number}
+                style={{
+                  display: 'flex',
+                  padding: '4px 12px',
+                  alignItems: 'center'
+                }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '15%'
+                  }}>
+                  <h3>{index + 1}</h3>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    width: '55%'
+                  }}>
+                  <h3>{u.name[0].toUpperCase().concat(u.name.slice(1))}</h3>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '15%'
+                  }}>
+                  <h3>{u.points}</h3>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '15%'
+                  }}>
+                  <h3>
+                    {index === 0
+                      ? '$50'
+                      : index === 1
+                        ? '$20'
+                        : index === 2
+                          ? '$10'
+                          : ''}
+                  </h3>
+                </div>
               </div>
             ))}
         </div>

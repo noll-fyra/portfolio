@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Match from './Match'
+import CurrentMatch from './CurrentMatch'
+import Result from './Result'
 import { sortAlphabetically } from '../../utilities/format'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 class MotW extends Component {
   constructor(props) {
@@ -51,16 +52,33 @@ class MotW extends Component {
     const users = Object.values(this.props.users).sort((a, b) =>
       sortAlphabetically(a.name, b.name)
     )
+    const currentMatch = motw
+      .filter(m => !m.homeResult || !m.awayResult)
+      .filter(m => Date.now() - 2 * 60 * 60 * 1000 <= new Date(m.date))
+
+    const results = motw
+      .filter(
+        m =>
+          typeof m.homeResult !== 'undefined' &&
+          typeof m.awayResult !== 'undefined'
+      )
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+
     return (
       <div>
         <h2 style={{ textAlign: 'center', padding: '12px' }}>
           Match of the Week
         </h2>
+
         <br />
-        {motw
-          .filter(m => !m.homeResult || !m.awayResult)
-          .map(m => (
-            <Match
+
+        {currentMatch.length === 0 ? (
+          <div style={{ textAlign: 'center' }}>
+            <b>The Match of the Week will appear here</b>
+          </div>
+        ) : (
+          currentMatch.map(m => (
+            <CurrentMatch
               key={m.key}
               match={m}
               users={users}
@@ -68,7 +86,31 @@ class MotW extends Component {
               number={number}
               updateScore={this.updateScore}
             />
-          ))}
+          ))
+        )}
+
+        <br />
+
+        <h2 style={{ textAlign: 'center', padding: '12px' }}>Results</h2>
+
+        <br />
+
+        {results.length === 0 ? (
+          <div style={{ textAlign: 'center' }}>
+            <b>Results will appear here</b>
+          </div>
+        ) : (
+          <div
+            style={{
+              border: `1px solid lightGrey`,
+              margin: `12px`,
+              marginTop: 0
+            }}>
+            {results.map(m => (
+              <Result key={m.key} match={m} users={users} teams={teams} />
+            ))}
+          </div>
+        )}
       </div>
     )
   }

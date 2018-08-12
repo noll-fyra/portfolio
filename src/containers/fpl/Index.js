@@ -37,6 +37,7 @@ class Index extends Component {
           }}>
           {['matches', 'table'].map(tab => (
             <div
+              key={tab}
               style={{
                 padding: '12px',
                 width: '50%',
@@ -88,6 +89,6 @@ export default Index
 
 const Container = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 `

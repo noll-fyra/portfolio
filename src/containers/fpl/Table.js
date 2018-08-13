@@ -57,7 +57,7 @@ class Table extends Component {
 
         <div
           style={{
-            margin: '12px',
+            margin: '0 12px',
             border: `1px solid lightGrey`,
             borderRadius: '8px',
             padding: `12px 0`

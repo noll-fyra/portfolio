@@ -55,7 +55,7 @@ class Result extends Component {
             }}>
             <b>{match.homeResult}</b>
             <span>&nbsp;-&nbsp;</span>
-            <b>{match.homeResult}</b>
+            <b>{match.awayResult}</b>
           </div>
 
           <div

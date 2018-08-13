@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CurrentMatch from './CurrentMatch'
+import AddMatch from './AddMatch'
 import Result from './Result'
 import { sortAlphabetically } from '../../utilities/format'
 // import styled from 'styled-components'
@@ -44,7 +45,7 @@ class MotW extends Component {
   }
 
   render() {
-    const { teams, number } = this.props
+    const { teams, number, database } = this.props
     const motw = Object.keys(this.props.motw).map(m => ({
       ...this.props.motw[m],
       key: m
@@ -87,6 +88,17 @@ class MotW extends Component {
               updateScore={this.updateScore}
             />
           ))
+        )}
+
+        <br />
+
+        {(number === '+6587427184' || number === '') && (
+          <AddMatch
+            teams={teams}
+            motw={motw}
+            users={this.props.users}
+            database={database}
+          />
         )}
 
         <br />

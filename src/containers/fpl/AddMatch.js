@@ -11,9 +11,10 @@ class AddMatch extends Component {
       away: '',
       gameWeek: props.motw.length + 1,
       year: new Date(Date.now()).getFullYear(),
-      month: 0,
+      month: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).getMonth() + 1,
       day: 0,
-      time: 0
+      hour: 0,
+      minutes: 0
     }
     this.addMatch = this.addMatch.bind(this)
   }
@@ -33,8 +34,8 @@ class AddMatch extends Component {
       date: `${this.state.year}-${this.padTime(
         this.state.month
       )}-${this.padTime(this.state.day)}T${this.padTime(
-        this.state.time
-      )}:00:00+08:00`,
+        this.state.hour
+      )}:${this.padTime(this.state.minutes)}:00+08:00`,
       users: Object.keys(this.props.users).reduce((obj, key) => {
         obj[key] = { home: 2, away: 0 }
         return obj
@@ -64,7 +65,16 @@ class AddMatch extends Component {
           border: `1px solid lightGrey`,
           borderRadius: '8px'
         }}>
-        <h2 style={{ textAlign: 'center' }}>Add GW{motw.length + 1} Match</h2>
+        <div
+          style={{
+            textAlign: 'center',
+            borderBottom: `1px solid lightGrey`,
+            padding: '4px',
+            fontWeight: 'bold'
+          }}>
+          Add GW{motw.length + 1} Match
+        </div>
+        <br />
         <div
           style={{
             display: 'flex',
@@ -108,7 +118,8 @@ class AddMatch extends Component {
                     width: '90%',
                     fontSize: '1em',
                     border: `1px solid lightGrey`,
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    padding: '8px'
                   }}
                   type="text"
                   placeholder="Filter home team"
@@ -196,7 +207,8 @@ class AddMatch extends Component {
                     width: '90%',
                     fontSize: '1em',
                     border: `1px solid lightGrey`,
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    padding: '8px'
                   }}
                   type="text"
                   placeholder="Filter away team"
@@ -249,44 +261,55 @@ class AddMatch extends Component {
           </div>
         </div>
 
+        <br />
+
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ width: '25%', display: 'flex', alignItems: 'center' }}>
-            <span>Year</span>
+          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
+            <span>YY</span>
             <input
-              style={{ width: '50%' }}
+              style={{ width: '75%' }}
               type="number"
               value={this.state.year}
               onChange={e => this.setState({ year: e.target.value })}
             />
           </div>
 
-          <div style={{ width: '25%', display: 'flex', alignItems: 'center' }}>
-            <span>Month</span>
+          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
+            <span>MM</span>
             <input
-              style={{ width: '50%' }}
+              style={{ width: '75%' }}
               type="number"
               value={this.state.month}
               onChange={e => this.setState({ month: e.target.value })}
             />
           </div>
 
-          <div style={{ width: '25%', display: 'flex', alignItems: 'center' }}>
-            <span>Day</span>
+          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
+            <span>DD</span>
             <input
-              style={{ width: '50%' }}
+              style={{ width: '75%' }}
               type="number"
               value={this.state.day}
               onChange={e => this.setState({ day: e.target.value })}
             />
           </div>
 
-          <div style={{ width: '25%', display: 'flex', alignItems: 'center' }}>
-            <span>Time</span>
+          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
+            <span>hh</span>
             <input
-              style={{ width: '50%' }}
+              style={{ width: '75%' }}
               type="number"
-              value={this.state.time}
-              onChange={e => this.setState({ time: e.target.value })}
+              value={this.state.hour}
+              onChange={e => this.setState({ hour: e.target.value })}
+            />
+          </div>
+          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
+            <span>mm</span>
+            <input
+              style={{ width: '75%' }}
+              type="number"
+              value={this.state.minutes}
+              onChange={e => this.setState({ minutes: e.target.value })}
             />
           </div>
         </div>

@@ -5,11 +5,13 @@ class Result extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      homeResult: props.match.homeResult,
+      awayResult: props.match.awayResult,
       expanded: false
     }
   }
   render() {
-    const { match, users, teams } = this.props
+    const { match, users, teams, number, updateResult } = this.props
     return (
       <div
         style={{ cursor: 'pointer' }}
@@ -53,9 +55,43 @@ class Result extends Component {
               alignItems: 'center',
               width: '25%'
             }}>
-            <b>{match.homeResult}</b>
+            {number === '+6587427184' || number === '+6597918284' ? (
+              <input
+                type="text"
+                value={this.state.homeResult}
+                style={{ width: '24px' }}
+                onChange={e => {
+                  this.setState({ homeResult: e.target.value })
+                  updateResult({
+                    match: match.key,
+                    type: 'homeResult',
+                    number: e.target.value
+                  })
+                }}
+              />
+            ) : (
+              <b>{match.homeResult}</b>
+            )}
+
             <span>&nbsp;-&nbsp;</span>
-            <b>{match.awayResult}</b>
+
+            {number === '+6587427184' || number === '+6597918284' ? (
+              <input
+                type="text"
+                value={this.state.awayResult}
+                style={{ width: '24px' }}
+                onChange={e => {
+                  this.setState({ awayResult: e.target.value })
+                  updateResult({
+                    match: match.key,
+                    type: 'awayResult',
+                    number: e.target.value
+                  })
+                }}
+              />
+            ) : (
+              <b>{match.homeResult}</b>
+            )}
           </div>
 
           <div
@@ -116,7 +152,9 @@ class Result extends Component {
 Result.propTypes = {
   match: PropTypes.object.isRequired,
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  teams: PropTypes.object.isRequired
+  teams: PropTypes.object.isRequired,
+  number: PropTypes.string.isRequired,
+  updateResult: PropTypes.func.isRequired
 }
 
 export default Result

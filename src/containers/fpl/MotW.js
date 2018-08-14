@@ -14,6 +14,7 @@ class MotW extends Component {
       away: 0
     }
     this.updateScore = this.updateScore.bind(this)
+    this.updateResult = this.updateResult.bind(this)
   }
 
   componentDidMount() {
@@ -44,6 +45,16 @@ class MotW extends Component {
     }
   }
 
+  updateResult({ match, type, number }) {
+    let parsed = parseInt(number, 10)
+    if (isNaN(parsed) || !Number.isInteger(parsed)) return
+    if (!!match && !!type) {
+      this.props.database
+        .ref(`/fpl/1819/motw/${match}/`)
+        .update({ [type]: parsed })
+    }
+  }
+
   render() {
     const { teams, number, database } = this.props
     const motw = Object.keys(this.props.motw).map(m => ({
@@ -58,11 +69,7 @@ class MotW extends Component {
       .filter(m => Date.now() - 2 * 60 * 60 * 1000 <= new Date(m.date))
 
     const results = motw
-      .filter(
-        m =>
-          typeof m.homeResult !== 'undefined' &&
-          typeof m.awayResult !== 'undefined'
-      )
+      .filter(m => Date.now() - 2 * 60 * 60 * 1000 > new Date(m.date))
       .sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return (
@@ -92,7 +99,7 @@ class MotW extends Component {
 
         <br />
 
-        {(number === '+6587427184' || number === '') && (
+        {(number === '+6587427184' || number === '+6597918284') && (
           <AddMatch
             teams={teams}
             motw={motw}
@@ -119,7 +126,14 @@ class MotW extends Component {
               marginTop: 0
             }}>
             {results.map(m => (
-              <Result key={m.key} match={m} users={users} teams={teams} />
+              <Result
+                key={m.key}
+                match={m}
+                users={users}
+                teams={teams}
+                number={number}
+                updateResult={this.updateResult}
+              />
             ))}
           </div>
         )}
@@ -132,6 +146,7 @@ MotW.propTypes = {
   motw: PropTypes.object.isRequired,
   users: PropTypes.object.isRequired,
   teams: PropTypes.object.isRequired,
+  number: PropTypes.string.isRequired,
   database: PropTypes.object.isRequired
 }
 

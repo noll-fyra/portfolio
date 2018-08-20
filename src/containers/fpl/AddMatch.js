@@ -33,9 +33,9 @@ class AddMatch extends Component {
       awayTeam: this.state.away,
       date: `${this.state.year}-${this.padTime(
         this.state.month
-      )}-${this.padTime(this.state.day)}T${this.padTime(
-        this.state.hour
-      )}:${this.padTime(this.state.minutes)}:00+08:00`,
+      )}-${this.padTime(parseInt(this.state.day, 10))}T${this.padTime(
+        parseInt(this.state.hour, 10)
+      )}:${this.padTime(parseInt(this.state.minutes, 10))}:00+08:00`,
       users: Object.keys(this.props.users).reduce((obj, key) => {
         obj[key] = { home: 2, away: 0 }
         return obj
@@ -263,56 +263,61 @@ class AddMatch extends Component {
 
         <br />
 
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
-            <span>YY</span>
-            <input
-              style={{ width: '75%' }}
-              type="number"
-              value={this.state.year}
-              onChange={e => this.setState({ year: e.target.value })}
-            />
-          </div>
-
-          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
-            <span>MM</span>
-            <input
-              style={{ width: '75%' }}
-              type="number"
-              value={this.state.month}
-              onChange={e => this.setState({ month: e.target.value })}
-            />
-          </div>
-
-          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
-            <span>DD</span>
-            <input
-              style={{ width: '75%' }}
-              type="number"
-              value={this.state.day}
-              onChange={e => this.setState({ day: e.target.value })}
-            />
-          </div>
-
-          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
-            <span>hh</span>
-            <input
-              style={{ width: '75%' }}
-              type="number"
-              value={this.state.hour}
-              onChange={e => this.setState({ hour: e.target.value })}
-            />
-          </div>
-          <div style={{ width: '20%', display: 'flex', alignItems: 'center' }}>
-            <span>mm</span>
-            <input
-              style={{ width: '75%' }}
-              type="number"
-              value={this.state.minutes}
-              onChange={e => this.setState({ minutes: e.target.value })}
-            />
-          </div>
-        </div>
+        <table style={{ maxWidth: '100%' }}>
+          <thead>
+            <tr style={{ width: '100%' }}>
+              <th style={{ width: '20%' }}>Year</th>
+              <th style={{ width: '20%' }}>Month</th>
+              <th style={{ width: '20%' }}>Day</th>
+              <th style={{ width: '20%' }}>Hour</th>
+              <th style={{ width: '20%' }}>Minutes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style={{ width: '100%' }}>
+              <td style={{ width: '20%' }}>
+                <input
+                  style={{ width: '100%', textAlign: 'center' }}
+                  type="text"
+                  value={this.state.year}
+                  onChange={e => this.setState({ year: e.target.value })}
+                />
+              </td>
+              <td style={{ width: '20%' }}>
+                <input
+                  style={{ width: '100%', textAlign: 'center' }}
+                  type="text"
+                  value={this.state.month}
+                  onChange={e => this.setState({ month: e.target.value })}
+                />
+              </td>
+              <td style={{ width: '20%' }}>
+                <input
+                  style={{ width: '100%', textAlign: 'center' }}
+                  type="text"
+                  value={this.state.day}
+                  onChange={e => this.setState({ day: e.target.value })}
+                />
+              </td>
+              <td style={{ width: '20%' }}>
+                <input
+                  style={{ width: '100%', textAlign: 'center' }}
+                  type="text"
+                  value={this.state.hour}
+                  onChange={e => this.setState({ hour: e.target.value })}
+                />
+              </td>
+              <td style={{ width: '20%' }}>
+                <input
+                  style={{ width: '100%', textAlign: 'center' }}
+                  type="text"
+                  value={this.state.minutes}
+                  onChange={e => this.setState({ minutes: e.target.value })}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <br />
         <div

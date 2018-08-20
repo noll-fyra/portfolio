@@ -59,7 +59,12 @@ class Result extends Component {
               <input
                 type="text"
                 value={this.state.homeResult}
-                style={{ width: '24px' }}
+                style={{
+                  width: '24px',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '1em'
+                }}
                 onChange={e => {
                   this.setState({ homeResult: e.target.value })
                   updateResult({
@@ -79,7 +84,12 @@ class Result extends Component {
               <input
                 type="text"
                 value={this.state.awayResult}
-                style={{ width: '24px' }}
+                style={{
+                  width: '24px',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '1em'
+                }}
                 onChange={e => {
                   this.setState({ awayResult: e.target.value })
                   updateResult({

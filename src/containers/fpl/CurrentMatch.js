@@ -111,7 +111,7 @@ class CurrentMatch extends Component {
                 justifyContent: 'space-around'
               }}>
               <input
-                type="number"
+                type="text"
                 value={this.state.home}
                 onChange={e =>
                   this.updateScore({ type: 'home', number: e.target.value })
@@ -120,11 +120,12 @@ class CurrentMatch extends Component {
                   border: '1px solid lightGrey',
                   width: '48px',
                   height: '48px',
-                  fontSize: '2em'
+                  fontSize: '2em',
+                  textAlign: 'center'
                 }}
               />
               <input
-                type="number"
+                type="text"
                 value={this.state.away}
                 onChange={e =>
                   this.updateScore({ type: 'away', number: e.target.value })
@@ -133,7 +134,8 @@ class CurrentMatch extends Component {
                   border: '1px solid lightGrey',
                   width: '48px',
                   height: '48px',
-                  fontSize: '2em'
+                  fontSize: '2em',
+                  textAlign: 'center'
                 }}
               />
             </div>

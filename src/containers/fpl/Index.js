@@ -18,14 +18,14 @@ class Index extends Component {
     const teams = data.teams
     return (
       <main>
-        <h1
+        <h2
           style={{
             textAlign: 'center',
             // borderBottom: '1px solid purple',
             padding: '12px'
           }}>
           Fantasy Premier League
-        </h1>
+        </h2>
 
         <div
           style={{
@@ -43,7 +43,7 @@ class Index extends Component {
                 width: '50%',
                 maxWidth: '200px',
                 cursor: 'pointer',
-                backgroundColor: this.state.active === tab ? 'white' : '',
+                backgroundColor: this.state.active === tab ? 'gold' : '',
                 textAlign: 'center'
               }}
               onClick={() => this.setState({ active: tab })}>

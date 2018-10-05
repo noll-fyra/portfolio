@@ -10,7 +10,9 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
 import 'firebase/storage'
+import axios from 'axios'
 // import * as firebaseui from 'firebaseui'
+// import App from '../components/app/App'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import Polls from './worldCup/Polls'
 import Table from './worldCup/Table'
@@ -43,7 +45,8 @@ class Root extends Component {
     this.state = {
       data: {},
       number: null,
-      hidden: true
+      hidden: true,
+      fplData: {}
     }
     this.removeNumber = this.removeNumber.bind(this)
     this.unregisterAuthObserver = null
@@ -108,6 +111,44 @@ class Root extends Component {
         })
       }
     })
+
+    const path =
+      'https://fantasy.premierleague.com/drf/leagues-classic-standings/181651'
+
+    // fetch(myRequest)
+    //   .then(res => res.body)
+    //   .then(resp => console.log(resp))
+
+    // $(document).ready(function () {
+    axios
+      .get(
+        'https://allorigins.me/get?url=' +
+          encodeURIComponent(path) +
+          '&callback=?'
+      )
+      .then(res => {
+        let data = JSON.parse(
+          JSON.parse(
+            res.data.split("typeof  === 'function' && (")[1].split(');')[0]
+          ).contents
+        )
+        console.log(data)
+        this.setState({ fplData: data })
+      })
+      .catch(err => console.error(err))
+    // }
+
+    // axios
+    //   .get(
+    //     `http://www.whateverorigin.org/get?url=${encodeURIComponent(
+    //       path
+    //     )}&callback=?`
+    //   )
+    //   .then(res => {
+    //     console.log(res)
+    //     this.setState({ fplData: res.data })
+    //   })
+    //   .catch(err => console.error(err))
   }
 
   componentWillUnmount() {
@@ -201,11 +242,7 @@ class Root extends Component {
 
                 <div>
                   <Switch>
-                    {/* <Route
-                      exact
-                      path="/"
-                      render={() => <Redirect to="/polls" />}
-                    /> */}
+                    {/* <Route exact path="/" render={() => <App />} /> */}
                     <Route
                       path="/fpl"
                       render={() => (
@@ -213,6 +250,7 @@ class Root extends Component {
                           data={this.state.data.fpl['1819']}
                           database={database}
                           number={this.state.number}
+                          fplData={this.state.fplData}
                         />
                       )}
                     />

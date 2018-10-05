@@ -100,7 +100,7 @@ class Result extends Component {
                 }}
               />
             ) : (
-              <b>{match.homeResult}</b>
+              <b>{match.awayResult}</b>
             )}
           </div>
 

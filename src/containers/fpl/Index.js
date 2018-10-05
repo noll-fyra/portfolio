@@ -12,7 +12,7 @@ class Index extends Component {
     }
   }
   render() {
-    const { data, database, number } = this.props
+    const { data, database, number, fplData } = this.props
     const users = data.users
     const motw = data.motw
     const teams = data.teams
@@ -71,7 +71,7 @@ class Index extends Component {
 
         {this.state.active === 'table' && (
           <Container>
-            <Table motw={motw} users={users} teams={teams} />
+            <Table motw={motw} users={users} teams={teams} fplData={fplData} />
           </Container>
         )}
       </main>
@@ -82,7 +82,8 @@ class Index extends Component {
 Index.propTypes = {
   data: PropTypes.object.isRequired,
   database: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired
+  number: PropTypes.string.isRequired,
+  fplData: PropTypes.object.isRequired
 }
 
 export default Index

@@ -18,7 +18,8 @@
 }
 
 @keyframes balloons {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(-4deg);
   }
   50% {
@@ -27,7 +28,7 @@
 }
 
 .balloon:before {
-  content: "▲";
+  content: '▲';
   font-size: 20px;
   color: hsl(215, 30%, 50%);
   display: block;
@@ -45,7 +46,7 @@
   height: 250px;
   width: 1px;
   margin: 0 auto;
-  content: "";
+  content: '';
   background: rgba(0, 0, 0, 0.2);
 }
 
@@ -127,7 +128,7 @@
   }
 
   .balloon:before {
-    content: "▲";
+    content: '▲';
     font-size: 8px;
     bottom: -8px;
   }

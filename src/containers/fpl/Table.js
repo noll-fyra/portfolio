@@ -24,9 +24,58 @@ class Table extends Component {
         return 0
     }
   }
+
+  calculateAmountEarned(table, index) {
+    let rankObject = Object.values(table).reduce((obj, u) => {
+      obj[u.points] = (obj[u.points] || 0) + 1
+      return obj
+    }, {})
+    let rankCount = Object.keys(rankObject)
+      .map((o, i) => ({ value: o, index: i }))
+      .sort((a, b) => b.value - a.value)
+      .map(m => Object.values(rankObject)[m.index])
+
+    if (index === 0) {
+      switch (rankCount[0]) {
+        case 1:
+          return 50
+        case 2:
+          return (50 + 20) / 2
+        default:
+          return (50 + 20 + 10) / rankCount[0]
+      }
+    } else if (index === 1) {
+      switch (true) {
+        case rankCount[0] === 1 && rankCount[1] === 1:
+          return 20
+        case rankCount[0] === 2:
+          return (50 + 20) / 2
+        case rankCount[0] > 2:
+          return (50 + 20 + 10) / rankCount[0]
+        default:
+          return (20 + 10) / rankCount[1]
+      }
+    } else if (index === 2) {
+      switch (true) {
+        case rankCount[0] === 1 && rankCount[1] === 1 && rankCount[2] === 1:
+        case rankCount[0] === 2 && rankCount[1] === 1:
+          return 10
+        case rankCount[0] === 1 && rankCount[1] === 2:
+          return (20 + 10) / 2
+        case rankCount[0] > 2:
+          return (50 + 20 + 10) / rankCount[0]
+        default:
+          return 0
+      }
+    } else {
+      return 0
+    }
+  }
+
   render() {
     const {
-      motw
+      motw,
+      fplData
       // teams
     } = this.props
     const users = Object.values(this.props.users).reduce((obj, u) => {
@@ -51,7 +100,7 @@ class Table extends Component {
     }, users)
     return (
       <div>
-        <h2 style={{ textAlign: 'center', padding: '12px' }}>Table</h2>
+        <h2 style={{ textAlign: 'center', padding: '12px' }}>MotW Table</h2>
 
         <br />
 
@@ -113,17 +162,48 @@ class Table extends Component {
                     width: '15%'
                   }}>
                   <h3>
-                    {index === 0
+                    {this.calculateAmountEarned(table, index)}
+                    {/* {index === 0
                       ? '$50'
                       : index === 1
                         ? '$20'
                         : index === 2
                           ? '$10'
-                          : ''}
+                          : ''} */}
                   </h3>
                 </div>
               </div>
             ))}
+        </div>
+
+        <h2 style={{ textAlign: 'center', padding: '12px' }}>FPL Table</h2>
+        <div>
+          {Object.keys(fplData).length > 0 && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  {/* <th>Player</th> */}
+                  <th>Total</th>
+                  <th>Earned</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fplData.standings.results
+                  .sort((a, b) => a.rank - b.rank)
+                  .map(r => (
+                    <tr key={r.id}>
+                      <td>{r.rank}</td>
+                      <td>{r.entry_name}</td>
+                      {/* <td>{r.id}</td> */}
+                      <td>{r.total}</td>
+                      <td>-</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     )
@@ -133,7 +213,8 @@ class Table extends Component {
 Table.propTypes = {
   motw: PropTypes.object.isRequired,
   users: PropTypes.object.isRequired,
-  teams: PropTypes.object.isRequired
+  teams: PropTypes.object.isRequired,
+  fplData: PropTypes.object.isRequired
 }
 
 export default Table

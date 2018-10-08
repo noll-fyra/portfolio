@@ -132,7 +132,7 @@ class Root extends Component {
             res.data.split("typeof  === 'function' && (")[1].split(');')[0]
           ).contents
         )
-        console.log(data)
+        // console.log(data)
         this.setState({ fplData: data })
       })
       .catch(err => console.error(err))

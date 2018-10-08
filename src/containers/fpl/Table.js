@@ -3,6 +3,12 @@ import PropTypes from 'prop-types'
 import { sortAlphabetically } from '../../utilities/format'
 // import styled from 'styled-components'
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
+
 class Table extends Component {
   constructor(props) {
     super(props)
@@ -70,6 +76,15 @@ class Table extends Component {
     } else {
       return 0
     }
+  }
+
+  calculateCashEarned(array, index) {
+    let earned = 0
+    array.forEach((num, i) => {
+      let difference = array[index].total - array[i].total
+      earned += difference / 100
+    })
+    return earned
   }
 
   render() {
@@ -175,34 +190,90 @@ class Table extends Component {
               </div>
             ))}
         </div>
-
+        <br />
+        <br />
+        <br />
         <h2 style={{ textAlign: 'center', padding: '12px' }}>FPL Table</h2>
+        <br />
         <div>
           {Object.keys(fplData).length > 0 && (
-            <table>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Team</th>
-                  {/* <th>Player</th> */}
-                  <th>Total</th>
-                  <th>Earned</th>
-                </tr>
-              </thead>
-              <tbody>
-                {fplData.standings.results
-                  .sort((a, b) => a.rank - b.rank)
-                  .map(r => (
-                    <tr key={r.id}>
-                      <td>{r.rank}</td>
-                      <td>{r.entry_name}</td>
-                      {/* <td>{r.id}</td> */}
-                      <td>{r.total}</td>
-                      <td>-</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <div
+              style={{
+                margin: '0 12px',
+                border: `1px solid lightGrey`,
+                borderRadius: '8px',
+                padding: `12px 0`
+              }}>
+              {fplData.standings.results
+                .sort((a, b) => a.rank - b.rank)
+                .map((r, i) => (
+                  <div
+                    key={r.id}
+                    style={{
+                      display: 'flex',
+                      padding: '4px 12px',
+                      alignItems: 'center'
+                    }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '15%'
+                      }}>
+                      <h3>{r.rank}</h3>
+                    </div>
+
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        width: '55%'
+                      }}>
+                      <h3>
+                        {Object.values(this.props.users)
+                          .filter(u => u.team_id === r.id)[0]
+                          .name[0].toUpperCase()
+                          .concat(
+                            Object.values(this.props.users)
+                              .filter(u => u.team_id === r.id)[0]
+                              .name.slice(1)
+                          )}
+                      </h3>
+                    </div>
+
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '15%'
+                      }}>
+                      <h3>{r.total}</h3>
+                    </div>
+
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '15%'
+                      }}>
+                      <h3>
+                        {formatter.format(
+                          this.calculateCashEarned(
+                            fplData.standings.results.sort(
+                              (a, b) => a.rank - b.rank
+                            ),
+                            i
+                          )
+                        )}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+            </div>
           )}
         </div>
       </div>

@@ -144,7 +144,7 @@ class Table extends Component {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: '15%'
+                    width: '10%'
                   }}>
                   <h3>{index + 1}</h3>
                 </div>
@@ -154,7 +154,7 @@ class Table extends Component {
                     display: 'flex',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
-                    width: '55%'
+                    width: '50%'
                   }}>
                   <h3>{u.name[0].toUpperCase().concat(u.name.slice(1))}</h3>
                 </div>
@@ -164,7 +164,7 @@ class Table extends Component {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: '15%'
+                    width: '20%'
                   }}>
                   <h3>{u.points}</h3>
                 </div>
@@ -174,7 +174,7 @@ class Table extends Component {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: '15%'
+                    width: '20%'
                   }}>
                   <h3>
                     {this.calculateAmountEarned(table, index)}
@@ -219,7 +219,7 @@ class Table extends Component {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width: '15%'
+                        width: '10%'
                       }}>
                       <h3>{r.rank}</h3>
                     </div>
@@ -229,7 +229,7 @@ class Table extends Component {
                         display: 'flex',
                         justifyContent: 'flex-start',
                         alignItems: 'center',
-                        width: '55%'
+                        width: '50%'
                       }}>
                       <h3>
                         {Object.values(this.props.users)
@@ -248,7 +248,7 @@ class Table extends Component {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width: '15%'
+                        width: '20%'
                       }}>
                       <h3>{r.total}</h3>
                     </div>
@@ -258,7 +258,7 @@ class Table extends Component {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width: '15%'
+                        width: '20%'
                       }}>
                       <h3>
                         {formatter.format(

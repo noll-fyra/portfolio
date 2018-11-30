@@ -1,90 +1,92 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { sortAlphabetically } from '../../utilities/format'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { sortAlphabetically } from "../../utilities/format";
 // import styled from 'styled-components'
 
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
   minimumFractionDigits: 2
-})
+});
 
 class Table extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
-    this.compareResultAndPrediction = this.compareResultAndPrediction.bind(this)
+    super(props);
+    this.state = {};
+    this.compareResultAndPrediction = this.compareResultAndPrediction.bind(
+      this
+    );
   }
   compareResultAndPrediction(result, prediction) {
     switch (true) {
       case result.home === prediction.home && result.away === prediction.away:
-        return 2
+        return 2;
       case result.home - result.away > 0 &&
         prediction.home - prediction.away > 0:
       case result.home - result.away === 0 &&
         prediction.home - prediction.away === 0:
       case result.home - result.away < 0 &&
         prediction.home - prediction.away < 0:
-        return 1
+        return 1;
       default:
-        return 0
+        return 0;
     }
   }
 
   calculateAmountEarned(table, index) {
     let rankObject = Object.values(table).reduce((obj, u) => {
-      obj[u.points] = (obj[u.points] || 0) + 1
-      return obj
-    }, {})
+      obj[u.points] = (obj[u.points] || 0) + 1;
+      return obj;
+    }, {});
     let rankCount = Object.keys(rankObject)
       .map((o, i) => ({ value: o, index: i }))
       .sort((a, b) => b.value - a.value)
-      .map(m => Object.values(rankObject)[m.index])
+      .map(m => Object.values(rankObject)[m.index]);
 
     if (index === 0) {
       switch (rankCount[0]) {
         case 1:
-          return 50
+          return 50;
         case 2:
-          return (50 + 20) / 2
+          return (50 + 20) / 2;
         default:
-          return (50 + 20 + 10) / rankCount[0]
+          return (50 + 20 + 10) / rankCount[0];
       }
     } else if (index === 1) {
       switch (true) {
         case rankCount[0] === 1 && rankCount[1] === 1:
-          return 20
+          return 20;
         case rankCount[0] === 2:
-          return (50 + 20) / 2
+          return (50 + 20) / 2;
         case rankCount[0] > 2:
-          return (50 + 20 + 10) / rankCount[0]
+          return (50 + 20 + 10) / rankCount[0];
         default:
-          return (20 + 10) / rankCount[1]
+          return (20 + 10) / rankCount[1];
       }
     } else if (index === 2) {
       switch (true) {
         case rankCount[0] === 1 && rankCount[1] === 1 && rankCount[2] === 1:
         case rankCount[0] === 2 && rankCount[1] === 1:
-          return 10
+          return 10;
         case rankCount[0] === 1 && rankCount[1] === 2:
-          return (20 + 10) / 2
+          return (20 + 10) / 2;
         case rankCount[0] > 2:
-          return (50 + 20 + 10) / rankCount[0]
+          return (50 + 20 + 10) / rankCount[0];
         default:
-          return 0
+          return 0;
       }
     } else {
-      return 0
+      return 0;
     }
   }
 
   calculateCashEarned(array, index) {
-    let earned = 0
+    let earned = 0;
     array.forEach((num, i) => {
-      let difference = array[index].total - array[i].total
-      earned += difference / 100
-    })
-    return earned
+      let difference = array[index].total - array[i].total;
+      earned += difference / 50;
+    });
+    return earned;
   }
 
   render() {
@@ -92,11 +94,11 @@ class Table extends Component {
       motw,
       fplData
       // teams
-    } = this.props
+    } = this.props;
     const users = Object.values(this.props.users).reduce((obj, u) => {
-      obj[u.number] = { ...u, points: 0 }
-      return obj
-    }, {})
+      obj[u.number] = { ...u, points: 0 };
+      return obj;
+    }, {});
     const table = Object.values(motw).reduce((obj, m) => {
       // if (
       //   typeof m.homeResult !== undefined &&
@@ -108,24 +110,25 @@ class Table extends Component {
           this.compareResultAndPrediction(
             { home: m.homeResult, away: m.awayResult },
             m.users[user]
-          )
+          );
       }
       // }
-      return obj
-    }, users)
+      return obj;
+    }, users);
     return (
       <div>
-        <h2 style={{ textAlign: 'center', padding: '12px' }}>MotW Table</h2>
+        <h2 style={{ textAlign: "center", padding: "12px" }}>MotW Table</h2>
 
         <br />
 
         <div
           style={{
-            margin: '0 12px',
+            margin: "0 12px",
             border: `1px solid lightGrey`,
-            borderRadius: '8px',
+            borderRadius: "8px",
             padding: `12px 0`
-          }}>
+          }}
+        >
           {Object.values(table)
             .sort(
               (a, b) =>
@@ -135,48 +138,55 @@ class Table extends Component {
               <div
                 key={u.number}
                 style={{
-                  display: 'flex',
-                  padding: '4px 12px',
-                  alignItems: 'center'
-                }}>
+                  display: "flex",
+                  padding: "4px 12px",
+                  alignItems: "center"
+                }}
+              >
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '10%'
-                  }}>
-                  <h3>{index + 1}</h3>
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "10%"
+                  }}
+                >
+                  <h3 style={{ fontSize: "1.25em" }}>{index + 1}</h3>
                 </div>
 
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'flex-start',
-                    alignItems: 'center',
-                    width: '50%'
-                  }}>
-                  <h3>{u.name[0].toUpperCase().concat(u.name.slice(1))}</h3>
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    width: "50%"
+                  }}
+                >
+                  <h3 style={{ fontSize: "1.25em" }}>
+                    {u.name[0].toUpperCase().concat(u.name.slice(1))}
+                  </h3>
                 </div>
 
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '20%'
-                  }}>
-                  <h3>{u.points}</h3>
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "20%"
+                  }}
+                >
+                  <h3 style={{ fontSize: "1.25em" }}>{u.points}</h3>
                 </div>
 
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '20%'
-                  }}>
-                  <h3>
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "20%"
+                  }}
+                >
+                  <h3 style={{ fontSize: "1.25em" }}>
                     {this.calculateAmountEarned(table, index)}
                     {/* {index === 0
                       ? '$50'
@@ -193,45 +203,49 @@ class Table extends Component {
         <br />
         <br />
         <br />
-        <h2 style={{ textAlign: 'center', padding: '12px' }}>FPL Table</h2>
+        <h2 style={{ textAlign: "center", padding: "12px" }}>FPL Table</h2>
         <br />
         <div>
           {Object.keys(fplData).length > 0 && (
             <div
               style={{
-                margin: '0 12px',
+                margin: "0 12px",
                 border: `1px solid lightGrey`,
-                borderRadius: '8px',
+                borderRadius: "8px",
                 padding: `12px 0`
-              }}>
+              }}
+            >
               {fplData.standings.results
                 .sort((a, b) => a.rank - b.rank)
                 .map((r, i) => (
                   <div
                     key={r.id}
                     style={{
-                      display: 'flex',
-                      padding: '4px 12px',
-                      alignItems: 'center'
-                    }}>
+                      display: "flex",
+                      padding: "4px 12px",
+                      alignItems: "center"
+                    }}
+                  >
                     <div
                       style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '10%'
-                      }}>
-                      <h3>{r.rank}</h3>
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "10%"
+                      }}
+                    >
+                      <h3 style={{ fontSize: "1.25em" }}>{r.rank}</h3>
                     </div>
 
                     <div
                       style={{
-                        display: 'flex',
-                        justifyContent: 'flex-start',
-                        alignItems: 'center',
-                        width: '50%'
-                      }}>
-                      <h3>
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        alignItems: "center",
+                        width: "50%"
+                      }}
+                    >
+                      <h3 style={{ fontSize: "1.25em" }}>
                         {Object.values(this.props.users)
                           .filter(u => u.team_id === r.id)[0]
                           .name[0].toUpperCase()
@@ -245,22 +259,24 @@ class Table extends Component {
 
                     <div
                       style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '20%'
-                      }}>
-                      <h3>{r.total}</h3>
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "20%"
+                      }}
+                    >
+                      <h3 style={{ fontSize: "1.25em" }}>{r.total}</h3>
                     </div>
 
                     <div
                       style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '20%'
-                      }}>
-                      <h3>
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "20%"
+                      }}
+                    >
+                      <h3 style={{ fontSize: "1.25em" }}>
                         {formatter.format(
                           this.calculateCashEarned(
                             fplData.standings.results.sort(
@@ -277,7 +293,7 @@ class Table extends Component {
           )}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -286,6 +302,6 @@ Table.propTypes = {
   users: PropTypes.object.isRequired,
   teams: PropTypes.object.isRequired,
   fplData: PropTypes.object.isRequired
-}
+};
 
-export default Table
+export default Table;

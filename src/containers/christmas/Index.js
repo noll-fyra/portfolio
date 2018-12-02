@@ -7,6 +7,11 @@ class Index extends Component {
       show: false
     };
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   //
   // componentDidMount() {
   //   let users = Object.values(this.props.data.users).reduce(

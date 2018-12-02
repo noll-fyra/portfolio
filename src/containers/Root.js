@@ -3,8 +3,7 @@ import {
   Switch,
   BrowserRouter as Router,
   Route,
-  Redirect,
-  NavLink
+  Redirect
 } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/database";
@@ -14,6 +13,7 @@ import axios from "axios";
 // import * as firebaseui from 'firebaseui'
 // import App from '../components/app/App'
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import WorldCupHeader from "./worldCup/WorldCupHeader";
 import Polls from "./worldCup/Polls";
 import Table from "./worldCup/Table";
 import Matches from "./worldCup/Matches";
@@ -36,9 +36,6 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
-
-const sections = ["polls", "table", "matches", "teams"];
-// const hidden = ['newpoll']
 
 class Root extends Component {
   constructor(props) {
@@ -83,6 +80,7 @@ class Root extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     database.ref("/").on("value", snap => {
       this.setState({ data: snap.val() });
       // let users = Object.assign({}, snap.val().users)
@@ -102,42 +100,45 @@ class Root extends Component {
         this.setState({ number: user.phoneNumber });
         window.localStorage.setItem("number", user.phoneNumber);
 
-        database.ref("/users").once("value", snap => {
-          let updatedUser = Object.assign({}, snap.val()[user.phoneNumber]);
-          updatedUser.updated = "v1.1";
-          database
-            .ref("/")
-            .child("users/" + user.phoneNumber)
-            .update(updatedUser);
-        });
+        // database.ref("/users").once("value", snap => {
+        //   let updatedUser = Object.assign({}, snap.val()[user.phoneNumber]);
+        //   updatedUser.updated = "v1.1";
+        //   database
+        //     .ref("/")
+        //     .child("users/" + user.phoneNumber)
+        //     .update(updatedUser);
+        // });
       }
     });
 
-    const path =
+    const fplPath =
       "https://fantasy.premierleague.com/drf/leagues-classic-standings/181651";
 
-    // fetch(myRequest)
-    //   .then(res => res.body)
-    //   .then(resp => console.log(resp))
+    // site went down
+    // const allorigins =
+    //   "https://allorigins.me/get?url=" +
+    //   encodeURIComponent(fplPath) +
+    //   "&callback=?";
 
-    // $(document).ready(function () {
+    const allOrigins =
+      "https://api.allorigins.ml/get?method=raw&url=" +
+      encodeURIComponent(fplPath) +
+      "&callback=?";
+
     axios
-      .get(
-        "https://allorigins.me/get?url=" +
-          encodeURIComponent(path) +
-          "&callback=?"
-      )
+      .get(allOrigins)
       .then(res => {
-        let data = JSON.parse(
-          JSON.parse(
-            res.data.split("typeof  === 'function' && (")[1].split(");")[0]
-          ).contents
-        );
-        // console.log(data)
-        this.setState({ fplData: data });
+        // console.log(res);
+
+        // let data = JSON.parse(
+        //   JSON.parse(
+        //     res.data.split("typeof  === 'function' && (")[1].split(");")[0]
+        //   ).contents
+        // );
+        // // console.log(data)
+        this.setState({ fplData: res.data });
       })
       .catch(err => console.error(err));
-    // }
   }
 
   componentWillUnmount() {
@@ -152,205 +153,157 @@ class Root extends Component {
     return (
       <div>
         {this.state.number ? (
-          !!this.state.data.users &&
-          Object.keys(this.state.data.users).includes(this.state.number) ? (
-            <Router>
-              <div>
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Redirect to="/christmas" />}
-                />
-
-                <Route
-                  exact
-                  path="/worldcup"
-                  render={() => <Redirect to="/worldcup/polls" />}
-                />
-
-                <Route
-                  path="/worldcup"
-                  render={() => (
-                    <div>
-                      <h1 style={{ textAlign: "center", marginTop: "12px" }}>
-                        2018 FIFA WORLD CUP PREDICTION GAME
-                      </h1>
-                      <div style={{ backgroundColor: "#19364C" }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            width: "100%",
-                            maxWidth: "480px",
-                            margin: "12px auto"
-                          }}
-                        >
-                          {sections.map(sect => (
-                            <NavLink
-                              key={sect}
-                              to={`/worldcup/${sect}`}
-                              activeStyle={{
-                                backgroundColor: "gold",
-                                color: "#19364C"
-                              }}
-                              style={{
-                                width: `calc(100%/${sections.length})`,
-                                maxWidth: `calc(480px/${sections.length})`,
-                                fontWeight: "bold",
-                                textAlign: "center",
-                                color: "white",
-                                textDecoration: "none",
-                                padding: "8px"
-                              }}
-                            >
-                              {sect[0].toUpperCase().concat(sect.slice(1))}
-                            </NavLink>
-                          ))}
-                        </div>
-                      </div>
-                      {/* {this.state.number === '+6587427184' && (
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            width: '100%',
-                            maxWidth: '480px',
-                            margin: '12px auto'
-                          }}>
-                          {hidden.map(sect => (
-                            <NavLink
-                              key={sect}
-                              to={`/${sect}`}
-                              activeStyle={{
-                                backgroundColor: 'gold',
-                                color: '#19364C'
-                              }}
-                              style={{
-                                width: `calc(100%/${hidden.length})`,
-                                maxWidth: `calc(480px/${hidden.length})`,
-                                fontWeight: 'bold',
-                                textAlign: 'center',
-                                color: 'white',
-                                textDecoration: 'none',
-                                padding: '8px'
-                              }}>
-                              {sect[0].toUpperCase().concat(sect.slice(1))}
-                            </NavLink>
-                          ))}
-                        </div>
-                      )} */}
-                    </div>
-                  )}
-                />
-
+          !!this.state.data.users ? (
+            Object.keys(this.state.data.users).includes(this.state.number) ? (
+              <Router>
                 <div>
-                  <Switch>
-                    {/* <Route exact path="/" render={() => <App />} /> */}
-                    <Route
-                      path="/christmas"
-                      render={() => (
-                        <Christmas
-                          data={this.state.data.christmas}
-                          database={database}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Redirect to="/christmas" />}
+                  />
 
-                    <Route
-                      path="/fpl"
-                      render={() => (
-                        <FPL
-                          data={this.state.data.fpl["1819"]}
-                          database={database}
-                          number={this.state.number}
-                          fplData={this.state.fplData}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/polls"
-                      render={() => (
-                        <Polls
-                          polls={this.state.data.polls}
-                          users={this.state.data.users}
-                          teams={this.state.data.teams}
-                          database={database}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/newpoll"
-                      render={() => (
-                        <NewPoll
-                          polls={this.state.data.polls}
-                          users={this.state.data.users}
-                          teams={this.state.data.teams}
-                          database={database}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/editpoll"
-                      render={() => (
-                        <EditPoll
-                          polls={this.state.data.polls}
-                          users={this.state.data.users}
-                          teams={this.state.data.teams}
-                          database={database}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/table"
-                      render={() => (
-                        <Table
-                          polls={this.state.data.polls}
-                          users={this.state.data.users}
-                          teams={this.state.data.teams}
-                          database={database}
-                          storage={firebase.storage()}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/matches"
-                      render={() => (
-                        <Matches
-                          matches={this.state.data.matches}
-                          teams={this.state.data.teams}
-                          database={database}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/worldcup/teams"
-                      render={() => (
-                        <Teams
-                          matches={this.state.data.matches}
-                          teams={this.state.data.teams}
-                          database={database}
-                          number={this.state.number}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/logout"
-                      render={() => (
-                        <LogOut
-                          auth={firebase.auth()}
-                          removeNumber={this.logOut}
-                        />
-                      )}
-                    />
-                  </Switch>
+                  <Route
+                    exact
+                    path="/worldcup"
+                    render={() => <Redirect to="/worldcup/polls" />}
+                  />
+
+                  <Route
+                    path="/worldcup"
+                    render={props => <WorldCupHeader {...props} />}
+                  />
+
+                  <div>
+                    <Switch>
+                      <Route
+                        path="/christmas"
+                        render={() => (
+                          <Christmas
+                            data={this.state.data.christmas}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+
+                      <Route
+                        path="/fpl"
+                        render={() => (
+                          <FPL
+                            data={this.state.data.fpl["1819"]}
+                            database={database}
+                            number={this.state.number}
+                            fplData={this.state.fplData}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/polls"
+                        render={() => (
+                          <Polls
+                            polls={this.state.data.polls}
+                            users={this.state.data.users}
+                            teams={this.state.data.teams}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/newpoll"
+                        render={() => (
+                          <NewPoll
+                            polls={this.state.data.polls}
+                            users={this.state.data.users}
+                            teams={this.state.data.teams}
+                            database={database}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/editpoll"
+                        render={() => (
+                          <EditPoll
+                            polls={this.state.data.polls}
+                            users={this.state.data.users}
+                            teams={this.state.data.teams}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/table"
+                        render={() => (
+                          <Table
+                            polls={this.state.data.polls}
+                            users={this.state.data.users}
+                            teams={this.state.data.teams}
+                            database={database}
+                            storage={firebase.storage()}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/matches"
+                        render={() => (
+                          <Matches
+                            matches={this.state.data.matches}
+                            teams={this.state.data.teams}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/worldcup/teams"
+                        render={() => (
+                          <Teams
+                            matches={this.state.data.matches}
+                            teams={this.state.data.teams}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/logout"
+                        render={() => (
+                          <LogOut
+                            auth={firebase.auth()}
+                            removeNumber={this.logOut}
+                          />
+                        )}
+                      />
+                    </Switch>
+                  </div>
                 </div>
+              </Router>
+            ) : (
+              <div
+                style={{
+                  width: "100vw",
+                  height: "100vh",
+                  display: "flex",
+                  flexFlow: "column",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <h1>
+                  Thanks for visiting my website.
+                  <br />
+                  It's currently for my personal use.
+                  <br /> You can find out more about me{" "}
+                  <a href="https://www.linkedin.com/in/jonathanlouisng/">
+                    here
+                  </a>
+                  .
+                </h1>
               </div>
-            </Router>
+            )
           ) : (
             <div
               style={{

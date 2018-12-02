@@ -11,6 +11,10 @@ class Polls extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { polls, users, number, database } = this.props;
     const teams = this.props.teams

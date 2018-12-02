@@ -46,32 +46,32 @@ class Table extends Component {
     if (index === 0) {
       switch (rankCount[0]) {
         case 1:
-          return 50;
+          return "$50";
         case 2:
-          return (50 + 20) / 2;
+          return `$${(50 + 20) / 2}`;
         default:
-          return (50 + 20 + 10) / rankCount[0];
+          return `$${(50 + 20 + 10) / rankCount[0]}`;
       }
     } else if (index === 1) {
       switch (true) {
         case rankCount[0] === 1 && rankCount[1] === 1:
-          return 20;
+          return "$20";
         case rankCount[0] === 2:
-          return (50 + 20) / 2;
+          return `$${(50 + 20) / 2}`;
         case rankCount[0] > 2:
-          return (50 + 20 + 10) / rankCount[0];
+          return `$${(50 + 20 + 10) / rankCount[0]}`;
         default:
-          return (20 + 10) / rankCount[1];
+          return `$${(20 + 10) / rankCount[1]}`;
       }
     } else if (index === 2) {
       switch (true) {
         case rankCount[0] === 1 && rankCount[1] === 1 && rankCount[2] === 1:
         case rankCount[0] === 2 && rankCount[1] === 1:
-          return 10;
+          return "$10";
         case rankCount[0] === 1 && rankCount[1] === 2:
-          return (20 + 10) / 2;
+          return `$${(20 + 10) / 2}`;
         case rankCount[0] > 2:
-          return (50 + 20 + 10) / rankCount[0];
+          return `$${(50 + 20 + 10) / rankCount[0]}`;
         default:
           return 0;
       }
@@ -159,7 +159,7 @@ class Table extends Component {
                     display: "flex",
                     justifyContent: "flex-start",
                     alignItems: "center",
-                    width: "50%"
+                    width: "40%"
                   }}
                 >
                   <h3 style={{ fontSize: "1.25em" }}>
@@ -172,7 +172,7 @@ class Table extends Component {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "20%"
+                    width: "25%"
                   }}
                 >
                   <h3 style={{ fontSize: "1.25em" }}>{u.points}</h3>
@@ -183,7 +183,7 @@ class Table extends Component {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "20%"
+                    width: "25%"
                   }}
                 >
                   <h3 style={{ fontSize: "1.25em" }}>
@@ -242,7 +242,7 @@ class Table extends Component {
                         display: "flex",
                         justifyContent: "flex-start",
                         alignItems: "center",
-                        width: "50%"
+                        width: "40%"
                       }}
                     >
                       <h3 style={{ fontSize: "1.25em" }}>
@@ -262,7 +262,7 @@ class Table extends Component {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        width: "20%"
+                        width: "25%"
                       }}
                     >
                       <h3 style={{ fontSize: "1.25em" }}>{r.total}</h3>
@@ -273,7 +273,7 @@ class Table extends Component {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        width: "20%"
+                        width: "25%"
                       }}
                     >
                       <h3 style={{ fontSize: "1.25em" }}>

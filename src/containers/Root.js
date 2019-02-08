@@ -1,60 +1,60 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Switch,
   BrowserRouter as Router,
   Route,
   Redirect
-} from "react-router-dom";
-import firebase from "firebase/app";
-import "firebase/database";
-import "firebase/auth";
-import "firebase/storage";
-import axios from "axios";
+} from 'react-router-dom'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
+import 'firebase/storage'
+import axios from 'axios'
 // import * as firebaseui from 'firebaseui'
 // import App from '../components/app/App'
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import WorldCupHeader from "./worldCup/WorldCupHeader";
-import Polls from "./worldCup/Polls";
-import Table from "./worldCup/Table";
-import Matches from "./worldCup/Matches";
-import Teams from "./worldCup/Teams";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import WorldCupHeader from './worldCup/WorldCupHeader'
+import Polls from './worldCup/Polls'
+import Table from './worldCup/Table'
+import Matches from './worldCup/Matches'
+import Teams from './worldCup/Teams'
 // import Poll from './Poll'
-import NewPoll from "./worldCup/NewPoll";
-import EditPoll from "./worldCup/EditPoll";
-import FPL from "./fpl/Index";
-import Christmas from "./christmas/Index";
-import LogOut from "./LogOut";
+import NewPoll from './worldCup/NewPoll'
+import EditPoll from './worldCup/EditPoll'
+import FPL from './fpl/Index'
+import Christmas from './christmas/Index'
+import LogOut from './LogOut'
 
 const config = {
-  apiKey: "AIzaSyDKr_16PAkbfQQWTp-xIo1-1_2YSdIxnOo",
-  authDomain: "portfolio-5919e.firebaseapp.com",
-  databaseURL: "https://portfolio-5919e.firebaseio.com",
-  storageBucket: "portfolio-5919e.appspot.com",
-  messagingSenderId: "833655148390"
-};
+  apiKey: 'AIzaSyDKr_16PAkbfQQWTp-xIo1-1_2YSdIxnOo',
+  authDomain: 'portfolio-5919e.firebaseapp.com',
+  databaseURL: 'https://portfolio-5919e.firebaseio.com',
+  storageBucket: 'portfolio-5919e.appspot.com',
+  messagingSenderId: '833655148390'
+}
 
-firebase.initializeApp(config);
-const database = firebase.database();
+firebase.initializeApp(config)
+const database = firebase.database()
 // const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 class Root extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       data: {},
       number: null,
       hidden: true,
       fplData: {}
-    };
-    this.removeNumber = this.removeNumber.bind(this);
-    this.unregisterAuthObserver = null;
+    }
+    this.removeNumber = this.removeNumber.bind(this)
+    this.unregisterAuthObserver = null
     this.uiConfig = {
       callbacks: {
         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          window.localStorage.setItem("number", authResult.user.phoneNumber);
-          this.setState({ number: authResult.user.phoneNumber });
+          window.localStorage.setItem('number', authResult.user.phoneNumber)
+          this.setState({ number: authResult.user.phoneNumber })
           // console.log(authResult, redirectUrl, this.state);
-          return false;
+          return false
         }.bind(this)
         // uiShown: function() {
         //   // The widget is rendered.
@@ -63,7 +63,7 @@ class Root extends Component {
         // }
       },
       // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-      signInFlow: "popup",
+      signInFlow: 'popup',
       // signInSuccessUrl: '<url-to-redirect-to-on-success>',
       signInOptions: [
         // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -73,16 +73,16 @@ class Root extends Component {
         // firebase.auth.EmailAuthProvider.PROVIDER_ID,
         {
           provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-          defaultCountry: "SG"
+          defaultCountry: 'SG'
         }
       ]
-    };
+    }
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-    database.ref("/").on("value", snap => {
-      this.setState({ data: snap.val() });
+    window.scrollTo(0, 0)
+    database.ref('/').on('value', snap => {
+      this.setState({ data: snap.val() })
       // let users = Object.assign({}, snap.val().users)
       // for (var key in polls) {
       // let poll = polls[key]
@@ -90,15 +90,15 @@ class Root extends Component {
       // polls[key] = poll
       // }
       // database.ref().child('polls').set(polls)
-    });
+    })
 
-    let number = window.localStorage.getItem("number");
-    this.setState({ hidden: !!number });
+    let number = window.localStorage.getItem('number')
+    this.setState({ hidden: !!number })
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       // console.log(user)
       if (!!user) {
-        this.setState({ number: user.phoneNumber });
-        window.localStorage.setItem("number", user.phoneNumber);
+        this.setState({ number: user.phoneNumber })
+        window.localStorage.setItem('number', user.phoneNumber)
 
         // database.ref("/users").once("value", snap => {
         //   let updatedUser = Object.assign({}, snap.val()[user.phoneNumber]);
@@ -109,10 +109,10 @@ class Root extends Component {
         //     .update(updatedUser);
         // });
       }
-    });
+    })
 
     const fplPath =
-      "https://fantasy.premierleague.com/drf/leagues-classic-standings/181651";
+      'https://fantasy.premierleague.com/drf/leagues-classic-standings/181651'
 
     // site went down
     // const allorigins =
@@ -121,32 +121,32 @@ class Root extends Component {
     //   "&callback=?";
 
     const allOrigins =
-      "https://api.allorigins.ml/get?method=raw&url=" +
+      'https://api.allorigins.ml/get?method=raw&url=' +
       encodeURIComponent(fplPath) +
-      "&callback=?";
+      '&callback=?'
 
     axios
       .get(allOrigins)
       .then(res => {
-        // console.log(res);
+        // console.log(res)
 
-        // let data = JSON.parse(
-        //   JSON.parse(
-        //     res.data.split("typeof  === 'function' && (")[1].split(");")[0]
-        //   ).contents
-        // );
-        // // console.log(data)
-        this.setState({ fplData: res.data });
+        let data = JSON.parse(
+          JSON.parse(
+            res.data.split("typeof  === 'function' && (")[1].split(');')[0]
+          ).contents
+        )
+        // console.log(data)
+        this.setState({ fplData: data })
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err))
   }
 
   componentWillUnmount() {
-    this.unregisterAuthObserver();
+    this.unregisterAuthObserver()
   }
 
   removeNumber() {
-    this.setState({ number: null, hidden: false });
+    this.setState({ number: null, hidden: false })
   }
 
   render() {
@@ -191,7 +191,7 @@ class Root extends Component {
                         path="/fpl"
                         render={() => (
                           <FPL
-                            data={this.state.data.fpl["1819"]}
+                            data={this.state.data.fpl['1819']}
                             database={database}
                             number={this.state.number}
                             fplData={this.state.fplData}
@@ -284,19 +284,19 @@ class Root extends Component {
             ) : (
               <div
                 style={{
-                  width: "100vw",
-                  height: "100vh",
-                  display: "flex",
-                  flexFlow: "column",
-                  justifyContent: "center",
-                  alignItems: "center"
+                  width: '100vw',
+                  height: '100vh',
+                  display: 'flex',
+                  flexFlow: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
                 }}
               >
                 <h1>
                   Thanks for visiting my website.
                   <br />
                   It's currently for my personal use.
-                  <br /> You can find out more about me{" "}
+                  <br /> You can find out more about me{' '}
                   <a href="https://www.linkedin.com/in/jonathanlouisng/">
                     here
                   </a>
@@ -307,23 +307,23 @@ class Root extends Component {
           ) : (
             <div
               style={{
-                width: "100vw",
-                height: "100vh",
-                display: "flex",
-                flexFlow: "column",
-                justifyContent: "center",
-                alignItems: "center"
+                width: '100vw',
+                height: '100vh',
+                display: 'flex',
+                flexFlow: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
               }}
             >
               <i
                 className="fa fa-futbol-o fa-spin"
-                style={{ fontSize: "2em" }}
+                style={{ fontSize: '2em' }}
               />
               <h1>Loading</h1>
             </div>
           )
         ) : (
-          <div style={{ width: this.state.hidden ? "0" : "100%" }}>
+          <div style={{ width: this.state.hidden ? '0' : '100%' }}>
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
@@ -331,8 +331,8 @@ class Root extends Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default Root;
+export default Root

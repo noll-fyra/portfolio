@@ -23,6 +23,7 @@ import NewPoll from './worldCup/NewPoll'
 import EditPoll from './worldCup/EditPoll'
 import FPL from './fpl/Index'
 import Christmas from './christmas/Index'
+import OurStory from './ourstory/Index'
 import LogOut from './LogOut'
 
 const config = {
@@ -198,6 +199,9 @@ class Root extends Component {
                           />
                         )}
                       />
+
+                      <Route path="/ourstory" render={() => <OurStory />} />
+
                       <Route
                         path="/worldcup/polls"
                         render={() => (

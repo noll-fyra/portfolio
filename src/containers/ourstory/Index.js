@@ -205,6 +205,7 @@ const TimelineContainer = styled.div`
   display: flex;
   height: 3200px;
   margin: 0 auto;
+  margin-bottom: 24px;
 `
 
 const MemoryContainer = styled.div`

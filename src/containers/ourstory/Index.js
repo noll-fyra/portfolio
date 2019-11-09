@@ -184,20 +184,20 @@ const Container = styled.div`
   /* margin-left: 24px; */
 `
 
-const Timeline = styled.div`
-  width: 8px;
-  height: 100%;
-  min-height: 100vh;
-  background-image: linear-gradient(
-    red,
-    orange,
-    yellow,
-    green,
-    blue,
-    indigo,
-    violet
-  );
-`
+// const Timeline = styled.div`
+//   width: 8px;
+//   height: 100%;
+//   min-height: 100vh;
+//   background-image: linear-gradient(
+//     red,
+//     orange,
+//     yellow,
+//     green,
+//     blue,
+//     indigo,
+//     violet
+//   );
+// `
 
 const TimelineContainer = styled.div`
   width: 100%;
@@ -220,38 +220,38 @@ const MemoryContainer = styled.div`
   padding: 2px;
 `
 
-const Circle = styled.div`
-  min-width: 36px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: white;
-  border: 1px solid white;
-  margin-right: 24px;
-  padding: 2px;
-
-  &:after {
-    content: '';
-    position: absolute;
-    right: 58px;
-    top: 0%;
-    width: 0;
-    height: 0;
-    border: 12px solid transparent;
-    border-right-color: #00aabb;
-    border-left: 0;
-    margin-top: 6px;
-    margin-left: 0px;
-  }
-`
-
-const InnerCircle = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: white;
-  border: 2px solid black;
-`
+// const Circle = styled.div`
+//   min-width: 36px;
+//   width: 36px;
+//   height: 36px;
+//   border-radius: 50%;
+//   background-color: white;
+//   border: 1px solid white;
+//   margin-right: 24px;
+//   padding: 2px;
+//
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     right: 58px;
+//     top: 0%;
+//     width: 0;
+//     height: 0;
+//     border: 12px solid transparent;
+//     border-right-color: #00aabb;
+//     border-left: 0;
+//     margin-top: 6px;
+//     margin-left: 0px;
+//   }
+// `
+//
+// const InnerCircle = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 50%;
+//   background-color: white;
+//   border: 2px solid black;
+// `
 
 // const Line = styled.div`
 //   height: 0;

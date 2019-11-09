@@ -121,25 +121,25 @@ class Root extends Component {
     //   encodeURIComponent(fplPath) +
     //   "&callback=?";
 
-    const allOrigins =
-      'https://api.allorigins.ml/get?method=raw&url=' +
-      encodeURIComponent(fplPath) +
-      '&callback=?'
-
-    axios
-      .get(allOrigins)
-      .then(res => {
-        // console.log(res)
-
-        let data = JSON.parse(
-          JSON.parse(
-            res.data.split("typeof  === 'function' && (")[1].split(');')[0]
-          ).contents
-        )
-        // console.log(data)
-        this.setState({ fplData: data })
-      })
-      .catch(err => console.error(err))
+    // const allOrigins =
+    //   'https://api.allorigins.ml/get?method=raw&url=' +
+    //   encodeURIComponent(fplPath) +
+    //   '&callback=?'
+    //
+    // axios
+    //   .get(allOrigins)
+    //   .then(res => {
+    //     // console.log(res)
+    //
+    //     let data = JSON.parse(
+    //       JSON.parse(
+    //         res.data.split("typeof  === 'function' && (")[1].split(');')[0]
+    //       ).contents
+    //     )
+    //     // console.log(data)
+    //     this.setState({ fplData: data })
+    //   })
+    //   .catch(err => console.error(err))
   }
 
   componentWillUnmount() {

@@ -9,8 +9,7 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
 import 'firebase/storage'
-import axios from 'axios'
-// import * as firebaseui from 'firebaseui'
+// import axios from 'axios'
 // import App from '../components/app/App'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import WorldCupHeader from './worldCup/WorldCupHeader'
@@ -36,7 +35,6 @@ const config = {
 
 firebase.initializeApp(config)
 const database = firebase.database()
-// const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 class Root extends Component {
   constructor(props) {
@@ -112,8 +110,8 @@ class Root extends Component {
       }
     })
 
-    const fplPath =
-      'https://fantasy.premierleague.com/drf/leagues-classic-standings/181651'
+    // const fplPath =
+    //   'https://fantasy.premierleague.com/drf/leagues-classic-standings/181651'
 
     // site went down
     // const allorigins =

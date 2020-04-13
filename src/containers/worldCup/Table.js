@@ -41,6 +41,7 @@ class Table extends Component {
 
     return Object.values(users)
       .filter(u => !!u.finalWinner)
+      .filter(u => u.points > 0)
       .sort((a, b) => this.sortAlphabetically(a.name, b.name))
       .sort((a, b) => b.points - a.points)
       .map((u, index) => {

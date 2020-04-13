@@ -216,7 +216,7 @@ class Poll extends Component {
               <div style={{ borderTop: '1px solid #ccdae5' }}>
                 {Object.values(users)
                   .sort((a, b) => this.sortAlphabetically(a.name, b.name))
-                  .filter(user => !!poll.users[user.number])
+                  .filter(user => !!poll.users[user.number] && poll.users[user.number].answered)
                   .map(user => (
                     <div
                       key={user.number}

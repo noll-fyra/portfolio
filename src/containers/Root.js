@@ -3,7 +3,7 @@ import {
   Switch,
   BrowserRouter as Router,
   Route,
-  Redirect
+  Redirect,
 } from 'react-router-dom'
 import firebase from 'firebase/app'
 import 'firebase/database'
@@ -22,6 +22,7 @@ import NewPoll from './worldCup/NewPoll'
 import EditPoll from './worldCup/EditPoll'
 import FPL from './fpl/Index'
 import Christmas from './christmas/Index'
+import SecretSanta from './secretSanta/Index'
 import OurStory from './ourstory/Index'
 import LogOut from './LogOut'
 
@@ -30,7 +31,7 @@ const config = {
   authDomain: 'portfolio-5919e.firebaseapp.com',
   databaseURL: 'https://portfolio-5919e.firebaseio.com',
   storageBucket: 'portfolio-5919e.appspot.com',
-  messagingSenderId: '833655148390'
+  messagingSenderId: '833655148390',
 }
 
 firebase.initializeApp(config)
@@ -43,18 +44,18 @@ class Root extends Component {
       data: {},
       number: null,
       hidden: true,
-      fplData: {}
+      fplData: {},
     }
     this.removeNumber = this.removeNumber.bind(this)
     this.unregisterAuthObserver = null
     this.uiConfig = {
       callbacks: {
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
           window.localStorage.setItem('number', authResult.user.phoneNumber)
           this.setState({ number: authResult.user.phoneNumber })
           // console.log(authResult, redirectUrl, this.state);
           return false
-        }.bind(this)
+        }.bind(this),
         // uiShown: function() {
         //   // The widget is rendered.
         //   // Hide the loader.
@@ -72,16 +73,16 @@ class Root extends Component {
         // firebase.auth.EmailAuthProvider.PROVIDER_ID,
         {
           provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-          defaultCountry: 'SG'
-        }
-      ]
+          defaultCountry: 'SG',
+        },
+      ],
     }
   }
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    database.ref('/').on('value', snap => {
-      this.setState({ data: snap.val() })
+    database.ref('/').on('value', (snapshot) => {
+      this.setState({ data: snapshot.val() })
       // let users = Object.assign({}, snap.val().users)
       // for (var key in polls) {
       // let poll = polls[key]
@@ -93,7 +94,7 @@ class Root extends Component {
 
     let number = window.localStorage.getItem('number')
     this.setState({ hidden: !!number })
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => {
       // console.log(user)
       if (!!user) {
         this.setState({ number: user.phoneNumber })
@@ -170,7 +171,7 @@ class Root extends Component {
 
                   <Route
                     path="/worldcup"
-                    render={props => <WorldCupHeader {...props} />}
+                    render={(props) => <WorldCupHeader {...props} />}
                   />
 
                   <div>
@@ -180,6 +181,17 @@ class Root extends Component {
                         render={() => (
                           <Christmas
                             data={this.state.data.christmas}
+                            database={database}
+                            number={this.state.number}
+                          />
+                        )}
+                      />
+
+                       <Route
+                        path="/secretsanta"
+                        render={() => (
+                          <SecretSanta
+                            data={this.state.data.secretsanta}
                             database={database}
                             number={this.state.number}
                           />
@@ -291,7 +303,7 @@ class Root extends Component {
                   display: 'flex',
                   flexFlow: 'column',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
                 }}
               >
                 <h1>
@@ -314,7 +326,7 @@ class Root extends Component {
                 display: 'flex',
                 flexFlow: 'column',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <i

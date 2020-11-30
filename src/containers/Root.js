@@ -193,7 +193,7 @@ class Root extends Component {
                           <SecretSanta
                             data={this.state.data.secretsanta}
                             database={database}
-                            number={this.state.number}
+                            number={"+6584228391"}
                           />
                         )}
                       />

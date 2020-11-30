@@ -100,6 +100,7 @@ class Index extends Component {
 
   render() {
     const { data, number } = this.props
+
     return (
       <div
         style={{
@@ -119,12 +120,12 @@ class Index extends Component {
         >
           Secret Santa
         </h1> */}
-
+got
         <h1 style={{ textAlign: 'center',padding: 36, fontSize: '3em' }}>
           Hi{' '}
           {data.users[number].name.split(' ').map(word => word[0]
             .toUpperCase()
-            .concat(word.slice(1)))}
+            .concat(word.slice(1))).join(' ')}
           !
         </h1>
         <h1 style={{ textAlign: 'center' }}> You're the Secret Santa for ...</h1>

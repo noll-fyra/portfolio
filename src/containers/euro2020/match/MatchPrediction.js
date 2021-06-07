@@ -50,7 +50,7 @@ class MatchPrediction extends Component {
     return (
       <div style={{width: '100%'}}>
         {options.map(option =>
-          <button key={option.name} type="button" style={{width: '33.3333%', textAlign: 'center', padding: '8px', backgroundColor: selected === option.name ? constants.colors.teal : 'transparent', cursor: 'pointer', borderRadius: '8px'}} onClick={() => this.chooseOption(option.name)}>
+          <button key={option.name} type="button" style={{width: `calc(100%/${options.length})`, textAlign: 'center', padding: '8px', backgroundColor: selected === option.name ? constants.colors.teal : 'transparent', cursor: 'pointer', borderRadius: '8px'}} onClick={() => this.chooseOption(option.name)}>
             <span style={{fontSize: '48px', color: selected === option.name ? constants.colors.cream : ''}} role="img" aria-label="Country flag">{option.emoji}</span>
             <br />
             <strong style={{fontSize: '16px', color: selected === option.name ? constants.colors.cream : ''}}>{option.name}</strong>

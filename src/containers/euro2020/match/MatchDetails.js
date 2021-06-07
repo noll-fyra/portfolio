@@ -3,14 +3,18 @@ import PropTypes from 'prop-types'
 import MatchHeader from './MatchHeader'
 import MatchResults from './MatchResults'
 import MatchPrediction from './MatchPrediction'
+import MatchPredictions from './MatchPredictions'
 import constants from '../data/constants'
 
 function MatchDetails({ match, database, number }) {
+  let hasStarted = new Date(match.date) < Date.now()
+
   return (
     <div style={{width: '100%', maxWidth: '600px', marginBottom: '12px', backgroundColor: constants.colors.cream, padding: '12px', borderRadius: '8px'}}>
       <MatchHeader match={match} />
-      {!match.result && <MatchPrediction match={match} database={database} number={number}/>}
-      {match.result && <MatchResults match={match} />}
+      {!hasStarted && <MatchPrediction match={match} database={database} number={number}/>}
+      {hasStarted && <MatchResults match={match} />}
+      {hasStarted && <MatchPredictions match={match} />}
     </div>
   )
 }

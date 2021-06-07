@@ -131,13 +131,13 @@ class Root extends Component {
                   <Route
                     exact
                     path="/"
-                    render={() => <Redirect to="/euro2020" />}
+                    render={() => <Redirect to="/euro2020/matches" />}
                   />
 
                   <Route
                     exact
                     path="/euro2020"
-                    render={() => <Redirect to="/euro2020/polls" />}
+                    render={() => <Redirect to="/euro2020/matches" />}
                   />
 
                   <Route

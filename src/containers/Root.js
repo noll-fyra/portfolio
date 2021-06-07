@@ -12,17 +12,14 @@ import 'firebase/storage'
 // import axios from 'axios'
 // import App from '../components/app/App'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import WorldCupHeader from './worldCup/WorldCupHeader'
-import Polls from './worldCup/Polls'
-import Table from './worldCup/Table'
-import Matches from './worldCup/Matches'
-import Teams from './worldCup/Teams'
+import Header from './euro2020/Header'
+import Polls from './euro2020/Polls'
+import Table from './euro2020/Table'
+import Teams from './euro2020/Teams'
 // import Poll from './Poll'
-import NewPoll from './worldCup/NewPoll'
-import EditPoll from './worldCup/EditPoll'
-import FPL from './fpl/Index'
-import Christmas from './christmas/Index'
-import SecretSanta from './secretSanta/Index'
+import NewPoll from './euro2020/NewPoll'
+import EditPoll from './euro2020/EditPoll'
+import Matches from './euro2020/Matches'
 import OurStory from './ourstory/Index'
 import LogOut from './LogOut'
 
@@ -83,14 +80,17 @@ class Root extends Component {
     window.scrollTo(0, 0)
     database.ref('/').on('value', (snapshot) => {
       this.setState({ data: snapshot.val() })
-      // let users = Object.assign({}, snap.val().users)
+      // console.log(snapshot.val().euro2020.matches)
+      // let users = Object.assign({}, snapshot.val().users)
       // for (var key in polls) {
       // let poll = polls[key]
       // poll.users['+61430985344'] = {answer: 0, answered: true}
       // polls[key] = poll
       // }
-      // database.ref().child('polls').set(polls)
     })
+    // matches.forEach(match => {
+    //   database.ref().child('euro2020/matches').push(match)
+    // })
 
     let number = window.localStorage.getItem('number')
     this.setState({ hidden: !!number })
@@ -110,35 +110,6 @@ class Root extends Component {
         // });
       }
     })
-
-    // const fplPath =
-    //   'https://fantasy.premierleague.com/drf/leagues-classic-standings/181651'
-
-    // site went down
-    // const allorigins =
-    //   "https://allorigins.me/get?url=" +
-    //   encodeURIComponent(fplPath) +
-    //   "&callback=?";
-
-    // const allOrigins =
-    //   'https://api.allorigins.ml/get?method=raw&url=' +
-    //   encodeURIComponent(fplPath) +
-    //   '&callback=?'
-    //
-    // axios
-    //   .get(allOrigins)
-    //   .then(res => {
-    //     // console.log(res)
-    //
-    //     let data = JSON.parse(
-    //       JSON.parse(
-    //         res.data.split("typeof  === 'function' && (")[1].split(');')[0]
-    //       ).contents
-    //     )
-    //     // console.log(data)
-    //     this.setState({ fplData: data })
-    //   })
-    //   .catch(err => console.error(err))
   }
 
   componentWillUnmount() {
@@ -160,60 +131,26 @@ class Root extends Component {
                   <Route
                     exact
                     path="/"
-                    render={() => <Redirect to="/christmas" />}
+                    render={() => <Redirect to="/euro2020" />}
                   />
 
                   <Route
                     exact
-                    path="/worldcup"
-                    render={() => <Redirect to="/worldcup/polls" />}
+                    path="/euro2020"
+                    render={() => <Redirect to="/euro2020/polls" />}
                   />
 
                   <Route
-                    path="/worldcup"
-                    render={(props) => <WorldCupHeader {...props} />}
+                    path="/euro2020"
+                    render={(props) => <Header {...props} />}
                   />
 
                   <div>
                     <Switch>
-                      <Route
-                        path="/christmas"
-                        render={() => (
-                          <Christmas
-                            data={this.state.data.christmas}
-                            database={database}
-                            number={this.state.number}
-                          />
-                        )}
-                      />
-
-                       <Route
-                        path="/secretsanta"
-                        render={() => (
-                          <SecretSanta
-                            data={this.state.data.secretsanta}
-                            database={database}
-                            number={this.state.number}
-                          />
-                        )}
-                      />
-
-                      <Route
-                        path="/fpl"
-                        render={() => (
-                          <FPL
-                            data={this.state.data.fpl['1819']}
-                            database={database}
-                            number={this.state.number}
-                            fplData={this.state.fplData}
-                          />
-                        )}
-                      />
-
                       <Route path="/ourstory" render={() => <OurStory />} />
 
                       <Route
-                        path="/worldcup/polls"
+                        path="/euro2020/polls"
                         render={() => (
                           <Polls
                             polls={this.state.data.polls}
@@ -225,7 +162,7 @@ class Root extends Component {
                         )}
                       />
                       <Route
-                        path="/worldcup/newpoll"
+                        path="/euro2020/newpoll"
                         render={() => (
                           <NewPoll
                             polls={this.state.data.polls}
@@ -236,7 +173,7 @@ class Root extends Component {
                         )}
                       />
                       <Route
-                        path="/worldcup/editpoll"
+                        path="/euro2020/editpoll"
                         render={() => (
                           <EditPoll
                             polls={this.state.data.polls}
@@ -248,7 +185,7 @@ class Root extends Component {
                         )}
                       />
                       <Route
-                        path="/worldcup/table"
+                        path="/euro2020/table"
                         render={() => (
                           <Table
                             polls={this.state.data.polls}
@@ -261,18 +198,18 @@ class Root extends Component {
                         )}
                       />
                       <Route
-                        path="/worldcup/matches"
+                        path="/euro2020/matches"
                         render={() => (
                           <Matches
-                            matches={this.state.data.matches}
-                            teams={this.state.data.teams}
+                            matches={this.state.data.euro2020.matches}
+                            // teams={this.state.data.teams}
                             database={database}
                             number={this.state.number}
                           />
                         )}
                       />
                       <Route
-                        path="/worldcup/teams"
+                        path="/euro2020/teams"
                         render={() => (
                           <Teams
                             matches={this.state.data.matches}

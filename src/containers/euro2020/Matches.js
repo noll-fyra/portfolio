@@ -9,7 +9,9 @@ function Matches ({ matches, database, number }) {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px'}}>
-      <p style={{width: '100%', maxWidth: '600px', padding: '24px', backgroundColor: constants.colors.cream, borderRadius: '12px', marginBottom: '24px'}}>Select a team (or Draw) to make your prediction. You can change your mind until the game starts.</p>
+      <p style={{width: '100%', maxWidth: '600px', padding: '24px', backgroundColor: constants.colors.cream, borderRadius: '12px', marginBottom: '24px'}}>
+        <b>Select a team (or Draw) to make your prediction. You can change your mind until the game starts. Everyone's prediction will be made available at kickoff.</b>
+        </p>
 
       {display.map(match =>
         <MatchDetails key={match.id} match={match} database={database} number={number}/>

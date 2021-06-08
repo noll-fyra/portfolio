@@ -23,15 +23,17 @@ function PlayerHistory({ player }) {
             .filter(prediction => prediction.match.stage === stage.name)
             .map((prediction, index) =>
               <tr key={prediction.match.number} style={{backgroundColor: index % 2 ? '' : constants.colors.cream}}>
-                <td style={{width: '50%', padding: '4px 8px'}}>{`${prediction.match.home_team} v ${prediction.match.away_team}`}</td>
+                <td style={{width: '50%', padding: '4px 8px'}}>
+                  {`${prediction.match.home_team} v ${prediction.match.away_team}`}
+                </td>
                 <td style={{width: '35%', padding: '4px 8px'}}>
                   {!!prediction && !!prediction.prediction && <strong>{Object.values(teamsAndDraw).filter(team => team.name === prediction.prediction)[0].emoji} {prediction.prediction}</strong>}
                 </td>
                 <td style={{width: '15%', padding: '4px 8px', textAlign: 'center'}}>
                   <strong>{prediction.points}</strong>
                 </td>
-                </tr>
-                )}
+              </tr>
+              )}
             </tbody>
           )}
     </table>
@@ -43,12 +45,12 @@ PlayerHistory.propTypes = {
     match: PropTypes.shape({
       stage: PropTypes.string.isRequired
     }),
-    predictions: PropTypes.arrayOf(PropTypes.shape({
-      number: PropTypes.number,
-      home_team: PropTypes.string,
-      away_team: PropTypes.string,
-      prediction: PropTypes.string,
-      points: PropTypes.number
+  predictions: PropTypes.arrayOf(PropTypes.shape({
+    number: PropTypes.number,
+    home_team: PropTypes.string,
+    away_team: PropTypes.string,
+    prediction: PropTypes.string,
+    points: PropTypes.number
     }))
   })
 }

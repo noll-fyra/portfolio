@@ -13,12 +13,9 @@ import 'firebase/storage'
 // import App from '../components/app/App'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import Header from './euro2020/Header'
-import Polls from './euro2020/Polls'
 import Table from './euro2020/Table'
 import Teams from './euro2020/Teams'
-// import Poll from './Poll'
 import NewPoll from './euro2020/NewPoll'
-import EditPoll from './euro2020/EditPoll'
 import Matches from './euro2020/Matches'
 import OurStory from './ourstory/Index'
 import LogOut from './LogOut'
@@ -150,18 +147,6 @@ class Root extends Component {
                       <Route path="/ourstory" render={() => <OurStory />} />
 
                       <Route
-                        path="/euro2020/polls"
-                        render={() => (
-                          <Polls
-                            polls={this.state.data.polls}
-                            users={this.state.data.users}
-                            teams={this.state.data.teams}
-                            database={database}
-                            number={this.state.number}
-                          />
-                        )}
-                      />
-                      <Route
                         path="/euro2020/newpoll"
                         render={() => (
                           <NewPoll
@@ -173,26 +158,14 @@ class Root extends Component {
                         )}
                       />
                       <Route
-                        path="/euro2020/editpoll"
-                        render={() => (
-                          <EditPoll
-                            polls={this.state.data.polls}
-                            users={this.state.data.users}
-                            teams={this.state.data.teams}
-                            database={database}
-                            number={this.state.number}
-                          />
-                        )}
-                      />
-                      <Route
                         path="/euro2020/table"
                         render={() => (
                           <Table
                             polls={this.state.data.polls}
+                            matches={this.state.data.euro2020.matches}
                             users={this.state.data.users}
                             teams={this.state.data.teams}
                             database={database}
-                            storage={firebase.storage()}
                             number={this.state.number}
                           />
                         )}
@@ -202,7 +175,6 @@ class Root extends Component {
                         render={() => (
                           <Matches
                             matches={this.state.data.euro2020.matches}
-                            // teams={this.state.data.teams}
                             database={database}
                             number={this.state.number}
                           />

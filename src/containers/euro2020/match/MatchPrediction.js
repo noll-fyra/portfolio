@@ -44,7 +44,7 @@ class MatchPrediction extends Component {
       name: match.away_team,
       emoji: getEmojiFromTeamName(match.away_team)
     }
-    let options = match.stage === stages.group ? [home, draw, away] : [home, away]
+    let options = match.stage === stages.group.name ? [home, draw, away] : [home, away]
     let selected = !!match.predictions && number && match.predictions[number] ? match.predictions[number] : null
 
     return (

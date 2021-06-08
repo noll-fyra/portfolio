@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import constants from "./data/constants";
 
-const sections = ["matches"];
+const sections = ["matches", "table"];
 
 const Header = () => (
   <div>
@@ -25,7 +25,7 @@ const Header = () => (
             to={`/euro2020/${sect}`}
             activeStyle={{
               backgroundColor: "gold",
-              color: "#19364C"
+              color: constants.colors.blue
             }}
             style={{
               width: `calc(100%/${sections.length})`,

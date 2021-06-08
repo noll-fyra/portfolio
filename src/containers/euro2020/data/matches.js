@@ -9,7 +9,7 @@ const matches = [
     away_team: teams.italy.name,
     date: new Date("2021-06-11T19:00:00Z").toISOString(),
     stadium: stadiums.rome,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 2,
@@ -17,7 +17,7 @@ const matches = [
     away_team: teams.switzerland.name,
     date: new Date("2021-06-12T13:00:00Z").toISOString(),
     stadium: stadiums.baku,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 3,
@@ -25,7 +25,7 @@ const matches = [
     away_team: teams.finland.name,
     date: new Date("2021-06-12T16:00:00Z").toISOString(),
     stadium: stadiums.copenhagen,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 4,
@@ -33,7 +33,7 @@ const matches = [
     away_team: teams.russia.name,
     date: new Date("2021-06-12T19:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 5,
@@ -41,7 +41,7 @@ const matches = [
     away_team: teams.croatia.name,
     date: new Date("2021-06-13T11:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 6,
@@ -49,7 +49,7 @@ const matches = [
     away_team: teams.northMacedonia.name,
     date: new Date("2021-06-13T16:00:00Z").toISOString(),
     stadium: stadiums.bucharest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 7,
@@ -57,7 +57,7 @@ const matches = [
     away_team: teams.ukraine.name,
     date: new Date("2021-06-13T19:00:00Z").toISOString(),
     stadium: stadiums.amsterdam,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 8,
@@ -65,7 +65,7 @@ const matches = [
     away_team: teams.czechRepublic.name,
     date: new Date("2021-06-14T13:00:00Z").toISOString(),
     stadium: stadiums.glasgow,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 9,
@@ -73,7 +73,7 @@ const matches = [
     away_team: teams.slovakia.name,
     date: new Date("2021-06-14T16:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 10,
@@ -81,7 +81,7 @@ const matches = [
     away_team: teams.sweden.name,
     date: new Date("2021-06-14T19:00:00Z").toISOString(),
     stadium: stadiums.seville,
-    stage: stages.group,
+    stage: stages.group.name,
   },
   {
     number: 11,
@@ -89,7 +89,7 @@ const matches = [
     away_team: teams.portugal.name,
     date: new Date("2021-06-15T16:00:00Z").toISOString(),
     stadium: stadiums.budapest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 12,
@@ -97,7 +97,7 @@ const matches = [
     away_team: teams.germany.name,
     date: new Date("2021-06-15T19:00:00Z").toISOString(),
     stadium: stadiums.munich,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 13,
@@ -105,7 +105,7 @@ const matches = [
     away_team: teams.russia.name,
     date: new Date("2021-06-16T13:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 14,
@@ -113,7 +113,7 @@ const matches = [
     away_team: teams.wales.name,
     date: new Date("2021-06-16T16:00:00Z").toISOString(),
     stadium: stadiums.baku,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 15,
@@ -121,7 +121,7 @@ const matches = [
     away_team: teams.switzerland.name,
     date: new Date("2021-06-16T19:00:00Z").toISOString(),
     stadium: stadiums.rome,
-    stage: stages.group,
+    stage: stages.group.name,
   },
   {
     number: 16,
@@ -129,7 +129,7 @@ const matches = [
     away_team: teams.northMacedonia.name,
     date: new Date("2021-06-17T13:00:00Z").toISOString(),
     stadium: stadiums.bucharest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 17,
@@ -137,7 +137,7 @@ const matches = [
     away_team: teams.belgium.name,
     date: new Date("2021-06-17T16:00:00Z").toISOString(),
     stadium: stadiums.copenhagen,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 18,
@@ -145,7 +145,7 @@ const matches = [
     away_team: teams.austria.name,
     date: new Date("2021-06-17T19:00:00Z").toISOString(),
     stadium: stadiums.amsterdam,
-    stage: stages.group,
+    stage: stages.group.name,
   },
   {
     number: 19,
@@ -153,7 +153,7 @@ const matches = [
     away_team: teams.slovakia.name,
     date: new Date("2021-06-18T13:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 20,
@@ -161,7 +161,7 @@ const matches = [
     away_team: teams.czechRepublic.name,
     date: new Date("2021-06-18T16:00:00Z").toISOString(),
     stadium: stadiums.glasgow,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 21,
@@ -169,7 +169,7 @@ const matches = [
     away_team: teams.scotland.name,
     date: new Date("2021-06-18T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.group,
+    stage: stages.group.name,
   },
   {
     number: 22,
@@ -177,7 +177,7 @@ const matches = [
     away_team: teams.france.name,
     date: new Date("2021-06-19T13:00:00Z").toISOString(),
     stadium: stadiums.budapest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 23,
@@ -185,7 +185,7 @@ const matches = [
     away_team: teams.germany.name,
     date: new Date("2021-06-19T16:00:00Z").toISOString(),
     stadium: stadiums.munich,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 24,
@@ -193,7 +193,7 @@ const matches = [
     away_team: teams.poland.name,
     date: new Date("2021-06-19T19:00:00Z").toISOString(),
     stadium: stadiums.seville,
-    stage: stages.group,
+    stage: stages.group.name,
   },
   {
     number: 25,
@@ -201,7 +201,7 @@ const matches = [
     away_team: teams.wales.name,
     date: new Date("2021-06-20T16:00:00Z").toISOString(),
     stadium: stadiums.rome,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 26,
@@ -209,7 +209,7 @@ const matches = [
     away_team: teams.turkey.name,
     date: new Date("2021-06-20T16:00:00Z").toISOString(),
     stadium: stadiums.baku,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 27,
@@ -217,7 +217,7 @@ const matches = [
     away_team: teams.netherlands.name,
     date: new Date("2021-06-21T16:00:00Z").toISOString(),
     stadium: stadiums.amsterdam,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 28,
@@ -225,7 +225,7 @@ const matches = [
     away_team: teams.austria.name,
     date: new Date("2021-06-21T16:00:00Z").toISOString(),
     stadium: stadiums.bucharest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 29,
@@ -233,7 +233,7 @@ const matches = [
     away_team: teams.denmark.name,
     date: new Date("2021-06-21T19:00:00Z").toISOString(),
     stadium: stadiums.copenhagen,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 30,
@@ -241,7 +241,7 @@ const matches = [
     away_team: teams.belgium.name,
     date: new Date("2021-06-21T19:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 31,
@@ -249,7 +249,7 @@ const matches = [
     away_team: teams.england.name,
     date: new Date("2021-06-22T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 32,
@@ -257,7 +257,7 @@ const matches = [
     away_team: teams.scotland.name,
     date: new Date("2021-06-22T19:00:00Z").toISOString(),
     stadium: stadiums.glasgow,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 33,
@@ -265,7 +265,7 @@ const matches = [
     away_team: teams.spain.name,
     date: new Date("2021-06-23T16:00:00Z").toISOString(),
     stadium: stadiums.seville,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 34,
@@ -273,7 +273,7 @@ const matches = [
     away_team: teams.poland.name,
     date: new Date("2021-06-23T16:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 35,
@@ -281,7 +281,7 @@ const matches = [
     away_team: teams.hungary.name,
     date: new Date("2021-06-23T19:00:00Z").toISOString(),
     stadium: stadiums.munich,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 36,
@@ -289,7 +289,7 @@ const matches = [
     away_team: teams.france.name,
     date: new Date("2021-06-23T19:00:00Z").toISOString(),
     stadium: stadiums.budapest,
-    stage: stages.group
+    stage: stages.group.name
   },
   {
     number: 37,
@@ -297,7 +297,7 @@ const matches = [
     away_team: "2B",
     date: new Date("2021-06-26T16:00:00Z").toISOString(),
     stadium: stadiums.amsterdam,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 38,
@@ -305,7 +305,7 @@ const matches = [
     away_team: "2C",
     date: new Date("2021-06-26T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 39,
@@ -313,7 +313,7 @@ const matches = [
     away_team: "3D/E/F",
     date: new Date("2021-06-27T16:00:00Z").toISOString(),
     stadium: stadiums.budapest,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 40,
@@ -321,7 +321,7 @@ const matches = [
     away_team: "3A/D/E/F",
     date: new Date("2021-06-27T19:00:00Z").toISOString(),
     stadium: stadiums.seville,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 41,
@@ -329,7 +329,7 @@ const matches = [
     away_team: "2E",
     date: new Date("2021-06-28T16:00:00Z").toISOString(),
     stadium: stadiums.copenhagen,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 42,
@@ -337,7 +337,7 @@ const matches = [
     away_team: "3A/B/C",
     date: new Date("2021-06-28T19:00:00Z").toISOString(),
     stadium: stadiums.bucharest,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 43,
@@ -345,7 +345,7 @@ const matches = [
     away_team: "2F",
     date: new Date("2021-06-29T16:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 44,
@@ -353,7 +353,7 @@ const matches = [
     away_team: "3A/B/C/D",
     date: new Date("2021-06-29T19:00:00Z").toISOString(),
     stadium: stadiums.glasgow,
-    stage: stages.roundOf16
+    stage: stages.roundOf16.name
   },
   {
     number: 45,
@@ -361,7 +361,7 @@ const matches = [
     away_team: "Winner 41",
     date: new Date("2021-07-02T16:00:00Z").toISOString(),
     stadium: stadiums.stPetersburg,
-    stage: stages.quarterfinals
+    stage: stages.quarterfinals.name
   },
   {
     number: 46,
@@ -369,7 +369,7 @@ const matches = [
     away_team: "Winner 38",
     date: new Date("2021-07-02T19:00:00Z").toISOString(),
     stadium: stadiums.munich,
-    stage: stages.quarterfinals
+    stage: stages.quarterfinals.name
   },
   {
     number: 47,
@@ -377,7 +377,7 @@ const matches = [
     away_team: "Winner 37",
     date: new Date("2021-07-02T16:00:00Z").toISOString(),
     stadium: stadiums.baku,
-    stage: stages.quarterfinals
+    stage: stages.quarterfinals.name
   },
   {
     number: 48,
@@ -385,7 +385,7 @@ const matches = [
     away_team: "Winner 43",
     date: new Date("2021-07-02T19:00:00Z").toISOString(),
     stadium: stadiums.rome,
-    stage: stages.quarterfinals
+    stage: stages.quarterfinals.name
   },
   {
     number: 49,
@@ -393,7 +393,7 @@ const matches = [
     away_team: "Winner 45 (QF1)",
     date: new Date("2021-07-06T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.semifinals
+    stage: stages.semifinals.name
   },
   {
     number: 50,
@@ -401,7 +401,7 @@ const matches = [
     away_team: "Winner 47 (QF3)",
     date: new Date("2021-07-06T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.semifinals
+    stage: stages.semifinals.name
   },
   {
     number: 51,
@@ -409,7 +409,7 @@ const matches = [
     away_team: "Winner 50 (SF2)",
     date: new Date("2021-07-11T19:00:00Z").toISOString(),
     stadium: stadiums.london,
-    stage: stages.final
+    stage: stages.final.name
   },
 ]
 

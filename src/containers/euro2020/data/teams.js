@@ -1,99 +1,123 @@
 const teams = {
   turkey: {
     name: 'Turkey',
-    emoji: '🇹🇷'
+    emoji: '🇹🇷',
+    group: 'A'
   },
   italy: {
     name: 'Italy',
-    emoji: '🇮🇹'
+    emoji: '🇮🇹',
+    group: 'A'
   },
   wales: {
     name: 'Wales',
-    emoji: '🏴󠁧󠁢󠁷󠁬󠁳󠁿'
+    emoji: '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
+    group: 'A'
   },
   switzerland: {
     name: 'Switzerland',
-    emoji: '🇨🇭'
+    emoji: '🇨🇭',
+    group: 'A'
   },
   denmark: {
     name: 'Denmark',
-    emoji: '🇩🇰'
+    emoji: '🇩🇰',
+    group: 'B'
   },
   finland: {
     name: 'Finland',
-    emoji: '🇫🇮'
+    emoji: '🇫🇮',
+    group: 'B'
   },
   belgium: {
     name: 'Belgium',
-    emoji: '🇧🇪'
+    emoji: '🇧🇪',
+    group: 'B'
   },
   russia: {
     name: 'Russia',
-    emoji: '🇷🇺'
+    emoji: '🇷🇺',
+    group: 'B'
   },
   england: {
     name: 'England',
-    emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿'
+    emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    group: 'C'
   },
   croatia: {
     name: 'Croatia',
-    emoji: '🇭🇷'
+    emoji: '🇭🇷',
+    group: 'C'
   },
   austria: {
     name: 'Austria',
-    emoji: '🇦🇹'
+    emoji: '🇦🇹',
+    group: 'C'
   },
   northMacedonia: {
     name: 'North Macedonia',
-    emoji: '🇲🇰'
+    emoji: '🇲🇰',
+    group: 'C'
   },
   netherlands: {
     name: 'Netherlands',
-    emoji: '🇳🇱'
+    emoji: '🇳🇱',
+    group: 'D'
   },
   ukraine: {
     name: 'Ukraine',
-    emoji: '🇺🇦'
+    emoji: '🇺🇦',
+    group: 'D'
   },
   scotland: {
     name: 'Scotland',
-    emoji: '🏴󠁧󠁢󠁳󠁣󠁴󠁿'
+    emoji: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    group: 'D'
   },
   czechRepublic: {
     name: 'Czech Republic',
-    emoji: '🇨🇿'
+    emoji: '🇨🇿',
+    group: 'D'
   },
   poland: {
     name: 'Poland',
-    emoji: '🇵🇱'
+    emoji: '🇵🇱',
+    group: 'E'
   },
   slovakia: {
     name: 'Slovakia',
-    emoji: '🇸🇰'
+    emoji: '🇸🇰',
+    group: 'E'
   },
   spain: {
     name: 'Spain',
-    emoji: '🇪🇸'
+    emoji: '🇪🇸',
+    group: 'E'
   },
   sweden: {
     name: 'Sweden',
-    emoji: '🇸🇪'
+    emoji: '🇸🇪',
+    group: 'E'
   },
   hungary: {
     name: 'Hungary',
-    emoji: '🇭🇺'
+    emoji: '🇭🇺',
+    group: 'F'
   },
   portugal: {
     name: 'Portugal',
-    emoji: '🇵🇹'
+    emoji: '🇵🇹',
+    group: 'F'
   },
   france: {
     name: 'France',
-    emoji: '🇫🇷'
+    emoji: '🇫🇷',
+    group: 'F'
   },
   germany: {
     name: 'Germany',
-    emoji: '🇩🇪'
+    emoji: '🇩🇪',
+    group: 'F'
   }
 }
 

@@ -40,10 +40,6 @@ const players = [
     number: '+447561716587'
   },
   {
-    name: 'Carl',
-    number: ''
-  },
-  {
     name: 'Madeleine',
     number: '+6597521154'
   },

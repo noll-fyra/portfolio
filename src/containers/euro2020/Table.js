@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import GameRules from './table/GameRules'
+import PlayerCard from './table/PlayerCard'
+import players from './data/players'
+import stages from './data/stages'
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: null,
-      file: null,
-      showingRules: false
+      expanded: null
     };
     this.calculateTable = this.calculateTable.bind(this);
-    this.upload = this.upload.bind(this);
+    this.calculateTable2 = this.calculateTable2.bind(this);
   }
 
   calculateTable() {
@@ -53,6 +55,50 @@ class Table extends Component {
       });
   }
 
+  calculateTable2() {
+    let { matches } = this.props
+    if (!matches) return []
+
+    let position = 0
+    let points = -1
+
+    let playersWithPredictions = players
+      // add predictions
+      .map(player => ({
+        ...player,
+        predictions: Object.values(matches)
+          .filter(match => !!match.result)
+          .sort((a, b) => a.number - b.number)
+          .map(match => ({
+            match,
+            prediction: !!match.predictions && match.predictions[player.number] ?  match.predictions[player.number] : null,
+            points: !!match.predictions && !!match.predictions[player.number] && match.predictions[player.number] === match.result ? Object.values(stages).filter(stage => stage.name === match.stage)[0].points : 0
+          }))
+        }))
+      // add total score
+      .map(player => ({
+        ...player,
+        score: player.predictions.reduce((acc, match) => acc + match.points, 0)
+      }))
+      // sort for position
+      .sort((a, b) => this.sortAlphabetically(a.name, b.name))
+      .sort((a, b) => b.score - a.score)
+      // add position
+      .map((player, index) => {
+        if (points !== player.score) {
+          position = index + 1;
+        }
+        points = player.score;
+        return {
+          ...player,
+          position
+        }
+      })
+
+    return playersWithPredictions
+  }
+
+
   sortAlphabetically(first, second) {
     switch (true) {
       case first > second:
@@ -60,22 +106,8 @@ class Table extends Component {
       case first < second:
         return -1;
       default:
-        return -1;
+        return 0;
     }
-  }
-
-  upload() {
-    this.props.storage
-      .ref()
-      .child("images/" + this.props.number)
-      .put(this.state.file)
-      .then(snap => {
-        console.log(snap);
-      });
-    this.props.database
-      .ref()
-      .child("users/" + this.props.number)
-      .update({ image: true });
   }
 
   render() {
@@ -92,13 +124,20 @@ class Table extends Component {
       .reduce((a, b) => a + b.pointValue, 0);
 
     return (
-      <div style={{ paddingBottom: "12px" }}>
+      <div>
+
+        <div style={{width: '100%', maxWidth: '600px', margin: '0 auto'}}>
+          {this.calculateTable2().map(player =>
+        <PlayerCard key={player.number} player={player} />
+          )}
+          </div>
+
         {table.map((user, index) => (
           <div
             key={user.number}
             style={{
               width: "100%",
-              maxWidth: "480px",
+              maxWidth: "600px",
               margin: "0 auto",
               backgroundColor:
                 this.state.expanded === user.number ? "#ccdae5" : "",
@@ -588,113 +627,10 @@ class Table extends Component {
           </div>
         ))}
 
-        <br />
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "480px",
-            margin: "0 auto",
-            textAlign: "center"
-          }}
-        >
-          <b>Points to play for: {pointsLeft}</b>
-        </div>
+            <strong>Points to play for: {pointsLeft}</strong>
 
-        <div style={{ width: "100%", maxWidth: "480px", margin: "0 auto" }}>
-          <h3
-            style={{
-              textAlign: "center",
-              marginTop: "48px",
-              cursor: "pointer",
-              backgroundColor: "#ccdae5",
-              padding: "8px"
-            }}
-          >
-            Rules
-          </h3>
-          <br />
-          <b>Welcome to the 2018 FIFA World Cup Prediction Game!</b>
-          <br />
-          <br />
+        <GameRules />
 
-          <b>What you can win</b>
-          <p>
-            All participants put in $10 at the beginning, and the winner gets
-            everything at the end (the prize money is split equally if there is
-            a tie)
-          </p>
-          <br />
-
-          <b>How to win</b>
-          <p>Finish with the most points</p>
-          <br />
-
-          <b>Getting points</b>
-          <p>
-            Before each stage begins, predict who advances as the group leader
-            (Group Stage only) or wins their knockout match. For each correct
-            answer, you get points depending on which stage it is:
-          </p>
-          <br />
-
-          <table style={{ width: "100%" }}>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "left" }}>Stage</th>
-                <th style={{ textAlign: "left" }}>Pt/game</th>
-                <th style={{ textAlign: "left" }}>No. games</th>
-                <th style={{ textAlign: "left" }}>Total pts</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Group Stage</td>
-                <td>1</td>
-                <td>8 groups</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>Round of 16</td>
-                <td>2</td>
-                <td>8 games</td>
-                <td>16</td>
-              </tr>
-              <tr>
-                <td>Quarterfinals</td>
-                <td>3</td>
-                <td>4 games</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <td>Semifinals</td>
-                <td>4</td>
-                <td>2 games</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>Final</td>
-                <td>5</td>
-                <td>1 game</td>
-                <td>5</td>
-              </tr>
-            </tbody>
-          </table>
-          <br />
-
-          <p>The best possible score is 49 pts</p>
-          <br />
-
-          <b>Predictions</b>
-          <p>
-            Before the first match begins, you must submit your predictions for
-            the group stage. For subsequent stages, you must predict the winner
-            of each match before the match begins. You are allowed to change
-            your prediction as many times as you like before the match begins.
-          </p>
-          <br />
-
-          <p>That’s it! Let’s have a great tournament!</p>
-        </div>
       </div>
     );
   }

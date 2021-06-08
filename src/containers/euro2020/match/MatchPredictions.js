@@ -5,9 +5,9 @@ import constants from '../data/constants'
 
 function predictionMatchesResult({match, prediction}){
   switch(true) {
-    case prediction === match.home_team && match.result === "home":
-    case prediction === match.away_team && match.result === "away":
-    case prediction === 'Draw' && match.result === 'draw':
+    case prediction === match.home_team:
+    case prediction === match.away_team:
+    case prediction === match.result:
       return true
     default:
       return false

@@ -15,7 +15,6 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import Header from './euro2020/Header'
 import Table from './euro2020/Table'
 import Teams from './euro2020/Teams'
-import NewPoll from './euro2020/NewPoll'
 import Matches from './euro2020/Matches'
 import OurStory from './ourstory/Index'
 import LogOut from './LogOut'
@@ -128,13 +127,13 @@ class Root extends Component {
                   <Route
                     exact
                     path="/"
-                    render={() => <Redirect to="/euro2020/matches" />}
+                    render={() => <Redirect to="/euro2020/teams" />}
                   />
 
                   <Route
                     exact
                     path="/euro2020"
-                    render={() => <Redirect to="/euro2020/matches" />}
+                    render={() => <Redirect to="/euro2020/teams" />}
                   />
 
                   <Route
@@ -147,25 +146,11 @@ class Root extends Component {
                       <Route path="/ourstory" render={() => <OurStory />} />
 
                       <Route
-                        path="/euro2020/newpoll"
-                        render={() => (
-                          <NewPoll
-                            polls={this.state.data.polls}
-                            users={this.state.data.users}
-                            teams={this.state.data.teams}
-                            database={database}
-                          />
-                        )}
-                      />
-                      <Route
                         path="/euro2020/table"
                         render={() => (
                           <Table
-                            polls={this.state.data.polls}
                             matches={this.state.data.euro2020.matches}
-                            users={this.state.data.users}
-                            teams={this.state.data.teams}
-                            database={database}
+                            countries={this.state.data.euro2020.countries}
                             number={this.state.number}
                           />
                         )}
@@ -184,8 +169,7 @@ class Root extends Component {
                         path="/euro2020/teams"
                         render={() => (
                           <Teams
-                            matches={this.state.data.matches}
-                            teams={this.state.data.teams}
+                            countries={this.state.data.euro2020.countries}
                             database={database}
                             number={this.state.number}
                           />

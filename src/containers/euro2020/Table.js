@@ -70,13 +70,14 @@ class Table extends Component {
   }
 
   render() {
-    const table = this.calculateTable();
+    const table = this.calculateTable()
+    let { countries } = this.props
 
     return (
       <main>
         <div style={{width: '100%', maxWidth: '600px', margin: '0 auto'}}>
           {table.map(player =>
-            <PlayerCard key={player.number} player={player} />
+            <PlayerCard key={player.number} player={player} countries={countries} />
           )}
         </div>
 
@@ -87,9 +88,8 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  polls: PropTypes.object,
-  users: PropTypes.object,
-  teams: PropTypes.arrayOf(PropTypes.object),
+  matches: PropTypes.object,
+  countries: PropTypes.object,
   number: PropTypes.string
 };
 

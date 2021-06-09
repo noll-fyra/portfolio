@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MatchDetails from './match/MatchDetails'
+import MatchDetails from './matches/MatchDetails'
 import stages from './data/stages'
 import constants from './data/constants'
 

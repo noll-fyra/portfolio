@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import constants from "./data/constants";
 
-const sections = ["matches", "table"];
+const sections = ["teams", "matches", "table"];
 
 const Header = () => (
   <div>

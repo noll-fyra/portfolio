@@ -7,10 +7,9 @@ const body = Object.values(stages).sort((a, b) => a.number - b.number)
 
 function GameRules() {
   return (
-    <section style={{ width: "100%", textAlign: "center", margin: "0 auto" }}>
+    <section style={{ width: "100%", textAlign: "center", margin: "0 auto", marginTop: '24px' }}>
       <h3
         style={{
-          marginTop: "48px",
           backgroundColor: constants.colors.blue,
           color: constants.colors.cream,
           padding: "8px"
@@ -19,10 +18,11 @@ function GameRules() {
         Rules
       </h3>
 
+
         <div style={{ width: "100%", maxWidth: '600px', margin: "24px auto", textAlign: "left", padding: '8px' }}>
           <strong>What you can win</strong>
           <p>
-            All participants put in $20 at the beginning, and the winner gets
+            All participants put in $15 at the beginning, and the winner gets
             everything at the end (the prize money is split equally if there is
             a tie).
           </p>

@@ -34,7 +34,8 @@ class PlayerCard extends Component {
         <div onClick={this.toggleExpand} style={{display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '8px', backgroundColor: expanded ? constants.colors.teal : ''}}>
           <div style={{width: '15%', textAlign: 'center', fontSize: '24px'}}><strong>{player.position}</strong></div>
           <div style={{width: '70%', fontSize: '24px'}}>
-            {!hasStarted && selectedCountry && <span style={{fontSize: '24px', marginRight: '8px'}} role="img" aria-label="Country flag">{getEmojiFromTeamName(selectedCountry)}</span>}
+            {!hasStarted && selectedCountry && <span style={{fontSize: '24px', marginRight: '8px'}} role="img" aria-label="Country flag">🏳</span>}
+            {hasStarted && selectedCountry && <span style={{fontSize: '24px', marginRight: '8px'}} role="img" aria-label="Country flag">{getEmojiFromTeamName(selectedCountry)}</span>}
             <strong>{player.name}</strong>
             </div>
           <div style={{width: '15%', textAlign: 'center', fontSize: '24px'}}><strong>{player.score}</strong></div>
